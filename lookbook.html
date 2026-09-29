@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="meshki">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autumn/Winter Runway Lookbook &amp; Campaign | STACKLY</title>
+  <meta name="description" content="View the STACKLY Autumn/Winter 2026 Haute Couture lookbook: fluid Como silks, architectural hourglass tailoring, and sculpted red-carpet gala gowns." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="./favicon.webp" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <span>✦ COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING OVER $250</span>
+      <span class="desk-only">•</span>
+      <span class="desk-only">EASY 30-DAY BOUTIQUE RETURNS &amp; EXCHANGES</span>
+      <span class="desk-only">•</span>
+      <span class="topbar-highlight">AUTUMN / WINTER COUTURE LIVE</span>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="STACKLY Home">
+        <img src="./images/logo-header-yellow.webp" alt="STACKLY" class="nav-logo-img" />
+      </a>
+
+      <nav class="nav-menu" aria-label="Primary navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="lookbook.html" class="nav-link active">Lookbook</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Service</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="palette-switcher" title="Choose from 3 Color Palettes">
+          <button type="button" class="palette-btn palette-btn--meshki active" data-palette="meshki" onclick="window.switchPalette('meshki')" aria-label="MESHKI Sunlit Gold Palette"></button>
+          <button type="button" class="palette-btn palette-btn--royal" data-palette="royal" onclick="window.switchPalette('royal')" aria-label="Royal Amethyst Purple Palette"></button>
+          <button type="button" class="palette-btn palette-btn--rose" data-palette="rose" onclick="window.switchPalette('rose')" aria-label="Rose Quartz Blush Palette"></button>
+        </div>
+
+        <a href="dashboard.html?role=user&tab=wishlist" class="icon-btn" aria-label="Wishlist">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+          <span class="badge-count" data-wishlist-count style="display:none">0</span>
+        </a>
+
+        <button class="icon-btn" type="button" data-cart-open aria-label="Shopping Bag">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <span class="badge-count" data-cart-count style="display:none">0</span>
+        </button>
+
+        <a href="login.html" class="btn-nav-login desk-only">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span>Login</span>
+        </a>
+
+        <a href="signup.html" class="btn-nav-signup desk-only">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="8.5" cy="7" r="4"></circle>
+            <line x1="20" y1="8" x2="20" y2="14"></line>
+            <line x1="17" y1="11" x2="23" y2="11"></line>
+          </svg>
+          <span>Signup</span>
+        </a>
+
+        <button class="icon-btn nav-burger" type="button" aria-label="Open mobile menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <aside class="drawer" id="mobile-menu" aria-label="Mobile menu">
+    <div class="drawer-top" style="display:flex;align-items:center;justify-content:space-between">
+      <a href="index.html" class="nav-logo">
+        <img src="./images/logo-header-yellow.webp" alt="STACKLY" class="nav-logo-img" style="height:36px" />
+      </a>
+      <button class="icon-btn drawer-close" type="button" aria-label="Close menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <nav class="drawer-menu">
+      <a href="index.html">Home <span>→</span></a>
+      <a href="shop.html">Shop <span>→</span></a>
+      <a href="lookbook.html" class="active">Lookbook <span>→</span></a>
+      <a href="about.html">About <span>→</span></a>
+      <a href="services.html">Service <span>→</span></a>
+      <a href="blog.html">Blog <span>→</span></a>
+      <a href="contact.html">Contact <span>→</span></a>
+      <a href="dashboard.html?role=user">My VIP Dashboard <span>→</span></a>
+    </nav>
+    <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px;padding-top:24px">
+      <a class="btn-nav-login" style="justify-content:center" href="login.html">Login</a>
+      <a class="btn-nav-signup" style="justify-content:center" href="signup.html">Signup</a>
+    </div>
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Shopping Bag Slide-Over Drawer -->
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping bag">
+    <div class="cart-header">
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="./images/logo-header-yellow.webp" alt="STACKLY" style="height:28px" />
+        <span style="font-family:var(--font-serif);font-size:1.15rem;font-weight:600">Shopping Bag</span>
+      </div>
+      <button class="icon-btn cart-close" type="button" aria-label="Close cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="cart-items" id="cart-items-list"></div>
+    <div class="cart-footer">
+      <div style="display:flex;gap:8px">
+        <input type="text" id="promo-code-input" class="form-input" placeholder="Promo code (e.g. STACKLYVIP)" style="padding:10px 14px;font-size:0.85rem" />
+        <button type="button" class="btn btn--sm" id="apply-promo">Apply</button>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:1.1rem;font-weight:700">
+        <span>Subtotal</span>
+        <span id="cart-subtotal-val">$0</span>
+      </div>
+      <button class="btn btn--block" id="checkout-btn" type="button">Proceed to VIP Checkout</button>
+    </div>
+  </aside>
+
+  <main>
+    <!-- EDITORIAL HERO HEADER -->
+    <section class="section" style="padding-top: clamp(40px, 6vw, 70px); padding-bottom: clamp(30px, 4vw, 50px); background: linear-gradient(180deg, #FFFFFF 0%, var(--paper) 100%); border-bottom: 1px solid var(--line);">
+      <div class="wrap text-center" style="max-width: 900px; margin: 0 auto; text-align: center;">
+        <span class="eyebrow" style="margin: 0 auto;">RUNWAY CHRONICLES • EDITION VII</span>
+        <h1 style="margin-top: 14px; font-size: clamp(2.4rem, 4.5vw, 3.4rem); line-height: 1.15;">
+          The Noir &amp; Gold Runway Presentation
+        </h1>
+        <p class="lead" style="margin-top: 16px;">
+          Captured live during private Paris Couture presentations and intimate Grand Palais salons. A study in obsidian velvet, floating horsehair canvas, and fluid 45-degree bias silks.
+        </p>
+      </div>
+    </section>
+
+    <!-- LOOKBOOK 6-IMAGE CURATED GALLERY -->
+    <section class="section" style="background: var(--paper-2); padding-top: 50px;">
+      <div class="wrap">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 32px;">
+          <!-- Look 1 -->
+          <div style="background:var(--ink-card); border-radius:14px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow); display:flex; flex-direction:column;">
+            <div style="position:relative; aspect-ratio:3/4; overflow:hidden;">
+              <img src="./images/gallery-1.webp" alt="Look 01 - The Sculpted Column Gown" style="width:100%; height:100%; object-fit:cover;" />
+              <span style="position:absolute; top:18px; left:18px; background:var(--accent); color:var(--accent-text); font-size:0.75rem; font-weight:800; padding:6px 14px; border-radius:20px; text-transform:uppercase;">Look 01</span>
+            </div>
+            <div style="padding:24px; flex-grow:1; display:flex; flex-direction:column;">
+              <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent); font-weight:700;">Evening Gala</span>
+              <h3 style="margin-top:6px; font-size:1.35rem;">The Sculpted Obsidian Column</h3>
+              <p style="margin-top:10px; font-size:0.92rem; color:var(--text-muted); flex-grow:1;">
+                Floor-sweeping double-faced Como silk Charmeuse with internal medical-grade spiral boning and asymmetric neck drape.
+              </p>
+              <div style="margin-top:20px; padding-top:14px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:700;">$2,450 USD</span>
+                <a href="product-details.html?id=prod-1" class="btn btn--sm">Shop This Look <span>→</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Look 2 -->
+          <div style="background:var(--ink-card); border-radius:14px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow); display:flex; flex-direction:column;">
+            <div style="position:relative; aspect-ratio:3/4; overflow:hidden;">
+              <img src="./images/gallery-2.webp" alt="Look 02 - Pleated Chiffon Movement" style="width:100%; height:100%; object-fit:cover;" />
+              <span style="position:absolute; top:18px; left:18px; background:var(--accent); color:var(--accent-text); font-size:0.75rem; font-weight:800; padding:6px 14px; border-radius:20px; text-transform:uppercase;">Look 02</span>
+            </div>
+            <div style="padding:24px; flex-grow:1; display:flex; flex-direction:column;">
+              <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent); font-weight:700;">Cocktail Couture</span>
+              <h3 style="margin-top:6px; font-size:1.35rem;">Sunray Pleated Chiffon Motion</h3>
+              <p style="margin-top:10px; font-size:0.92rem; color:var(--text-muted); flex-grow:1;">
+                Weightless Lyon silk-lurex chiffon featuring hand-pleated sunray folds and delicate metallic glint under gala chandeliers.
+              </p>
+              <div style="margin-top:20px; padding-top:14px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:700;">$2,100 USD</span>
+                <a href="product-details.html?id=prod-3" class="btn btn--sm">Shop This Look <span>→</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Look 3 -->
+          <div style="background:var(--ink-card); border-radius:14px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow); display:flex; flex-direction:column;">
+            <div style="position:relative; aspect-ratio:3/4; overflow:hidden;">
+              <img src="./images/gallery-3.webp" alt="Look 03 - The Hourglass Tuxedo" style="width:100%; height:100%; object-fit:cover;" />
+              <span style="position:absolute; top:18px; left:18px; background:var(--accent); color:var(--accent-text); font-size:0.75rem; font-weight:800; padding:6px 14px; border-radius:20px; text-transform:uppercase;">Look 03</span>
+            </div>
+            <div style="padding:24px; flex-grow:1; display:flex; flex-direction:column;">
+              <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent); font-weight:700;">Sartorial Suiting</span>
+              <h3 style="margin-top:6px; font-size:1.35rem;">Super 160s Gala Tuxedo</h3>
+              <p style="margin-top:10px; font-size:0.92rem; color:var(--text-muted); flex-grow:1;">
+                Full floating horsehair canvas chest piece, grosgrain silk faille lapels, and custom hand-carved buffalo horn buttons.
+              </p>
+              <div style="margin-top:20px; padding-top:14px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:700;">$3,200 USD</span>
+                <a href="product-details.html?id=prod-4" class="btn btn--sm">Shop This Look <span>→</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Look 4 -->
+          <div style="background:var(--ink-card); border-radius:14px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow); display:flex; flex-direction:column;">
+            <div style="position:relative; aspect-ratio:3/4; overflow:hidden;">
+              <img src="./images/gallery-4.webp" alt="Look 04 - Midnight Velvet Kimono" style="width:100%; height:100%; object-fit:cover;" />
+              <span style="position:absolute; top:18px; left:18px; background:var(--accent); color:var(--accent-text); font-size:0.75rem; font-weight:800; padding:6px 14px; border-radius:20px; text-transform:uppercase;">Look 04</span>
+            </div>
+            <div style="padding:24px; flex-grow:1; display:flex; flex-direction:column;">
+              <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent); font-weight:700;">Silk &amp; Velvet</span>
+              <h3 style="margin-top:6px; font-size:1.35rem;">Gilded Kyoto Velvet Kimono</h3>
+              <p style="margin-top:10px; font-size:0.92rem; color:var(--text-muted); flex-grow:1;">
+                Hand-embroidered gold botanical vines across heavy silk-rayon velvet with full Mulberry lining for luxury lounging.
+              </p>
+              <div style="margin-top:20px; padding-top:14px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:700;">$1,650 USD</span>
+                <a href="product-details.html?id=prod-5" class="btn btn--sm">Shop This Look <span>→</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Look 5 -->
+          <div style="background:var(--ink-card); border-radius:14px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow); display:flex; flex-direction:column;">
+            <div style="position:relative; aspect-ratio:3/4; overflow:hidden;">
+              <img src="./images/gallery-5.webp" alt="Look 05 - Cashmere Hourglass Blazer" style="width:100%; height:100%; object-fit:cover;" />
+              <span style="position:absolute; top:18px; left:18px; background:var(--accent); color:var(--accent-text); font-size:0.75rem; font-weight:800; padding:6px 14px; border-radius:20px; text-transform:uppercase;">Look 05</span>
+            </div>
+            <div style="padding:24px; flex-grow:1; display:flex; flex-direction:column;">
+              <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent); font-weight:700;">Tailored Outerwear</span>
+              <h3 style="margin-top:6px; font-size:1.35rem;">Cashmere Hourglass Blazer</h3>
+              <p style="margin-top:10px; font-size:0.92rem; color:var(--text-muted); flex-grow:1;">
+                Sculpted waistline tailored from 100% Mongolian organic cashmere with vintage gilded buttons and peak architectural lapels.
+              </p>
+              <div style="margin-top:20px; padding-top:14px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:700;">$1,850 USD</span>
+                <a href="product-details.html?id=prod-2" class="btn btn--sm">Shop This Look <span>→</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Look 6 -->
+          <div style="background:var(--ink-card); border-radius:14px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow); display:flex; flex-direction:column;">
+            <div style="position:relative; aspect-ratio:3/4; overflow:hidden;">
+              <img src="./images/gallery-6.webp" alt="Look 06 - Architectural Bustier &amp; Silk" style="width:100%; height:100%; object-fit:cover;" />
+              <span style="position:absolute; top:18px; left:18px; background:var(--accent); color:var(--accent-text); font-size:0.75rem; font-weight:800; padding:6px 14px; border-radius:20px; text-transform:uppercase;">Look 06</span>
+            </div>
+            <div style="padding:24px; flex-grow:1; display:flex; flex-direction:column;">
+              <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent); font-weight:700;">Corsetry &amp; Silk</span>
+              <h3 style="margin-top:6px; font-size:1.35rem;">Sculpted Boned Lace Bustier</h3>
+              <p style="margin-top:10px; font-size:0.92rem; color:var(--text-muted); flex-grow:1;">
+                Twelve spiral steel bones engineered inside French chantilly lace, paired effortlessly with fluid emerald bias-cut silk skirts.
+              </p>
+              <div style="margin-top:20px; padding-top:14px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:700;">$1,250 USD</span>
+                <a href="product-details.html?id=prod-8" class="btn btn--sm">Shop This Look <span>→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVATE SALON PREVIEW INVITATION -->
+    <section class="section" style="background:#111114; color:#FFF;">
+      <div class="wrap" style="text-align:center; max-width:800px; margin:0 auto;">
+        <span class="eyebrow" style="color:var(--accent); margin:0 auto;">VIP SALON ACCESS</span>
+        <h2 style="color:#FFF; margin-top:16px;">Request Private Runway Viewing</h2>
+        <p class="lead" style="color:#AAA; margin-top:16px;">
+          Experience our full couture capsule in a private 1-on-1 champagne fitting session in Paris, New York, or Salem.
+        </p>
+        <div style="margin-top:32px; display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+          <a href="services.html#booking" class="btn">Reserve Private Salon Suite</a>
+          <a href="shop.html" class="btn btn--ghost" style="color:#FFF; border-color:rgba(255,255,255,0.3);">Explore Full Shop Catalog</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MASTER FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <img src="./images/logo-footer-white.webp" alt="STACKLY" class="footer-logo-img" />
+          </a>
+          <p>
+            Premier luxury fashion house and bespoke clothing boutique crafting sculpted corsetry, evening gala gowns, and Italian silk tailoring for modern muses.
+          </p>
+          <div class="footer-socials">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Twitter"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="lookbook.html">Lookbook</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Boutique Collections</h4>
+          <ul>
+            <li><a href="shop.html?category=dresses">Evening &amp; Gala Gowns</a></li>
+            <li><a href="shop.html?category=outerwear">Architectural Blazers</a></li>
+            <li><a href="shop.html?category=tops">Corsets &amp; Bustiers</a></li>
+            <li><a href="shop.html?category=silk">Pure Mulberry Silk</a></li>
+            <li><a href="services.html#booking">Private Fitting Salons</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Flagship Salon &amp; Atelier</h4>
+          <div class="footer-office-info">
+            <div class="footer-info-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>MMR Complex, Executive Tower, Salem, TN 636008</span>
+            </div>
+            <div class="footer-info-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              <span>+91 98765 43210</span>
+            </div>
+            <div class="footer-info-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <span>concierge@stackly.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 STACKLY Haute Couture &amp; Clothing Boutique. All rights reserved. Handcrafted Luxury &amp; Bespoke Tailoring.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>

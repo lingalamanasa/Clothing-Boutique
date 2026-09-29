@@ -88,7 +88,7 @@
               <input type="checkbox" name="remember" />
               <span>Remember me</span>
             </label>
-            <a href="#" class="forgot-link" onclick="alert('Password reset link has been dispatched to your email address.'); return false;">Forgot password?</a>
+            <a href="javascript:void(0)" class="forgot-link" onclick="window.showToast ? window.showToast('Password reset link has been dispatched to your email address.', '✉') : alert('Password reset link has been dispatched to your email address.'); return false;">Forgot password?</a>
           </div>
 
           <!-- Submit Button -->

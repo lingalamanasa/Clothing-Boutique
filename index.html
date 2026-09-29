@@ -54,9 +54,11 @@
         <img src="./images/logo-header-yellow.webp" alt="STACKLY" class="nav-logo-img" />
       </a>
 
-      <!-- Center Links (Exact: Home, About, Service, Blog, Contact) -->
+      <!-- Center Links (Exact: Home, Shop, Lookbook, About, Service, Blog, Contact) -->
       <nav class="nav-menu" aria-label="Primary navigation">
         <a href="./index.html" class="nav-link active">Home</a>
+        <a href="./shop.html" class="nav-link">Shop</a>
+        <a href="./lookbook.html" class="nav-link">Lookbook</a>
         <a href="./about.html" class="nav-link">About</a>
         <a href="./services.html" class="nav-link">Service</a>
         <a href="./blog.html" class="nav-link">Blog</a>
@@ -132,6 +134,8 @@
     </div>
     <nav class="drawer-menu">
       <a href="./index.html" class="active">Home <span>→</span></a>
+      <a href="./shop.html">Shop <span>→</span></a>
+      <a href="./lookbook.html">Lookbook <span>→</span></a>
       <a href="./about.html">About <span>→</span></a>
       <a href="./services.html">Service <span>→</span></a>
       <a href="./blog.html">Blog <span>→</span></a>
@@ -177,9 +181,9 @@
       </div>
       <div class="wrap">
         <div class="hero-content">
-          <a href="#showcase" class="hero-pill-tag" style="cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px" title="Jump to New Arrivals">
+          <a href="shop.html?collection=noir-gold" class="hero-pill-tag" style="cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px" title="Explore The Noir & Gold Edit">
             <span>✨ NEW COLLECTION LIVE</span>
-            <span style="font-size:0.85rem">↓</span>
+            <span style="font-size:0.85rem">→</span>
           </a>
           <h1 class="hero-title">
             THE NOIR &amp; GOLD EDIT
@@ -188,8 +192,8 @@
             Elevated evening gowns, sculpted boned corsets, and timeless tailored blazers designed for unforgettable entrances.
           </p>
           <div style="display:flex;gap:14px;margin-top:28px;flex-wrap:wrap">
-            <a class="btn" href="#showcase">Shop Collection</a>
-            <a class="btn btn--ghost" style="color:#FFFFFF;border-color:rgba(255,255,255,0.3)" href="#lookbook">Explore Lookbook</a>
+            <a class="btn" href="shop.html">Shop Collection</a>
+            <a class="btn btn--ghost" style="color:#FFFFFF;border-color:rgba(255,255,255,0.3)" href="lookbook.html">Explore Lookbook</a>
           </div>
         </div>
       </div>
@@ -210,7 +214,7 @@
             <div class="cat-overlay">
               <span style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-weight:700">Collection I</span>
               <h3 style="font-size:1.45rem;color:#FFF;margin-top:2px">Evening &amp; Gala Gowns</h3>
-              <a href="#showcase" onclick="window.filterShowcase('dresses')" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px;cursor:pointer">Discover 18 Styles →</a>
+              <a href="shop.html?category=dresses" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px;cursor:pointer">Discover 18 Styles →</a>
             </div>
           </div>
 
@@ -219,7 +223,7 @@
             <div class="cat-overlay">
               <span style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-weight:700">Collection II</span>
               <h3 style="font-size:1.45rem;color:#FFF;margin-top:2px">Architectural Blazers</h3>
-              <a href="#showcase" onclick="window.filterShowcase('outerwear')" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px;cursor:pointer">Discover 12 Styles →</a>
+              <a href="shop.html?category=outerwear" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px;cursor:pointer">Discover 12 Styles →</a>
             </div>
           </div>
 
@@ -228,7 +232,7 @@
             <div class="cat-overlay">
               <span style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-weight:700">Collection III</span>
               <h3 style="font-size:1.45rem;color:#FFF;margin-top:2px">Corsets &amp; Bustiers</h3>
-              <a href="#showcase" onclick="window.filterShowcase('tops')" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px;cursor:pointer">Discover 14 Styles →</a>
+              <a href="shop.html?category=tops" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px;cursor:pointer">Discover 14 Styles →</a>
             </div>
           </div>
 
@@ -237,7 +241,7 @@
             <div class="cat-overlay">
               <span style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-weight:700">Collection IV</span>
               <h3 style="font-size:1.45rem;color:#FFF;margin-top:2px">Pure Mulberry Silk</h3>
-              <a href="#showcase" onclick="window.filterShowcase('silk')" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px;cursor:pointer">Discover 16 Styles →</a>
+              <a href="shop.html?category=silk" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px;cursor:pointer">Discover 16 Styles →</a>
             </div>
           </div>
         </div>
@@ -267,7 +271,9 @@
           <!-- Item 1 -->
           <div class="prod-card" data-category="dresses" data-prod-id="prod-1">
             <div class="prod-media">
-              <img src="./images/prod-1.webp" alt="The Obsidian Silk Evening Gown" loading="lazy" />
+              <a href="product-details.html?id=prod-1" aria-label="View The Obsidian Silk Evening Gown">
+                <img src="./images/prod-1.webp" alt="The Obsidian Silk Evening Gown" loading="lazy" />
+              </a>
               <span class="prod-badge">Bestseller</span>
               <button class="prod-wishlist-btn" onclick="window.toggleWishlist('prod-1')" data-wish-btn="prod-1" aria-label="Save to Wishlist">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -275,7 +281,7 @@
             </div>
             <div class="prod-details">
               <span class="prod-category">Maxi Dresses</span>
-              <h3 class="prod-title">The Obsidian Silk Evening Gown</h3>
+              <h3 class="prod-title"><a href="product-details.html?id=prod-1" style="color:inherit;text-decoration:none;">The Obsidian Silk Evening Gown</a></h3>
               <div class="prod-price">$2,450</div>
               <div class="prod-sizes" aria-label="Select size">
                 <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">XS</button>
@@ -293,7 +299,9 @@
           <!-- Item 2 -->
           <div class="prod-card" data-category="outerwear" data-prod-id="prod-2">
             <div class="prod-media">
-              <img src="./images/prod-2.webp" alt="Double-Breasted Cashmere Blazer" loading="lazy" />
+              <a href="product-details.html?id=prod-2" aria-label="View Cashmere Hourglass Blazer">
+                <img src="./images/prod-2.webp" alt="Double-Breasted Cashmere Blazer" loading="lazy" />
+              </a>
               <span class="prod-badge">Atelier Made</span>
               <button class="prod-wishlist-btn" onclick="window.toggleWishlist('prod-2')" data-wish-btn="prod-2" aria-label="Save to Wishlist">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -301,7 +309,7 @@
             </div>
             <div class="prod-details">
               <span class="prod-category">Tailored Outerwear</span>
-              <h3 class="prod-title">Cashmere Hourglass Blazer</h3>
+              <h3 class="prod-title"><a href="product-details.html?id=prod-2" style="color:inherit;text-decoration:none;">Cashmere Hourglass Blazer</a></h3>
               <div class="prod-price">$1,850</div>
               <div class="prod-sizes" aria-label="Select size">
                 <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">XS</button>
@@ -318,7 +326,9 @@
           <!-- Item 3 -->
           <div class="prod-card" data-category="dresses" data-prod-id="prod-3">
             <div class="prod-media">
-              <img src="./images/prod-3.webp" alt="Champagne Pleated Chiffon Dress" loading="lazy" />
+              <a href="product-details.html?id=prod-3" aria-label="View Pleated Silk Chiffon Dress">
+                <img src="./images/prod-3.webp" alt="Champagne Pleated Chiffon Dress" loading="lazy" />
+              </a>
               <span class="prod-badge">Couture Chiffon</span>
               <button class="prod-wishlist-btn" onclick="window.toggleWishlist('prod-3')" data-wish-btn="prod-3" aria-label="Save to Wishlist">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -326,7 +336,7 @@
             </div>
             <div class="prod-details">
               <span class="prod-category">Cocktail Dresses</span>
-              <h3 class="prod-title">Pleated Silk Chiffon Dress</h3>
+              <h3 class="prod-title"><a href="product-details.html?id=prod-3" style="color:inherit;text-decoration:none;">Pleated Silk Chiffon Dress</a></h3>
               <div class="prod-price">$2,100</div>
               <div class="prod-sizes" aria-label="Select size">
                 <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">XXS</button>
@@ -343,7 +353,9 @@
           <!-- Item 4 -->
           <div class="prod-card" data-category="suiting" data-prod-id="prod-4">
             <div class="prod-media">
-              <img src="./images/prod-4.webp" alt="Midnight Bespoke Tuxedo" loading="lazy" />
+              <a href="product-details.html?id=prod-4" aria-label="View Midnight Gala Tuxedo">
+                <img src="./images/prod-4.webp" alt="Midnight Bespoke Tuxedo" loading="lazy" />
+              </a>
               <span class="prod-badge">Super 160s</span>
               <button class="prod-wishlist-btn" onclick="window.toggleWishlist('prod-4')" data-wish-btn="prod-4" aria-label="Save to Wishlist">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -351,7 +363,7 @@
             </div>
             <div class="prod-details">
               <span class="prod-category">Tailored Suiting</span>
-              <h3 class="prod-title">Midnight Gala Tuxedo</h3>
+              <h3 class="prod-title"><a href="product-details.html?id=prod-4" style="color:inherit;text-decoration:none;">Midnight Gala Tuxedo</a></h3>
               <div class="prod-price">$3,200</div>
               <div class="prod-sizes" aria-label="Select size">
                 <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">38R</button>
@@ -368,7 +380,9 @@
           <!-- Item 5 -->
           <div class="prod-card" data-category="lounge silk" data-prod-id="prod-5">
             <div class="prod-media">
-              <img src="./images/prod-5.webp" alt="Hand-Embroidered Velvet Kimono" loading="lazy" />
+              <a href="product-details.html?id=prod-5" aria-label="View Gilded Velvet Kimono Wrap">
+                <img src="./images/prod-5.webp" alt="Hand-Embroidered Velvet Kimono" loading="lazy" />
+              </a>
               <span class="prod-badge">Artisan Embroidered</span>
               <button class="prod-wishlist-btn" onclick="window.toggleWishlist('prod-5')" data-wish-btn="prod-5" aria-label="Save to Wishlist">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -376,7 +390,7 @@
             </div>
             <div class="prod-details">
               <span class="prod-category">Silk &amp; Loungewear</span>
-              <h3 class="prod-title">Gilded Velvet Kimono Wrap</h3>
+              <h3 class="prod-title"><a href="product-details.html?id=prod-5" style="color:inherit;text-decoration:none;">Gilded Velvet Kimono Wrap</a></h3>
               <div class="prod-price">$1,650</div>
               <div class="prod-sizes" aria-label="Select size">
                 <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">Petite</button>
@@ -392,7 +406,9 @@
           <!-- Item 6 -->
           <div class="prod-card" data-category="outerwear" data-prod-id="prod-6">
             <div class="prod-media">
-              <img src="./images/prod-6.webp" alt="Ivory Structured Trench" loading="lazy" />
+              <a href="product-details.html?id=prod-6" aria-label="View Ivory Structured Trench Coat">
+                <img src="./images/prod-6.webp" alt="Ivory Structured Trench" loading="lazy" />
+              </a>
               <span class="prod-badge">Weatherproof</span>
               <button class="prod-wishlist-btn" onclick="window.toggleWishlist('prod-6')" data-wish-btn="prod-6" aria-label="Save to Wishlist">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -400,7 +416,7 @@
             </div>
             <div class="prod-details">
               <span class="prod-category">Tailored Outerwear</span>
-              <h3 class="prod-title">Ivory Structured Trench Coat</h3>
+              <h3 class="prod-title"><a href="product-details.html?id=prod-6" style="color:inherit;text-decoration:none;">Ivory Structured Trench Coat</a></h3>
               <div class="prod-price">$1,950</div>
               <div class="prod-sizes" aria-label="Select size">
                 <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">XS</button>
@@ -418,7 +434,9 @@
           <!-- Item 7 -->
           <div class="prod-card" data-category="dresses silk" data-prod-id="prod-7">
             <div class="prod-media">
-              <img src="./images/prod-7.webp" alt="Emerald Silk Slip Gown" loading="lazy" />
+              <a href="product-details.html?id=prod-7" aria-label="View Emerald Silk Bias Slip Gown">
+                <img src="./images/prod-7.webp" alt="Emerald Silk Slip Gown" loading="lazy" />
+              </a>
               <span class="prod-badge">Pure Silk</span>
               <button class="prod-wishlist-btn" onclick="window.toggleWishlist('prod-7')" data-wish-btn="prod-7" aria-label="Save to Wishlist">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -426,7 +444,7 @@
             </div>
             <div class="prod-details">
               <span class="prod-category">Silk Slips</span>
-              <h3 class="prod-title">Emerald Silk Bias Slip Gown</h3>
+              <h3 class="prod-title"><a href="product-details.html?id=prod-7" style="color:inherit;text-decoration:none;">Emerald Silk Bias Slip Gown</a></h3>
               <div class="prod-price">$1,480</div>
               <div class="prod-sizes" aria-label="Select size">
                 <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">XXS</button>
@@ -443,7 +461,9 @@
           <!-- Item 8 -->
           <div class="prod-card" data-category="tops" data-prod-id="prod-8">
             <div class="prod-media">
-              <img src="./images/prod-8.webp" alt="Architectural Boned Bustier" loading="lazy" />
+              <a href="product-details.html?id=prod-8" aria-label="View Sculpted Boned Lace Bustier">
+                <img src="./images/prod-8.webp" alt="Architectural Boned Bustier" loading="lazy" />
+              </a>
               <span class="prod-badge">Couture Cut</span>
               <button class="prod-wishlist-btn" onclick="window.toggleWishlist('prod-8')" data-wish-btn="prod-8" aria-label="Save to Wishlist">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -451,7 +471,7 @@
             </div>
             <div class="prod-details">
               <span class="prod-category">Corsets &amp; Tops</span>
-              <h3 class="prod-title">Sculpted Boned Lace Bustier</h3>
+              <h3 class="prod-title"><a href="product-details.html?id=prod-8" style="color:inherit;text-decoration:none;">Sculpted Boned Lace Bustier</a></h3>
               <div class="prod-price">$1,250</div>
               <div class="prod-sizes" aria-label="Select size">
                 <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">XS</button>
@@ -561,6 +581,10 @@
             </div>
           </div>
         </div>
+
+        <div style="text-align:center;margin-top:36px">
+          <a href="lookbook.html" class="btn">Explore Full Runway Lookbook Collection →</a>
+        </div>
       </div>
     </section>
 
@@ -605,7 +629,7 @@
             <div style="padding:22px">
               <h3 style="font-size:1.25rem">Haute Couture Tailoring</h3>
               <p style="font-size:0.85rem;margin-top:6px">Body sculpting, custom wooden mannequin, and private master couturier fittings.</p>
-              <a href="services.html#booking" class="btn btn--sm" style="margin-top:14px">Book Fitting</a>
+              <a href="services.html?service=tailoring#booking" class="btn btn--sm" style="margin-top:14px">Book Fitting</a>
             </div>
           </div>
           <div style="background:#FFF;border-radius:14px;overflow:hidden;box-shadow:var(--card-shadow)">
@@ -613,7 +637,7 @@
             <div style="padding:22px">
               <h3 style="font-size:1.25rem">Bridal &amp; Gala Suite</h3>
               <p style="font-size:0.85rem;margin-top:6px">Champagne reception in our private salon suite for bridal parties and red carpet events.</p>
-              <a href="services.html#booking" class="btn btn--sm" style="margin-top:14px">Reserve Suite</a>
+              <a href="services.html?service=bridal#booking" class="btn btn--sm" style="margin-top:14px">Reserve Suite</a>
             </div>
           </div>
           <div style="background:#FFF;border-radius:14px;overflow:hidden;box-shadow:var(--card-shadow)">
@@ -621,7 +645,7 @@
             <div style="padding:22px">
               <h3 style="font-size:1.25rem">Wardrobe Concierge</h3>
               <p style="font-size:0.85rem;margin-top:6px">Seasonal wardrobe curation delivered directly to your residence anywhere in Paris or New York.</p>
-              <a href="services.html#booking" class="btn btn--sm" style="margin-top:14px">Consult Stylist</a>
+              <a href="services.html?service=concierge#booking" class="btn btn--sm" style="margin-top:14px">Consult Stylist</a>
             </div>
           </div>
         </div>
@@ -742,9 +766,9 @@
             Premier luxury fashion house and bespoke clothing boutique crafting sculpted corsetry, evening gala gowns, and Italian silk tailoring for modern muses.
           </p>
           <div class="footer-socials">
-            <a href="#" class="footer-social-icon" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="#" class="footer-social-icon" aria-label="Twitter"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
-            <a href="#" class="footer-social-icon" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Twitter"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
           </div>
         </div>
 

@@ -106,6 +106,9 @@
     }
   ];
 
+  // Expose Catalog Globally
+  window.BOUTIQUE_CATALOG = BOUTIQUE_CATALOG;
+
   // --- 2. State & Storage ---
   let cart = JSON.parse(localStorage.getItem("stackly_cart") || "[]");
   let wishlist = JSON.parse(localStorage.getItem("stackly_wishlist") || "[]");
@@ -422,11 +425,14 @@
               </div>
             </div>
 
-            <div style="display:flex;gap:12px;margin-top:32px">
-              <button class="btn btn--block" onclick="window.addToCart('${item.id}');window.closeQuickView();">
+            <div style="display:flex;gap:12px;margin-top:32px;flex-wrap:wrap">
+              <button class="btn btn--block" style="flex:1" onclick="window.addToCart('${item.id}');window.closeQuickView();">
                 <span>Add to Shopping Bag</span>
               </button>
-              <button class="icon-btn" style="width:50px;height:50px" onclick="window.toggleWishlist('${item.id}')" aria-label="Add to wishlist">
+              <a href="product-details.html?id=${item.id}" class="btn btn--ghost" style="padding:10px 16px;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center" onclick="window.closeQuickView();">
+                View Full Details
+              </a>
+              <button class="icon-btn" style="width:48px;height:48px" onclick="window.toggleWishlist('${item.id}')" aria-label="Add to wishlist">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
               </button>
             </div>
