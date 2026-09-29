@@ -611,36 +611,67 @@
     updateCartUI();
     updateWishlistUI();
 
-    // 4. Mobile Drawer Toggles
+    // 4. SpringBoard Mobile Menu
     const burgerBtn = document.querySelector(".nav-burger");
     const mobileDrawer = document.getElementById("mobile-menu");
-    const drawerCloseBtn = document.querySelector(".drawer-close");
     const overlay = document.getElementById("overlay");
+
+    function openMobileMenu() {
+      if (!mobileDrawer) return;
+      mobileDrawer.classList.remove("closing");
+      mobileDrawer.classList.add("open");
+      if (overlay) overlay.classList.add("open");
+      document.body.classList.add("no-scroll");
+      if (burgerBtn) burgerBtn.classList.add("menu-open");
+      burgerBtn && burgerBtn.setAttribute("aria-expanded", "true");
+    }
+
+    function closeMobileMenu() {
+      if (!mobileDrawer) return;
+      mobileDrawer.classList.remove("open");
+      mobileDrawer.classList.add("closing");
+      if (overlay) overlay.classList.remove("open");
+      if (burgerBtn) burgerBtn.classList.remove("menu-open");
+      burgerBtn && burgerBtn.setAttribute("aria-expanded", "false");
+      // Remove closing class after animation completes
+      setTimeout(() => {
+        mobileDrawer.classList.remove("closing");
+        document.body.classList.remove("no-scroll");
+      }, 380);
+    }
 
     if (burgerBtn && mobileDrawer) {
       burgerBtn.addEventListener("click", () => {
-        mobileDrawer.classList.add("open");
-        if (overlay) overlay.classList.add("open");
-        document.body.classList.add("no-scroll");
+        if (mobileDrawer.classList.contains("open")) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
       });
     }
 
-    if (drawerCloseBtn) {
-      drawerCloseBtn.addEventListener("click", closeAllDrawers);
-    }
+    // Drawer close button (X)
+    document.querySelectorAll(".drawer-close").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        closeMobileMenu();
+        closeAllDrawers();
+      });
+    });
 
     if (overlay) {
-      overlay.addEventListener("click", closeAllDrawers);
+      overlay.addEventListener("click", () => {
+        closeMobileMenu();
+        closeAllDrawers();
+      });
     }
 
     // 5. Cart Drawer Toggles
     const cartOpenBtn = document.querySelector("[data-cart-open]");
-    const cartCloseBtn = document.querySelector(".cart-close");
+    document.querySelectorAll("[data-cart-close]").forEach((btn) => {
+      btn.addEventListener("click", closeAllDrawers);
+    });
     if (cartOpenBtn) {
       cartOpenBtn.addEventListener("click", openCart);
-    }
-    if (cartCloseBtn) {
-      cartCloseBtn.addEventListener("click", closeAllDrawers);
     }
 
     // 6. Checkout Simulation
@@ -685,7 +716,72 @@
 
     // 9. Escape key listener
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeAllDrawers();
+      if (e.key === "Escape") {
+        closeMobileMenu();
+        closeAllDrawers();
+      }
     });
+
+    // 10. Wobble Card IntersectionObserver — fires on scroll into view
+    (function initWobbleCards() {
+      // Check for reduced motion preference
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (prefersReducedMotion) return;
+
+      if (!("IntersectionObserver" in window)) return;
+
+      // Target card selectors
+      const CARD_SELECTORS = [
+        ".prod-card",
+        ".cat-card",
+        ".blog-card",
+        ".service-card-item",
+        ".feature-card"
+      ].join(", ");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !entry.target.dataset.wobbled) {
+              entry.target.dataset.wobbled = "1";
+              // Add wobble class — CSS handles the animation
+              entry.target.classList.add("wobble-enter");
+              // Clean up class after animation
+              entry.target.addEventListener("animationend", () => {
+                entry.target.classList.remove("wobble-enter");
+              }, { once: true });
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -40px 0px"
+        }
+      );
+
+      // Observe all existing cards
+      document.querySelectorAll(CARD_SELECTORS).forEach((card) => {
+        observer.observe(card);
+      });
+
+      // Re-observe dynamically generated cards (e.g., shop page filters)
+      const mutObs = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType !== 1) return;
+            if (node.matches && node.matches(CARD_SELECTORS)) {
+              observer.observe(node);
+            }
+            // Also check children
+            node.querySelectorAll && node.querySelectorAll(CARD_SELECTORS).forEach((child) => {
+              observer.observe(child);
+            });
+          });
+        });
+      });
+
+      mutObs.observe(document.body, { childList: true, subtree: true });
+    })();
   });
 })();
