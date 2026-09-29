@@ -177,7 +177,10 @@
       </div>
       <div class="wrap">
         <div class="hero-content">
-          <span class="hero-pill-tag">NEW COLLECTION LIVE</span>
+          <a href="#showcase" class="hero-pill-tag" style="cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px" title="Jump to New Arrivals">
+            <span>✨ NEW COLLECTION LIVE</span>
+            <span style="font-size:0.85rem">↓</span>
+          </a>
           <h1 class="hero-title">
             THE NOIR &amp; GOLD EDIT
           </h1>
@@ -186,7 +189,7 @@
           </p>
           <div style="display:flex;gap:14px;margin-top:28px;flex-wrap:wrap">
             <a class="btn" href="#showcase">Shop Collection</a>
-            <a class="btn btn--ghost" style="color:#FFFFFF;border-color:rgba(255,255,255,0.3)" href="./about.html">Explore Lookbook</a>
+            <a class="btn btn--ghost" style="color:#FFFFFF;border-color:rgba(255,255,255,0.3)" href="#lookbook">Explore Lookbook</a>
           </div>
         </div>
       </div>
@@ -207,7 +210,7 @@
             <div class="cat-overlay">
               <span style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-weight:700">Collection I</span>
               <h3 style="font-size:1.45rem;color:#FFF;margin-top:2px">Evening &amp; Gala Gowns</h3>
-              <a href="#showcase" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px">Discover 18 Styles →</a>
+              <a href="#showcase" onclick="window.filterShowcase('dresses')" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px;cursor:pointer">Discover 18 Styles →</a>
             </div>
           </div>
 
@@ -216,7 +219,7 @@
             <div class="cat-overlay">
               <span style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-weight:700">Collection II</span>
               <h3 style="font-size:1.45rem;color:#FFF;margin-top:2px">Architectural Blazers</h3>
-              <a href="#showcase" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px">Discover 12 Styles →</a>
+              <a href="#showcase" onclick="window.filterShowcase('outerwear')" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px;cursor:pointer">Discover 12 Styles →</a>
             </div>
           </div>
 
@@ -225,7 +228,7 @@
             <div class="cat-overlay">
               <span style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-weight:700">Collection III</span>
               <h3 style="font-size:1.45rem;color:#FFF;margin-top:2px">Corsets &amp; Bustiers</h3>
-              <a href="#showcase" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px">Discover 14 Styles →</a>
+              <a href="#showcase" onclick="window.filterShowcase('tops')" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px;cursor:pointer">Discover 14 Styles →</a>
             </div>
           </div>
 
@@ -234,7 +237,7 @@
             <div class="cat-overlay">
               <span style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-weight:700">Collection IV</span>
               <h3 style="font-size:1.45rem;color:#FFF;margin-top:2px">Pure Mulberry Silk</h3>
-              <a href="#showcase" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px">Discover 16 Styles →</a>
+              <a href="#showcase" onclick="window.filterShowcase('silk')" style="font-size:0.82rem;color:#FFF;text-decoration:underline;margin-top:6px;cursor:pointer">Discover 16 Styles →</a>
             </div>
           </div>
         </div>
@@ -250,9 +253,19 @@
           <p>Handcrafted in limited batches with bespoke sizing available for private clients.</p>
         </div>
 
-        <div class="product-grid">
+        <!-- Interactive Silhouette Category Filters -->
+        <div style="display:flex;justify-content:center;gap:10px;margin-top:24px;margin-bottom:32px;flex-wrap:wrap" id="showcase-filters">
+          <button type="button" class="btn btn--sm active" onclick="window.filterShowcase('all')" data-cat-filter="all" style="border-radius:20px;padding:6px 18px">All Silhouettes (8)</button>
+          <button type="button" class="btn btn--sm btn--ghost" onclick="window.filterShowcase('dresses')" data-cat-filter="dresses" style="border-radius:20px;padding:6px 18px">Gala Gowns (3)</button>
+          <button type="button" class="btn btn--sm btn--ghost" onclick="window.filterShowcase('outerwear')" data-cat-filter="outerwear" style="border-radius:20px;padding:6px 18px">Blazers &amp; Trench (2)</button>
+          <button type="button" class="btn btn--sm btn--ghost" onclick="window.filterShowcase('suiting')" data-cat-filter="suiting" style="border-radius:20px;padding:6px 18px">Bespoke Suiting (1)</button>
+          <button type="button" class="btn btn--sm btn--ghost" onclick="window.filterShowcase('tops')" data-cat-filter="tops" style="border-radius:20px;padding:6px 18px">Corsets (1)</button>
+          <button type="button" class="btn btn--sm btn--ghost" onclick="window.filterShowcase('silk')" data-cat-filter="silk" style="border-radius:20px;padding:6px 18px">Pure Silk &amp; Velvet (2)</button>
+        </div>
+
+        <div class="product-grid" id="main-product-grid">
           <!-- Item 1 -->
-          <div class="prod-card">
+          <div class="prod-card" data-category="dresses" data-prod-id="prod-1">
             <div class="prod-media">
               <img src="./images/prod-1.webp" alt="The Obsidian Silk Evening Gown" loading="lazy" />
               <span class="prod-badge">Bestseller</span>
@@ -264,8 +277,11 @@
               <span class="prod-category">Maxi Dresses</span>
               <h3 class="prod-title">The Obsidian Silk Evening Gown</h3>
               <div class="prod-price">$2,450</div>
-              <div class="prod-sizes">
-                <span class="size-pill active">XS</span><span class="size-pill">S</span><span class="size-pill">M</span><span class="size-pill">L</span>
+              <div class="prod-sizes" aria-label="Select size">
+                <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">XS</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">S</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">M</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">L</button>
               </div>
               <div style="display:flex;gap:8px;margin-top:14px">
                 <button class="btn btn--sm btn--block" onclick="window.addToCart('prod-1')">Add to Bag</button>
@@ -275,7 +291,7 @@
           </div>
 
           <!-- Item 2 -->
-          <div class="prod-card">
+          <div class="prod-card" data-category="outerwear" data-prod-id="prod-2">
             <div class="prod-media">
               <img src="./images/prod-2.webp" alt="Double-Breasted Cashmere Blazer" loading="lazy" />
               <span class="prod-badge">Atelier Made</span>
@@ -287,8 +303,10 @@
               <span class="prod-category">Tailored Outerwear</span>
               <h3 class="prod-title">Cashmere Hourglass Blazer</h3>
               <div class="prod-price">$1,850</div>
-              <div class="prod-sizes">
-                <span class="size-pill active">XS</span><span class="size-pill">S</span><span class="size-pill">M</span>
+              <div class="prod-sizes" aria-label="Select size">
+                <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">XS</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">S</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">M</button>
               </div>
               <div style="display:flex;gap:8px;margin-top:14px">
                 <button class="btn btn--sm btn--block" onclick="window.addToCart('prod-2')">Add to Bag</button>
@@ -298,7 +316,7 @@
           </div>
 
           <!-- Item 3 -->
-          <div class="prod-card">
+          <div class="prod-card" data-category="dresses" data-prod-id="prod-3">
             <div class="prod-media">
               <img src="./images/prod-3.webp" alt="Champagne Pleated Chiffon Dress" loading="lazy" />
               <span class="prod-badge">Couture Chiffon</span>
@@ -310,8 +328,10 @@
               <span class="prod-category">Cocktail Dresses</span>
               <h3 class="prod-title">Pleated Silk Chiffon Dress</h3>
               <div class="prod-price">$2,100</div>
-              <div class="prod-sizes">
-                <span class="size-pill active">XXS</span><span class="size-pill">S</span><span class="size-pill">M</span>
+              <div class="prod-sizes" aria-label="Select size">
+                <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">XXS</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">S</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">M</button>
               </div>
               <div style="display:flex;gap:8px;margin-top:14px">
                 <button class="btn btn--sm btn--block" onclick="window.addToCart('prod-3')">Add to Bag</button>
@@ -321,7 +341,7 @@
           </div>
 
           <!-- Item 4 -->
-          <div class="prod-card">
+          <div class="prod-card" data-category="suiting" data-prod-id="prod-4">
             <div class="prod-media">
               <img src="./images/prod-4.webp" alt="Midnight Bespoke Tuxedo" loading="lazy" />
               <span class="prod-badge">Super 160s</span>
@@ -333,8 +353,10 @@
               <span class="prod-category">Tailored Suiting</span>
               <h3 class="prod-title">Midnight Gala Tuxedo</h3>
               <div class="prod-price">$3,200</div>
-              <div class="prod-sizes">
-                <span class="size-pill active">38R</span><span class="size-pill">40R</span><span class="size-pill">42R</span>
+              <div class="prod-sizes" aria-label="Select size">
+                <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">38R</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">40R</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">42R</button>
               </div>
               <div style="display:flex;gap:8px;margin-top:14px">
                 <button class="btn btn--sm btn--block" onclick="window.addToCart('prod-4')">Add to Bag</button>
@@ -344,7 +366,7 @@
           </div>
 
           <!-- Item 5 -->
-          <div class="prod-card">
+          <div class="prod-card" data-category="lounge silk" data-prod-id="prod-5">
             <div class="prod-media">
               <img src="./images/prod-5.webp" alt="Hand-Embroidered Velvet Kimono" loading="lazy" />
               <span class="prod-badge">Artisan Embroidered</span>
@@ -356,8 +378,9 @@
               <span class="prod-category">Silk &amp; Loungewear</span>
               <h3 class="prod-title">Gilded Velvet Kimono Wrap</h3>
               <div class="prod-price">$1,650</div>
-              <div class="prod-sizes">
-                <span class="size-pill active">Petite</span><span class="size-pill">Standard</span>
+              <div class="prod-sizes" aria-label="Select size">
+                <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">Petite</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">Standard</button>
               </div>
               <div style="display:flex;gap:8px;margin-top:14px">
                 <button class="btn btn--sm btn--block" onclick="window.addToCart('prod-5')">Add to Bag</button>
@@ -367,7 +390,7 @@
           </div>
 
           <!-- Item 6 -->
-          <div class="prod-card">
+          <div class="prod-card" data-category="outerwear" data-prod-id="prod-6">
             <div class="prod-media">
               <img src="./images/prod-6.webp" alt="Ivory Structured Trench" loading="lazy" />
               <span class="prod-badge">Weatherproof</span>
@@ -379,8 +402,11 @@
               <span class="prod-category">Tailored Outerwear</span>
               <h3 class="prod-title">Ivory Structured Trench Coat</h3>
               <div class="prod-price">$1,950</div>
-              <div class="prod-sizes">
-                <span class="size-pill active">XS</span><span class="size-pill">S</span><span class="size-pill">M</span><span class="size-pill">L</span>
+              <div class="prod-sizes" aria-label="Select size">
+                <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">XS</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">S</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">M</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">L</button>
               </div>
               <div style="display:flex;gap:8px;margin-top:14px">
                 <button class="btn btn--sm btn--block" onclick="window.addToCart('prod-6')">Add to Bag</button>
@@ -390,7 +416,7 @@
           </div>
 
           <!-- Item 7 -->
-          <div class="prod-card">
+          <div class="prod-card" data-category="dresses silk" data-prod-id="prod-7">
             <div class="prod-media">
               <img src="./images/prod-7.webp" alt="Emerald Silk Slip Gown" loading="lazy" />
               <span class="prod-badge">Pure Silk</span>
@@ -402,8 +428,10 @@
               <span class="prod-category">Silk Slips</span>
               <h3 class="prod-title">Emerald Silk Bias Slip Gown</h3>
               <div class="prod-price">$1,480</div>
-              <div class="prod-sizes">
-                <span class="size-pill active">XXS</span><span class="size-pill">S</span><span class="size-pill">M</span>
+              <div class="prod-sizes" aria-label="Select size">
+                <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">XXS</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">S</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">M</button>
               </div>
               <div style="display:flex;gap:8px;margin-top:14px">
                 <button class="btn btn--sm btn--block" onclick="window.addToCart('prod-7')">Add to Bag</button>
@@ -413,7 +441,7 @@
           </div>
 
           <!-- Item 8 -->
-          <div class="prod-card">
+          <div class="prod-card" data-category="tops" data-prod-id="prod-8">
             <div class="prod-media">
               <img src="./images/prod-8.webp" alt="Architectural Boned Bustier" loading="lazy" />
               <span class="prod-badge">Couture Cut</span>
@@ -425,8 +453,10 @@
               <span class="prod-category">Corsets &amp; Tops</span>
               <h3 class="prod-title">Sculpted Boned Lace Bustier</h3>
               <div class="prod-price">$1,250</div>
-              <div class="prod-sizes">
-                <span class="size-pill active">XS</span><span class="size-pill">S</span><span class="size-pill">M</span>
+              <div class="prod-sizes" aria-label="Select size">
+                <button type="button" class="size-pill active" onclick="window.selectCardSize(this)">XS</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">S</button>
+                <button type="button" class="size-pill" onclick="window.selectCardSize(this)">M</button>
               </div>
               <div style="display:flex;gap:8px;margin-top:14px">
                 <button class="btn btn--sm btn--block" onclick="window.addToCart('prod-8')">Add to Bag</button>
@@ -461,14 +491,14 @@
             </div>
           </div>
           <div style="margin-top:32px">
-            <a class="btn" href="./about.html">Read Our Story</a>
+            <a class="btn" href="about.html">Read Our Story</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- SECTION 6: RUNWAY LOOKBOOK (6 FULL CAMPAIGN CARDS) -->
-    <section class="section" style="background:#FAF8F5">
+    <section class="section" id="lookbook" style="background:#FAF8F5">
       <div class="wrap">
         <div class="section-head section-head--center">
           <span class="eyebrow">Front Row Chronicles</span>
@@ -575,7 +605,7 @@
             <div style="padding:22px">
               <h3 style="font-size:1.25rem">Haute Couture Tailoring</h3>
               <p style="font-size:0.85rem;margin-top:6px">Body sculpting, custom wooden mannequin, and private master couturier fittings.</p>
-              <a href="./services.html" class="btn btn--sm" style="margin-top:14px">Book Fitting</a>
+              <a href="services.html#booking" class="btn btn--sm" style="margin-top:14px">Book Fitting</a>
             </div>
           </div>
           <div style="background:#FFF;border-radius:14px;overflow:hidden;box-shadow:var(--card-shadow)">
@@ -583,7 +613,7 @@
             <div style="padding:22px">
               <h3 style="font-size:1.25rem">Bridal &amp; Gala Suite</h3>
               <p style="font-size:0.85rem;margin-top:6px">Champagne reception in our private salon suite for bridal parties and red carpet events.</p>
-              <a href="./services.html" class="btn btn--sm" style="margin-top:14px">Reserve Suite</a>
+              <a href="services.html#booking" class="btn btn--sm" style="margin-top:14px">Reserve Suite</a>
             </div>
           </div>
           <div style="background:#FFF;border-radius:14px;overflow:hidden;box-shadow:var(--card-shadow)">
@@ -591,7 +621,7 @@
             <div style="padding:22px">
               <h3 style="font-size:1.25rem">Wardrobe Concierge</h3>
               <p style="font-size:0.85rem;margin-top:6px">Seasonal wardrobe curation delivered directly to your residence anywhere in Paris or New York.</p>
-              <a href="./services.html" class="btn btn--sm" style="margin-top:14px">Consult Stylist</a>
+              <a href="services.html#booking" class="btn btn--sm" style="margin-top:14px">Consult Stylist</a>
             </div>
           </div>
         </div>

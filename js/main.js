@@ -178,11 +178,57 @@
   };
 
   // --- 4. Cart & Wishlist Operations ---
+  window.selectCardSize = function (btn) {
+    if (!btn) return;
+    const parent = btn.parentElement;
+    if (parent) {
+      parent.querySelectorAll(".size-pill").forEach((b) => b.classList.remove("active"));
+    }
+    btn.classList.add("active");
+    const sizeName = btn.textContent.trim();
+    window.showToast(`Selected size: ${sizeName}`, "✓");
+  };
+
+  window.filterShowcase = function (category) {
+    const buttons = document.querySelectorAll("#showcase-filters [data-cat-filter]");
+    buttons.forEach((btn) => {
+      if (btn.getAttribute("data-cat-filter") === category) {
+        btn.classList.add("active");
+        btn.classList.remove("btn--ghost");
+      } else {
+        btn.classList.remove("active");
+        btn.classList.add("btn--ghost");
+      }
+    });
+
+    const cards = document.querySelectorAll("#main-product-grid .prod-card");
+    cards.forEach((card) => {
+      const cardCats = (card.getAttribute("data-category") || "").split(" ");
+      if (category === "all" || cardCats.includes(category)) {
+        card.style.display = "flex";
+        card.style.opacity = "1";
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+    const showcase = document.getElementById("showcase");
+    if (showcase) {
+      showcase.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   window.addToCart = function (id, qty = 1, size = null, color = null) {
     const item = BOUTIQUE_CATALOG.find((p) => p.id === id);
     if (!item) return;
 
-    const chosenSize = size || item.sizes[0];
+    let chosenSize = size;
+    if (!chosenSize) {
+      const card = document.querySelector(`[data-prod-id="${id}"]`) || document.querySelector(`[data-wish-btn="${id}"]`)?.closest(".prod-card");
+      const activePill = card?.querySelector(".size-pill.active");
+      chosenSize = activePill ? activePill.textContent.trim() : (item.sizes ? item.sizes[0] : "Standard");
+    }
+
     const chosenColor = color || item.colors[0];
     const existing = cart.find(
       (c) => c.id === id && c.size === chosenSize && c.color === chosenColor
@@ -204,7 +250,7 @@
 
     localStorage.setItem("stackly_cart", JSON.stringify(cart));
     updateCartUI();
-    window.showToast(`Added "${item.name}" to your shopping bag.`);
+    window.showToast(`Added "${item.name}" (${chosenSize}) to your bag.`, "🛍️");
     openCart();
   };
 
