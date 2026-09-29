@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="meshki">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STACKLY | Services — Bespoke Couture &amp; Private Salon Suites</title>
+  <meta name="description"
+    content="Experience bespoke tailoring, private bridal suites, red-carpet dressing, and global traveling tailors with STACKLY Haute Couture." />
+  <link rel="icon" href="./favicon.webp" type="image/webp" />
+
+  <!-- Fonts: Cinzel & Playfair Display for Haute Couture, Plus Jakarta Sans for Body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <!-- GSAP Animation Framework -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="preloader-locked">
+  <!-- LUXURY PRELOADER (STACKLY LOGO ONLY) -->
+  <div class="luxury-preloader" id="luxury-preloader" aria-hidden="true">
+    <div class="preloader-content">
+      <div class="preloader-logo-wrap">
+        <img src="./images/logo-header-yellow.webp" alt="STACKLY" class="preloader-logo-img" />
+      </div>
+      <div class="preloader-bar-wrap">
+        <div class="preloader-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANNOUNCEMENT MARQUEE BAR -->
+  <aside class="announcement-bar" aria-label="Announcement">
+    <div class="marquee-content">
+      <span>✦ BESPOKE SALON APPOINTMENTS NOW OPEN FOR AUTUMN/WINTER</span>
+      <span>•</span>
+      <span>PRIVATE FITTINGS IN SALEM, PARIS, MILAN &amp; NEW YORK</span>
+      <span>•</span>
+      <span class="marquee-pill">24H EXPRESS GALA ALTERATIONS AVAILABLE</span>
+    </div>
+  </aside>
+
+  <!-- MASTER NAVIGATION (Exact Match to User Screenshot 1) -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <!-- STACKLY Logo (Left) -->
+      <a href="index.html" class="nav-logo" aria-label="STACKLY Home">
+        <img src="./images/logo-header-yellow.webp" alt="STACKLY" class="nav-logo-img" />
+      </a>
+
+      <!-- Center Links (Exact: Home, About, Service, Blog, Contact) -->
+      <nav class="nav-menu" aria-label="Primary navigation">
+        <a href="./index.html" class="nav-link">Home</a>
+        <a href="./about.html" class="nav-link">About</a>
+        <a href="./services.html" class="nav-link active">Service</a>
+        <a href="./blog.html" class="nav-link">Blog</a>
+        <a href="./contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right Action Items (Exact Match to Screenshot 1: Login & Signup Buttons) -->
+      <div class="nav-actions">
+        <!-- 3 Color Palette Switcher Widget -->
+        <div class="palette-switcher" title="Choose from 3 Color Palettes">
+          <button type="button" class="palette-btn palette-btn--meshki active" data-palette="meshki" onclick="window.switchPalette('meshki')" aria-label="MESHKI Sunlit Gold Palette"></button>
+          <button type="button" class="palette-btn palette-btn--royal" data-palette="royal" onclick="window.switchPalette('royal')" aria-label="Royal Amethyst Purple Palette"></button>
+          <button type="button" class="palette-btn palette-btn--rose" data-palette="rose" onclick="window.switchPalette('rose')" aria-label="Rose Quartz Blush Palette"></button>
+        </div>
+
+        <!-- Wishlist -->
+        <a href="./dashboard.html?role=user&tab=wishlist" class="icon-btn" aria-label="Wishlist">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+          <span class="badge-count" data-wishlist-count style="display:none">0</span>
+        </a>
+
+        <!-- Cart Bag -->
+        <button class="icon-btn" type="button" data-cart-open aria-label="Shopping Bag">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <span class="badge-count" data-cart-count style="display:none">0</span>
+        </button>
+
+        <!-- Screenshot 1 exact Login Button (Outline Pill) -->
+        <a href="./login.html" class="btn-nav-login desk-only">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span>Login</span>
+        </a>
+
+        <!-- Screenshot 1 exact Signup Button (Filled Pill) -->
+        <a href="./signup.html" class="btn-nav-signup desk-only">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="8.5" cy="7" r="4"></circle>
+            <line x1="20" y1="8" x2="20" y2="14"></line>
+            <line x1="17" y1="11" x2="23" y2="11"></line>
+          </svg>
+          <span>Signup</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="icon-btn nav-burger" type="button" aria-label="Toggle mobile menu" id="burger-btn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <aside class="drawer" id="mobile-menu" aria-label="Mobile navigation">
+    <div class="drawer-top">
+      <a href="index.html" class="nav-logo">
+        <img src="./images/logo-header-yellow.webp" alt="STACKLY" class="nav-logo-img" />
+      </a>
+      <button class="icon-btn drawer-close" type="button" aria-label="Close menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div style="padding: 16px 20px; border-bottom: 1px solid var(--line);">
+      <div style="font-size:0.75rem; text-transform:uppercase; font-weight:700; color:var(--text-muted); margin-bottom:8px;">Color Palette</div>
+      <div class="palette-switcher" style="display:flex;">
+        <button type="button" class="palette-btn palette-btn--meshki active" data-palette="meshki" onclick="window.switchPalette('meshki')"></button>
+        <button type="button" class="palette-btn palette-btn--royal" data-palette="royal" onclick="window.switchPalette('royal')"></button>
+        <button type="button" class="palette-btn palette-btn--rose" data-palette="rose" onclick="window.switchPalette('rose')"></button>
+      </div>
+    </div>
+    <nav class="drawer-menu">
+      <a href="./index.html">Home <span>→</span></a>
+      <a href="./about.html">About <span>→</span></a>
+      <a href="./services.html" class="active">Service <span>→</span></a>
+      <a href="./blog.html">Blog <span>→</span></a>
+      <a href="./contact.html">Contact <span>→</span></a>
+    </nav>
+    <div class="drawer-foot">
+      <a href="./login.html" class="btn btn--block btn--ghost">👤 VIP Login</a>
+      <a href="./signup.html" class="btn btn--block">👤+ Create Account</a>
+      <a href="./dashboard.html" style="text-align:center; font-size:0.85rem; color:var(--text-muted); display:block; margin-top:8px;">Go to Role Dashboards (User / Admin)</a>
+    </div>
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Shopping Bag Drawer -->
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Cart">
+    <div class="cart-header">
+      <h3>Boutique Bag (<span data-cart-count-title>0</span>)</h3>
+      <button class="icon-btn" type="button" data-cart-close aria-label="Close cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cart-items-container">
+      <div class="cart-empty">
+        <p>Your luxury bag is currently empty.</p>
+        <a href="./index.html#collection" class="btn btn--sm" style="margin-top:12px;">Explore Collections</a>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <span class="cart-total-val" id="cart-subtotal">$0</span>
+      </div>
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Taxes and insured private courier calculated at checkout.</p>
+      <button class="btn btn--block" type="button" onclick="window.checkoutAlert()">Proceed to Bespoke Checkout</button>
+    </div>
+  </aside>
+
+  <main>
+    <!-- SECTION 1: BESPOKE HERO BANNER (GSAP Animated) -->
+    <section class="section" style="padding-top: clamp(40px, 6vw, 80px); padding-bottom: clamp(50px, 7vw, 90px); background: linear-gradient(180deg, #FFFFFF 0%, var(--paper) 100%);">
+      <div class="wrap">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items:center;">
+          <div class="hero-content">
+            <span class="eyebrow">HAUTE COUTURE SERVICES</span>
+            <h1 style="margin-top:16px; line-height:1.1;">Bespoke Artistry Beyond Standard Dimensions.</h1>
+            <p class="lead" style="margin-top:20px;">
+              From individual red-carpet commissions and bridal sanctuaries to global wardrobe concierge services, STACKLY elevates personal dressing into an exquisite ceremonial craft.
+            </p>
+            <div style="display:flex; gap:16px; margin-top:32px; flex-wrap:wrap;">
+              <a href="#booking" class="btn">Reserve Private Salon</a>
+              <a href="#protocol" class="btn btn--ghost">View Fitting Protocol</a>
+            </div>
+          </div>
+          <div style="position:relative; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--card-shadow);">
+            <img src="./images/srv-hero.webp" alt="Bespoke Sartorial Services" style="width:100%; height:520px; object-fit:cover;" />
+            <div style="position:absolute; bottom:24px; left:24px; right:24px; background:rgba(17,17,20,0.85); backdrop-filter:blur(10px); padding:20px; border-radius:var(--radius); color:#FFF; border:1px solid rgba(255,255,255,0.12);">
+              <div style="font-size:0.75rem; color:var(--accent); font-weight:700; text-transform:uppercase; letter-spacing:0.1em;">Private Salon Protocol</div>
+              <div style="font-family:var(--font-serif); font-size:1.1rem; margin-top:4px;">“Every garment is cut specifically to your singular posture, cadence, and breath.”</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE 6-TIER VISUAL SERVICES MENU -->
+    <section class="section" id="menu" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+      <div class="wrap">
+        <div class="section-head section-head--center">
+          <span class="eyebrow">THE BESPOKE SUITE</span>
+          <h2>Six Pillars of Sartorial Excellence</h2>
+          <p class="lead">Select your personalized tier of engagement, crafted to address intimate galas, private residences, and global stage appearances.</p>
+        </div>
+
+        <div class="services-menu-grid">
+          <!-- Card 1 -->
+          <div style="background:var(--ink-card); border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <img src="./images/srv-couture.webp" alt="Haute Couture Red Carpet" style="width:100%; height:280px; object-fit:cover; object-position:center 20%;" />
+            <div style="padding:26px;">
+              <span style="font-size:0.75rem; color:var(--accent); font-weight:700; text-transform:uppercase;">Tier 01 • Gala &amp; Red Carpet</span>
+              <h3 style="margin-top:6px; font-size:1.3rem;">Bespoke Gala Couture</h3>
+              <p style="margin-top:10px; font-size:0.92rem;">One-of-a-kind evening gowns drafted from pure silk charmeuse, embellished with hand-anchored crystals, and sculpted with internal spiral-steel chassis.</p>
+              <div style="margin-top:18px; padding-top:14px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:700; color:var(--text);">From $4,500</span>
+                <a href="#booking" class="btn btn--sm">Request Consultation</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div style="background:var(--ink-card); border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <img src="./images/srv-suiting.webp" alt="Made-to-Measure Suiting" style="width:100%; height:280px; object-fit:cover; object-position:center 20%;" />
+            <div style="padding:26px;">
+              <span style="font-size:0.75rem; color:var(--accent); font-weight:700; text-transform:uppercase;">Tier 02 • Sartorial Tailoring</span>
+              <h3 style="margin-top:6px; font-size:1.3rem;">Made-to-Measure Suiting</h3>
+              <p style="margin-top:10px; font-size:0.92rem;">Two and three-piece floating canvas tuxedos hand-tailored from Super 160s Italian wool, silk faille peak lapels, and custom horn buttons.</p>
+              <div style="margin-top:18px; padding-top:14px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:700; color:var(--text);">From $3,200</span>
+                <a href="#booking" class="btn btn--sm">Request Consultation</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div style="background:var(--ink-card); border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <img src="./images/srv-bridal.webp" alt="Bridal & Gala Suite" style="width:100%; height:280px; object-fit:cover; object-position:center 20%;" />
+            <div style="padding:26px;">
+              <span style="font-size:0.75rem; color:var(--accent); font-weight:700; text-transform:uppercase;">Tier 03 • Nuptial Elegance</span>
+              <h3 style="margin-top:6px; font-size:1.3rem;">Private Bridal Sanctuary</h3>
+              <p style="margin-top:10px; font-size:0.92rem;">Exclusive salon reservation with Champagne service, custom French veil embroidery, and dedicated bridal party fittings led by head couturière.</p>
+              <div style="margin-top:18px; padding-top:14px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:700; color:var(--text);">From $6,000</span>
+                <a href="#booking" class="btn btn--sm">Request Consultation</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div style="background:var(--ink-card); border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <img src="./images/srv-concierge.webp" alt="Traveling Tailor" style="width:100%; height:280px; object-fit:cover; object-position:center 20%;" />
+            <div style="padding:26px;">
+              <span style="font-size:0.75rem; color:var(--accent); font-weight:700; text-transform:uppercase;">Tier 04 • In-Residence Service</span>
+              <h3 style="margin-top:6px; font-size:1.3rem;">Traveling Tailor Concierge</h3>
+              <p style="margin-top:10px; font-size:0.92rem;">Our senior artisans travel directly to your private villa, yacht, or penthouse worldwide with textile trunks and precision measuring apparatus.</p>
+              <div style="margin-top:18px; padding-top:14px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:700; color:var(--text);">By Private Quotation</span>
+                <a href="#booking" class="btn btn--sm">Request Consultation</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div style="background:var(--ink-card); border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <img src="./images/srv-alterations.webp" alt="Express Alterations" style="width:100%; height:280px; object-fit:cover; object-position:center 20%;" />
+            <div style="padding:26px;">
+              <span style="font-size:0.75rem; color:var(--accent); font-weight:700; text-transform:uppercase;">Tier 05 • Rush Service</span>
+              <h3 style="margin-top:6px; font-size:1.3rem;">24-Hour Express Alterations</h3>
+              <p style="margin-top:10px; font-size:0.92rem;">Same-day emergency tailoring for high-profile galas, red carpets, and film festivals. Dedicated night-shift atelier artisans.</p>
+              <div style="margin-top:18px; padding-top:14px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:700; color:var(--text);">From $750</span>
+                <a href="#booking" class="btn btn--sm">Request Consultation</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div style="background:var(--ink-card); border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <img src="./images/srv-virtual.webp" alt="Virtual Styling" style="width:100%; height:280px; object-fit:cover; object-position:center 20%;" />
+            <div style="padding:26px;">
+              <span style="font-size:0.75rem; color:var(--accent); font-weight:700; text-transform:uppercase;">Tier 06 • Global Remote</span>
+              <h3 style="margin-top:6px; font-size:1.3rem;">Virtual Salon &amp; Swatch Box</h3>
+              <p style="margin-top:10px; font-size:0.92rem;">Direct video styling with our Melbourne creative director. Accompanied by express delivery of curated silk and velvet fabric swatch boxes.</p>
+              <div style="margin-top:18px; padding-top:14px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:700; color:var(--text);">Complimentary</span>
+                <a href="#booking" class="btn btn--sm">Request Consultation</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THE 4-STAGE FITTING PROTOCOL -->
+    <section class="section" id="protocol">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">THE SARTORIAL PROCESS</span>
+          <h2>The Four-Stage Bespoke Protocol</h2>
+          <p class="lead">A time-honored discipline ensuring each custom garment delivers anatomical perfection without compromise.</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px;">
+          <div style="background:var(--ink-card); padding:32px 24px; border-radius:var(--radius); border:1px solid var(--line); position:relative;">
+            <div style="font-family:var(--font-serif); font-size:2.5rem; font-weight:700; color:var(--accent);">01</div>
+            <h3 style="margin-top:10px; font-size:1.25rem;">Private Consultation</h3>
+            <p style="font-size:0.9rem; margin-top:8px;">Exploration of event context, posture, and textile selection over vintage champagne in our private suite. 32 precise body measurements recorded.</p>
+          </div>
+
+          <div style="background:var(--ink-card); padding:32px 24px; border-radius:var(--radius); border:1px solid var(--line); position:relative;">
+            <div style="font-family:var(--font-serif); font-size:2.5rem; font-weight:700; color:var(--accent);">02</div>
+            <h3 style="margin-top:10px; font-size:1.25rem;">Muslin Calico Toile</h3>
+            <p style="font-size:0.9rem; margin-top:8px;">A mock garment crafted from raw unbleached cotton is draped onto your physique to sculpt the baseline balance, armhole depth, and seam flow.</p>
+          </div>
+
+          <div style="background:var(--ink-card); padding:32px 24px; border-radius:var(--radius); border:1px solid var(--line); position:relative;">
+            <div style="font-family:var(--font-serif); font-size:2.5rem; font-weight:700; color:var(--accent);">03</div>
+            <h3 style="margin-top:10px; font-size:1.25rem;">Structural Basting Fit</h3>
+            <p style="font-size:0.9rem; margin-top:8px;">The final silk or cashmere is hand-cut and loosely basted with white cotton thread. Spiral steel boning and collar heights are calibrated.</p>
+          </div>
+
+          <div style="background:var(--ink-card); padding:32px 24px; border-radius:var(--radius); border:1px solid var(--line); position:relative;">
+            <div style="font-family:var(--font-serif); font-size:2.5rem; font-weight:700; color:var(--accent);">04</div>
+            <h3 style="margin-top:10px; font-size:1.25rem;">Final Gala Reveal</h3>
+            <p style="font-size:0.9rem; margin-top:8px;">Hand-finished buttonholes, pressed on antique irons, and delivered in custom monogrammed garment travel chests with lifetime care warranty.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: THE BRIDAL & GALA VIP SUITE EXPERIENCE -->
+    <section class="section" style="background:#111114; color:#FFF;">
+      <div class="wrap">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items:center;">
+          <div style="border-radius:var(--radius-lg); overflow:hidden; border:1px solid rgba(255,255,255,0.12);">
+            <img src="./images/srv-suite-bridal.webp" alt="Bridal Suite Fitting" style="width:100%; height:460px; object-fit:cover;" />
+          </div>
+          <div>
+            <span class="eyebrow" style="color:var(--accent);">NUPTIAL &amp; BALLROOM SANCTUARY</span>
+            <h2 style="color:#FFF;">The Private Bridal &amp; Gala Suite</h2>
+            <p class="lead" style="color:#9E9EA8; margin-top:14px;">
+              Designed as an intimate private haven away from public view. Bring your bridal entourage, maid of honor, or confidential stylist for a half-day private fitting experience.
+            </p>
+            <div style="margin-top:24px; display:grid; gap:16px;">
+              <div style="display:flex; gap:14px; color:#DDD;">
+                <span style="color:var(--accent); font-weight:700;">✦</span>
+                <div>Exclusive 4-hour salon buyout with full catering and champagne service</div>
+              </div>
+              <div style="display:flex; gap:14px; color:#DDD;">
+                <span style="color:var(--accent); font-weight:700;">✦</span>
+                <div>Head couturière and dedicated draper assigned exclusively to your wedding party</div>
+              </div>
+              <div style="display:flex; gap:14px; color:#DDD;">
+                <span style="color:var(--accent); font-weight:700;">✦</span>
+                <div>Custom cathedral veils hand-embroidered with patron initials and wedding date</div>
+              </div>
+            </div>
+            <div style="margin-top:32px;">
+              <a href="#booking" class="btn">Reserve Bridal Suite</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: WARDROBE CONCIERGE & TRAVELING TAILORS -->
+    <section class="section">
+      <div class="wrap">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items:center;">
+          <div>
+            <span class="eyebrow">GLOBAL BESPOKE MOBILITY</span>
+            <h2>Traveling Couturiers &amp; Penthouse Concierge</h2>
+            <p class="lead" style="margin-top:14px;">
+              For high-profile dignitaries, global entrepreneurs, and artists with exacting schedules, our master artisans travel directly to your hotel suite or residence worldwide.
+            </p>
+            <p style="margin-top:12px; font-size:0.95rem;">
+              Carrying specialized sample chests of Como silks, Savile Row worsteds, and antique lace, our mobile atelier replicates the full flagship fitting experience anywhere across the globe.
+            </p>
+            <div style="margin-top:28px;">
+              <a href="./contact.html" class="btn">View Traveling Tailor Tour Schedule</a>
+            </div>
+          </div>
+          <div style="border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <img src="./images/srv-mobile-concierge.webp" alt="Traveling Tailor Concierge" style="width:100%; height:440px; object-fit:cover;" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: EXPRESS 24-HOUR RED CARPET ALTERATIONS -->
+    <section class="section" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+      <div class="wrap">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items:center;">
+          <div style="border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <img src="./images/srv-express-atelier.webp" alt="Express Alterations" style="width:100%; height:420px; object-fit:cover; object-position:center 20%;" />
+          </div>
+          <div>
+            <span class="eyebrow">CRITICAL DEADLINE SARTORIAL CARE</span>
+            <h2>24-Hour Express Gala Tailoring</h2>
+            <p class="lead" style="margin-top:14px;">
+              When urgent gala fittings or sudden wardrobe emergencies arise, STACKLY activates our rapid response atelier team.
+            </p>
+            <div style="margin-top:20px; display:grid; gap:16px;">
+              <div style="background:var(--ink-card); padding:18px; border-radius:var(--radius); border:1px solid var(--line);">
+                <h4 style="font-size:1.05rem;">Same-Day Hemming &amp; Corset Tightening</h4>
+                <p style="font-size:0.88rem; margin-top:4px;">Completed within 6 hours of garment handoff at any flagship salon.</p>
+              </div>
+              <div style="background:var(--ink-card); padding:18px; border-radius:var(--radius); border:1px solid var(--line);">
+                <h4 style="font-size:1.05rem;">Emergency Hand-Beading &amp; Repair</h4>
+                <p style="font-size:0.88rem; margin-top:4px;">Delicate silk tears, broken zips, and loose crystal embellishments restored invisibly.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: VIRTUAL STYLING & SWATCH BOX DELIVERY -->
+    <section class="section">
+      <div class="wrap">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items:center;">
+          <div>
+            <span class="eyebrow">REMOTE SARTORIAL IMMERSION</span>
+            <h2>Virtual Styling &amp; Tactile Swatch Chests</h2>
+            <p class="lead" style="margin-top:14px;">
+              Experience the touch and drape of authentic couture from the comfort of your home. Before your virtual consultation, we dispatch a bespoke textile presentation box directly to your door.
+            </p>
+            <ul style="margin-top:20px; display:grid; gap:12px; font-size:0.95rem;">
+              <li style="display:flex; gap:10px;"><span>✦</span> 24 curated samples of Mulberry silk, Italian velvet, and worsted wool</li>
+              <li style="display:flex; gap:10px;"><span>✦</span> High-precision biometric measuring tape and digital posture guide</li>
+              <li style="display:flex; gap:10px;"><span>✦</span> 60-minute 1-on-1 video call with our senior styling directors</li>
+            </ul>
+            <div style="margin-top:28px;">
+              <a href="#booking" class="btn">Order Bespoke Swatch Box</a>
+            </div>
+          </div>
+          <div style="border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <img src="./images/srv-remote-stylist.webp" alt="Virtual Styling and Swatches" style="width:100%; height:440px; object-fit:cover;" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: INTERACTIVE PRIVATE SALON BOOKING FORM -->
+    <section class="section" id="booking" style="background:#111114; color:#FFF;">
+      <div class="wrap">
+        <div class="section-head section-head--center">
+          <span class="eyebrow" style="color:var(--accent);">RESERVE AN APPOINTMENT</span>
+          <h2 style="color:#FFF;">Book Your Private Salon Consultation</h2>
+          <p class="lead" style="color:#9E9EA8;">Our concierge team will confirm your confidential fitting slot within 4 hours.</p>
+        </div>
+
+        <form id="bespoke-booking-form" style="max-width:760px; margin:40px auto 0; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.12); padding:clamp(24px, 4vw, 44px); border-radius:var(--radius-lg);" onsubmit="event.preventDefault(); window.handleBookingSubmit(this);">
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:20px;">
+            <div>
+              <label style="display:block; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#AAA; margin-bottom:8px;">Full Name *</label>
+              <input type="text" required class="form-input" style="background:#1A1A22; border-color:rgba(255,255,255,0.15); color:#FFF;" placeholder="e.g. Lady Victoria Sterling" />
+            </div>
+            <div>
+              <label style="display:block; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#AAA; margin-bottom:8px;">Confidential Email *</label>
+              <input type="email" required class="form-input" style="background:#1A1A22; border-color:rgba(255,255,255,0.15); color:#FFF;" placeholder="victoria@example.com" />
+            </div>
+            <div>
+              <label style="display:block; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#AAA; margin-bottom:8px;">Phone / WhatsApp *</label>
+              <input type="tel" required class="form-input" style="background:#1A1A22; border-color:rgba(255,255,255,0.15); color:#FFF;" placeholder="+1 (555) 019-2834" />
+            </div>
+            <div>
+              <label style="display:block; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#AAA; margin-bottom:8px;">Preferred Salon *</label>
+              <select class="form-input" style="background:#1A1A22; border-color:rgba(255,255,255,0.15); color:#FFF;">
+                <option value="salem">Salem Executive Tower (Global Head Office)</option>
+                <option value="paris">Paris • Rue Saint-Honoré</option>
+                <option value="milan">Milan • Via Montenapoleone</option>
+                <option value="ny">New York • Fifth Avenue</option>
+                <option value="virtual">Virtual Remote Video Salon</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#AAA; margin-bottom:8px;">Service Tier *</label>
+              <select class="form-input" style="background:#1A1A22; border-color:rgba(255,255,255,0.15); color:#FFF;">
+                <option>Bespoke Gala Evening Couture</option>
+                <option>Made-to-Measure Tuxedo &amp; Suiting</option>
+                <option>Private Bridal Sanctuary Suite</option>
+                <option>Traveling Tailor Concierge</option>
+                <option>24-Hour Express Gala Alterations</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#AAA; margin-bottom:8px;">Preferred Date *</label>
+              <input type="date" required class="form-input" style="background:#1A1A22; border-color:rgba(255,255,255,0.15); color:#FFF;" />
+            </div>
+          </div>
+
+          <div style="margin-top:20px;">
+            <label style="display:block; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#AAA; margin-bottom:8px;">Special Requirements or Event Date</label>
+            <textarea rows="3" class="form-input" style="background:#1A1A22; border-color:rgba(255,255,255,0.15); color:#FFF;" placeholder="Tell us about your upcoming event, color preferences, or security requirements..."></textarea>
+          </div>
+
+          <div style="margin-top:28px; text-align:center;">
+            <button type="submit" class="btn btn--block" style="padding-block:16px;">Confirm Private Reservation Request</button>
+            <p style="font-size:0.8rem; color:#888; margin-top:10px;">Protected by STACKLY Confidential Non-Disclosure Guarantee.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- SECTION 9: SALON AMENITIES & PATRON PRIVILEGES -->
+    <section class="section" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+      <div class="wrap">
+        <div class="section-head section-head--center">
+          <span class="eyebrow">VIP PRIVILEGES</span>
+          <h2>The Salon Sanctuary Experience</h2>
+          <p class="lead">Every appointment at STACKLY includes thoughtful comforts tailored for your leisure.</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top:36px;">
+          <div style="background:var(--ink-card); padding:26px; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <div style="font-size:1.8rem;">🍾</div>
+            <h4 style="margin-top:12px; font-size:1.1rem;">Vintage Champagne Bar</h4>
+            <p style="font-size:0.88rem; margin-top:6px;">Dom Pérignon and curated organic herbal infusions served complimentary during fittings.</p>
+          </div>
+          <div style="background:var(--ink-card); padding:26px; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <div style="font-size:1.8rem;">🚗</div>
+            <h4 style="margin-top:12px; font-size:1.1rem;">Private Chauffeur Valet</h4>
+            <p style="font-size:0.88rem; margin-top:6px;">Door-to-door luxury transport arrangements available upon request for VIP patrons.</p>
+          </div>
+          <div style="background:var(--ink-card); padding:26px; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <div style="font-size:1.8rem;">🔒</div>
+            <h4 style="margin-top:12px; font-size:1.1rem;">Discreet Private Entry</h4>
+            <p style="font-size:0.88rem; margin-top:6px;">Secure underground elevators and shielded VIP exits guarantee total paparazzi discretion.</p>
+          </div>
+          <div style="background:var(--ink-card); padding:26px; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <div style="font-size:1.8rem;">🪡</div>
+            <h4 style="margin-top:12px; font-size:1.1rem;">Dedicated Master Tailor</h4>
+            <p style="font-size:0.88rem; margin-top:6px;">A single master artisan oversees your garment from initial chalk sketch to final delivery.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: BESPOKE SERVICES FAQ ACCORDION -->
+    <section class="section">
+      <div class="wrap" style="max-width:860px;">
+        <div class="section-head section-head--center">
+          <span class="eyebrow">COMMON INQUIRIES</span>
+          <h2>Frequently Asked Questions</h2>
+          <p class="lead">Everything you need to know about our bespoke commissions, lead times, and private salons.</p>
+        </div>
+
+        <div style="margin-top:36px; display:grid; gap:16px;">
+          <details style="background:var(--ink-card); padding:20px 24px; border-radius:var(--radius); border:1px solid var(--line); cursor:pointer;">
+            <summary style="font-weight:700; font-size:1.05rem; color:var(--text);">How much advance notice is required for a bespoke gown?</summary>
+            <p style="margin-top:12px; font-size:0.92rem; color:var(--text-muted); line-height:1.6;">
+              Standard bespoke commissions generally take 4 to 8 weeks, encompassing the initial toile fitting and hand-finishing. However, for critical red-carpet engagements, our 24-hour and 72-hour express atelier options are available.
+            </p>
+          </details>
+
+          <details style="background:var(--ink-card); padding:20px 24px; border-radius:var(--radius); border:1px solid var(--line); cursor:pointer;">
+            <summary style="font-weight:700; font-size:1.05rem; color:var(--text);">Can I choose custom fabrics not shown in the showroom?</summary>
+            <p style="margin-top:12px; font-size:0.92rem; color:var(--text-muted); line-height:1.6;">
+              Yes. We maintain direct mill relationships with historic weavers in Como, Biella, and Lyon. If you require a custom dye lot, bespoke jacquard pattern, or specific lurex ratio, we can commission exclusive weaves.
+            </p>
+          </details>
+
+          <details style="background:var(--ink-card); padding:20px 24px; border-radius:var(--radius); border:1px solid var(--line); cursor:pointer;">
+            <summary style="font-weight:700; font-size:1.05rem; color:var(--text);">Are fittings transferable between global cities?</summary>
+            <p style="margin-top:12px; font-size:0.92rem; color:var(--text-muted); line-height:1.6;">
+              Absolutely. You can conduct your muslin fitting at our Salem Executive Tower or New York salon, and schedule your final basting or delivery in Paris or Milan without delay.
+            </p>
+          </details>
+
+          <details style="background:var(--ink-card); padding:20px 24px; border-radius:var(--radius); border:1px solid var(--line); cursor:pointer;">
+            <summary style="font-weight:700; font-size:1.05rem; color:var(--text);">What is included in the Traveling Tailor service?</summary>
+            <p style="margin-top:12px; font-size:0.92rem; color:var(--text-muted); line-height:1.6;">
+              Our senior couturier flies directly to your location with dedicated garment trunks, fabric swatches, and measuring instruments, offering full fitting sessions within your residence, suite, or yacht.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MASTER FOOTER (Exact Match to User Screenshot 2) -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <!-- Col 1: STACKLY logo, paragraph, social icons -->
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <img src="./images/logo-footer-white.webp" alt="STACKLY" class="footer-logo-img" />
+          </a>
+          <p>
+            Premier strategic business advisory firm empowering enterprise leaders with actionable intelligence and sustainable scale.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-icon" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" class="footer-social-icon" aria-label="Twitter"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+            <a href="#" class="footer-social-icon" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./services.html">Services</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Practice Areas (Exact from screenshot 2) -->
+        <div class="footer-col">
+          <h4>Practice Areas</h4>
+          <ul>
+            <li><a href="./services.html">Corporate Strategy</a></li>
+            <li><a href="./services.html">M&amp;A Deal Advisory</a></li>
+            <li><a href="./services.html">Financial Restructuring</a></li>
+            <li><a href="./services.html">Operations Scaling</a></li>
+            <li><a href="./services.html">Board Governance</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Global Head Office (Exact from screenshot 2) -->
+        <div class="footer-col">
+          <h4>Global Head Office</h4>
+          <div class="footer-office-info">
+            <div class="footer-info-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>MMR Complex, Executive Tower, Salem, TN 636008</span>
+            </div>
+            <div class="footer-info-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              <span>+91 98765 43210</span>
+            </div>
+            <div class="footer-info-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <span>advisory@stackly.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Stackly Business Advisory. All rights reserved. Confidentiality &amp; Non-Disclosure Protected.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>

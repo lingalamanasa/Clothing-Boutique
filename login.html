@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome back | STACKLY Sign In</title>
+  <meta name="description" content="Sign in to your STACKLY account and continue your 30 day free trial." />
+  <link rel="icon" href="./favicon.webp" type="image/webp" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="./css/auth-dash.css" />
+</head>
+
+<body class="auth-body">
+  <main class="auth-container">
+    <!-- LEFT SIDE: FORM -->
+    <section class="auth-form-side">
+      <div>
+        <!-- Top Navigation -->
+        <div class="auth-nav-row">
+          <a href="index.html" class="brand-pill" aria-label="STACKLY Home">
+            <img src="./images/logo-pink.webp" alt="STACKLY" style="height: 24px; width: auto; display: block;" />
+          </a>
+          <a href="index.html" class="back-home-btn">
+            <span>&larr;</span> Back to home
+          </a>
+        </div>
+
+        <!-- Heading -->
+        <h1 class="auth-heading">Welcome back</h1>
+        <p class="auth-subheading">Sign in and continue your 30 day free trial</p>
+
+        <!-- Success Alert -->
+        <div id="login-alert" class="auth-success-banner" style="display:none;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <span><strong>Login successful!</strong> Redirecting to your atelier dashboard...</span>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" class="auth-fields-wrap" onsubmit="handleLogin(event)">
+          <!-- Username / Email -->
+          <div class="field-group">
+            <label for="username" class="field-label">Username or Email</label>
+            <div class="input-container">
+              <input type="text" id="username" name="username" class="auth-input" placeholder="Enter your username or email" required autocomplete="username" />
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="field-group">
+            <label for="password" class="field-label">Password</label>
+            <div class="input-container">
+              <input type="password" id="password" name="password" class="auth-input" placeholder="Enter your password" required autocomplete="current-password" />
+              <button type="button" class="eye-btn" id="toggle-password" aria-label="Toggle password visibility" onclick="togglePasswordVisibility('password', this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                  <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Role Dropdown -->
+          <div class="field-group">
+            <label for="role-select" class="field-label">Role</label>
+            <div class="select-container">
+              <select id="role-select" name="role" class="auth-select">
+                <option value="user">Client / VIP Member (Atelier Suite)</option>
+                <option value="admin">Boutique Director (Admin Studio)</option>
+              </select>
+              <svg class="select-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Remember & Forgot -->
+          <div class="auth-aux-row">
+            <label class="remember-label">
+              <input type="checkbox" name="remember" />
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="forgot-link" onclick="alert('Password reset link has been dispatched to your email address.'); return false;">Forgot password?</a>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="auth-submit-btn" id="submit-btn">Submit</button>
+
+          <!-- Social Buttons -->
+          <div class="auth-social-row">
+            <button type="button" class="social-btn" onclick="socialAuth('GitHub')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              <span>GitHub</span>
+            </button>
+            <button type="button" class="social-btn" onclick="socialAuth('Google')">
+              <svg width="18" height="18" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.36 24 12 24z"/>
+                <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.04 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+              </svg>
+              <span>Google</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Footers -->
+      <footer class="auth-footer">
+        <div class="auth-footer-text">
+          Have any account? <a href="signup.html" class="auth-footer-link">Sign up</a>
+        </div>
+      </footer>
+    </section>
+
+    <!-- RIGHT SIDE: VISUAL SHOWCASE (Boutique Atelier) -->
+    <aside class="auth-showcase-side" aria-label="Haute Couture Atelier Showcase">
+      <img src="./images/auth-login-fashion.webp" alt="STACKLY Haute Couture Paris Atelier" class="showcase-bg-img" />
+      <div class="showcase-gradient-overlay"></div>
+
+      <!-- Top Floating Task Card -->
+      <div class="task-widget-card">
+        <div class="task-widget-head">
+          <span class="task-widget-title">VIP Fitting Session</span>
+          <span class="black-dot"></span>
+        </div>
+        <div class="task-widget-time">09:30am–10:00am • Atelier Paris</div>
+      </div>
+
+      <!-- Time Pill Widget -->
+      <div class="time-pill-widget">
+        <span>09:30am–10:00am</span>
+        <span class="yellow-dot"></span>
+      </div>
+
+      <!-- Vertical Avatar Stack on Right Edge -->
+      <div class="avatar-stack-vertical">
+        <img src="./images/avatar-client.webp" alt="VIP Client" class="stacked-avatar" />
+        <img src="./images/avatar-stylist.webp" alt="Head Stylist" class="stacked-avatar" />
+        <img src="./images/avatar-admin.webp" alt="Master Tailor" class="stacked-avatar" />
+      </div>
+
+      <!-- Bottom Left Floating Daily Meeting Card -->
+      <div class="daily-meeting-card">
+        <div class="meeting-card-head">
+          <span class="meeting-card-title">Atelier Salon Fitting</span>
+          <span class="yellow-dot"></span>
+        </div>
+        <div class="meeting-card-time">12:00pm–01:00pm • Salem Suite</div>
+        <div class="meeting-card-avatars">
+          <img src="./images/avatar-client.webp" alt="" />
+          <img src="./images/avatar-stylist.webp" alt="" />
+          <img src="./images/avatar-admin.webp" alt="" />
+        </div>
+      </div>
+
+      <!-- Bottom Right Glassmorphism Calendar Pill -->
+      <div class="glass-calendar-pill">
+        <div class="cal-days-row">
+          <span>Sun</span><span>Mon</span><span>Tue</span><span class="cal-active-day">Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+        </div>
+        <div class="cal-dates-row">
+          <span>23</span><span>24</span><span class="cal-active-day">25</span><span>26</span><span>27</span><span>28</span>
+          <span class="cal-stripes" aria-hidden="true"></span>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    function togglePasswordVisibility(fieldId, btn) {
+      const field = document.getElementById(fieldId);
+      if (!field) return;
+      const isPass = field.type === 'password';
+      field.type = isPass ? 'text' : 'password';
+      btn.innerHTML = isPass ? `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+      ` : `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+          <line x1="1" y1="1" x2="23" y2="23"></line>
+        </svg>
+      `;
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const role = document.getElementById('role-select').value;
+      const username = document.getElementById('username').value.trim();
+      const submitBtn = document.getElementById('submit-btn');
+      const alertBox = document.getElementById('login-alert');
+      
+      // Update button to show "Login successful!"
+      submitBtn.style.background = '#10B981';
+      submitBtn.style.color = '#FFFFFF';
+      submitBtn.innerHTML = '&#10003; Login successful!';
+      submitBtn.disabled = true;
+
+      // Show the prominent success banner
+      if (alertBox) {
+        alertBox.style.display = 'flex';
+      }
+
+      // Store in session/local storage
+      localStorage.setItem('stackly_auth_user', JSON.stringify({
+        email: username || 'lingalamanasa123@gmail.com',
+        role: role
+      }));
+
+      setTimeout(() => {
+        window.location.href = `./dashboard.html?role=${role}`;
+      }, 1000);
+    }
+
+    function socialAuth(provider) {
+      const role = document.getElementById('role-select').value;
+      alert(`Connecting to ${provider} authentication... Redirecting.`);
+      window.location.href = `./dashboard.html?role=${role}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="meshki">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STACKLY | Contact — Private Salons &amp; Global Concierge</title>
+  <meta name="description"
+    content="Connect with STACKLY Haute Couture: Global flagship boutiques, VIP concierge desk, traveling tailor bookings, and confidential inquiries." />
+  <link rel="icon" href="./favicon.webp" type="image/webp" />
+
+  <!-- Fonts: Cinzel & Playfair Display for Haute Couture, Plus Jakarta Sans for Body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <!-- GSAP Animation Framework -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="preloader-locked">
+  <!-- LUXURY PRELOADER (STACKLY LOGO ONLY) -->
+  <div class="luxury-preloader" id="luxury-preloader" aria-hidden="true">
+    <div class="preloader-content">
+      <div class="preloader-logo-wrap">
+        <img src="./images/logo-header-yellow.webp" alt="STACKLY" class="preloader-logo-img" />
+      </div>
+      <div class="preloader-bar-wrap">
+        <div class="preloader-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANNOUNCEMENT MARQUEE BAR -->
+  <aside class="announcement-bar" aria-label="Announcement">
+    <div class="marquee-content">
+      <span>✦ 24/7 GLOBAL CONCIERGE HOTLINE: +91 98765 43210</span>
+      <span>•</span>
+      <span>PRIVATE FITTINGS IN SALEM, PARIS, MILAN &amp; NEW YORK</span>
+      <span>•</span>
+      <span class="marquee-pill">STRICT CONFIDENTIALITY &amp; NDA GUARANTEED</span>
+    </div>
+  </aside>
+
+  <!-- MASTER NAVIGATION (Exact Match to User Screenshot 1) -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <!-- STACKLY Logo (Left) -->
+      <a href="index.html" class="nav-logo" aria-label="STACKLY Home">
+        <img src="./images/logo-header-yellow.webp" alt="STACKLY" class="nav-logo-img" />
+      </a>
+
+      <!-- Center Links (Exact: Home, About, Service, Blog, Contact) -->
+      <nav class="nav-menu" aria-label="Primary navigation">
+        <a href="./index.html" class="nav-link">Home</a>
+        <a href="./about.html" class="nav-link">About</a>
+        <a href="./services.html" class="nav-link">Service</a>
+        <a href="./blog.html" class="nav-link">Blog</a>
+        <a href="./contact.html" class="nav-link active">Contact</a>
+      </nav>
+
+      <!-- Right Action Items (Exact Match to Screenshot 1: Login & Signup Buttons) -->
+      <div class="nav-actions">
+        <!-- 3 Color Palette Switcher Widget -->
+        <div class="palette-switcher" title="Choose from 3 Color Palettes">
+          <button type="button" class="palette-btn palette-btn--meshki active" data-palette="meshki" onclick="window.switchPalette('meshki')" aria-label="MESHKI Sunlit Gold Palette"></button>
+          <button type="button" class="palette-btn palette-btn--royal" data-palette="royal" onclick="window.switchPalette('royal')" aria-label="Royal Amethyst Purple Palette"></button>
+          <button type="button" class="palette-btn palette-btn--rose" data-palette="rose" onclick="window.switchPalette('rose')" aria-label="Rose Quartz Blush Palette"></button>
+        </div>
+
+        <!-- Wishlist -->
+        <a href="./dashboard.html?role=user&tab=wishlist" class="icon-btn" aria-label="Wishlist">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+          <span class="badge-count" data-wishlist-count style="display:none">0</span>
+        </a>
+
+        <!-- Cart Bag -->
+        <button class="icon-btn" type="button" data-cart-open aria-label="Shopping Bag">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <span class="badge-count" data-cart-count style="display:none">0</span>
+        </button>
+
+        <!-- Screenshot 1 exact Login Button (Outline Pill) -->
+        <a href="./login.html" class="btn-nav-login desk-only">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span>Login</span>
+        </a>
+
+        <!-- Screenshot 1 exact Signup Button (Filled Pill) -->
+        <a href="./signup.html" class="btn-nav-signup desk-only">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="8.5" cy="7" r="4"></circle>
+            <line x1="20" y1="8" x2="20" y2="14"></line>
+            <line x1="17" y1="11" x2="23" y2="11"></line>
+          </svg>
+          <span>Signup</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="icon-btn nav-burger" type="button" aria-label="Toggle mobile menu" id="burger-btn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <aside class="drawer" id="mobile-menu" aria-label="Mobile navigation">
+    <div class="drawer-top">
+      <a href="index.html" class="nav-logo">
+        <img src="./images/logo-header-yellow.webp" alt="STACKLY" class="nav-logo-img" />
+      </a>
+      <button class="icon-btn drawer-close" type="button" aria-label="Close menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div style="padding: 16px 20px; border-bottom: 1px solid var(--line);">
+      <div style="font-size:0.75rem; text-transform:uppercase; font-weight:700; color:var(--text-muted); margin-bottom:8px;">Color Palette</div>
+      <div class="palette-switcher" style="display:flex;">
+        <button type="button" class="palette-btn palette-btn--meshki active" data-palette="meshki" onclick="window.switchPalette('meshki')"></button>
+        <button type="button" class="palette-btn palette-btn--royal" data-palette="royal" onclick="window.switchPalette('royal')"></button>
+        <button type="button" class="palette-btn palette-btn--rose" data-palette="rose" onclick="window.switchPalette('rose')"></button>
+      </div>
+    </div>
+    <nav class="drawer-menu">
+      <a href="./index.html">Home <span>→</span></a>
+      <a href="./about.html">About <span>→</span></a>
+      <a href="./services.html">Service <span>→</span></a>
+      <a href="./blog.html">Blog <span>→</span></a>
+      <a href="./contact.html" class="active">Contact <span>→</span></a>
+    </nav>
+    <div class="drawer-foot">
+      <a href="./login.html" class="btn btn--block btn--ghost">👤 VIP Login</a>
+      <a href="./signup.html" class="btn btn--block">👤+ Create Account</a>
+      <a href="./dashboard.html" style="text-align:center; font-size:0.85rem; color:var(--text-muted); display:block; margin-top:8px;">Go to Role Dashboards (User / Admin)</a>
+    </div>
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Shopping Bag Drawer -->
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Cart">
+    <div class="cart-header">
+      <h3>Boutique Bag (<span data-cart-count-title>0</span>)</h3>
+      <button class="icon-btn" type="button" data-cart-close aria-label="Close cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cart-items-container">
+      <div class="cart-empty">
+        <p>Your luxury bag is currently empty.</p>
+        <a href="./index.html#collection" class="btn btn--sm" style="margin-top:12px;">Explore Collections</a>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <span class="cart-total-val" id="cart-subtotal">$0</span>
+      </div>
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Taxes and insured private courier calculated at checkout.</p>
+      <button class="btn btn--block" type="button" onclick="window.checkoutAlert()">Proceed to Bespoke Checkout</button>
+    </div>
+  </aside>
+
+  <main>
+    <!-- SECTION 1: CONCIERGE HERO BANNER (GSAP Animated) -->
+    <section class="section" style="padding-top: clamp(40px, 6vw, 80px); padding-bottom: clamp(50px, 7vw, 90px); background: linear-gradient(180deg, #FFFFFF 0%, var(--paper) 100%);">
+      <div class="wrap">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items:center;">
+          <div class="hero-content">
+            <span class="eyebrow">GLOBAL CONCIERGE &amp; SALONS</span>
+            <h1 style="margin-top:16px; line-height:1.1;">Initiate a Confidential Dialogue with STACKLY.</h1>
+            <p class="lead" style="margin-top:20px;">
+              Whether scheduling a private salon consultation, commissioning custom bridal couture, or requesting celebrity press loans, our concierge desk maintains absolute discretion.
+            </p>
+            <div style="display:flex; gap:16px; margin-top:32px; flex-wrap:wrap;">
+              <a href="#inquiry" class="btn">Send Confidential Inquiry</a>
+              <a href="#flagships" class="btn btn--ghost">Explore Flagship Salons</a>
+            </div>
+          </div>
+          <div style="position:relative; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--card-shadow);">
+            <img src="./images/contact-hero.webp" alt="STACKLY Global Salons" style="width:100%; height:500px; object-fit:cover;" />
+            <div style="position:absolute; bottom:24px; left:24px; right:24px; background:rgba(17,17,20,0.88); backdrop-filter:blur(10px); padding:20px; border-radius:var(--radius); color:#FFF; border:1px solid rgba(255,255,255,0.12);">
+              <div style="font-size:0.75rem; color:var(--accent); font-weight:700; text-transform:uppercase; letter-spacing:0.1em;">24/7 International Desk</div>
+              <div style="font-family:var(--font-serif); font-size:1.1rem; margin-top:4px;">“Every patron inquiry is answered personally by a senior sartorial director.”</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: GLOBAL FLAGSHIP BOUTIQUES DIRECTORY -->
+    <section class="section" id="flagships" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+      <div class="wrap">
+        <div class="section-head section-head--center">
+          <span class="eyebrow">SANCTUARIES OF BESPOKE</span>
+          <h2>Global Flagship Boutiques &amp; Salons</h2>
+          <p class="lead">Visit our private appointment-only showrooms worldwide for bespoke fittings, bridal suites, and master tailor consultations.</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-top:40px;">
+          <!-- Flagship 1: Global Head Office (Exact match to screenshot 2) -->
+          <div style="background:var(--ink-card); border-radius:var(--radius); overflow:hidden; border:2px solid var(--accent); box-shadow:var(--card-shadow);">
+            <div style="background:var(--accent); color:var(--accent-text); padding:8px 16px; font-size:0.75rem; font-weight:800; text-transform:uppercase;">Global Head Office &amp; Primary Atelier</div>
+            <div style="padding:24px;">
+              <h3 style="font-size:1.3rem;">Salem Executive Tower</h3>
+              <p style="font-size:0.92rem; margin-top:8px; color:var(--text);">MMR Complex, Executive Tower, Salem, TN 636008</p>
+              <div style="margin-top:14px; font-size:0.88rem; color:var(--text-muted); display:grid; gap:6px;">
+                <div><strong>Phone:</strong> +91 98765 43210</div>
+                <div><strong>Email:</strong> advisory@stackly.com</div>
+                <div><strong>Hours:</strong> Mon - Sat: 9:00 AM - 8:00 PM (By Appt)</div>
+              </div>
+              <div style="margin-top:18px;">
+                <a href="#inquiry" class="btn btn--sm btn--block">Reserve Salem Salon</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flagship 2: Paris -->
+          <div style="background:var(--ink-card); border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <div style="background:#111; color:#FFF; padding:8px 16px; font-size:0.75rem; font-weight:700; text-transform:uppercase;">European Flagship</div>
+            <div style="padding:24px;">
+              <h3 style="font-size:1.3rem;">Paris • Rue Saint-Honoré</h3>
+              <p style="font-size:0.92rem; margin-top:8px; color:var(--text);">14 Place Vendôme / Rue Saint-Honoré, 75001 Paris, France</p>
+              <div style="margin-top:14px; font-size:0.88rem; color:var(--text-muted); display:grid; gap:6px;">
+                <div><strong>Phone:</strong> +33 1 42 68 55 00</div>
+                <div><strong>Email:</strong> paris@stackly.com</div>
+                <div><strong>Hours:</strong> Tue - Sat: 10:00 AM - 7:00 PM</div>
+              </div>
+              <div style="margin-top:18px;">
+                <a href="#inquiry" class="btn btn--sm btn--block btn--ghost">Reserve Paris Salon</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flagship 3: Milan -->
+          <div style="background:var(--ink-card); border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <div style="background:#111; color:#FFF; padding:8px 16px; font-size:0.75rem; font-weight:700; text-transform:uppercase;">Italian Atelier</div>
+            <div style="padding:24px;">
+              <h3 style="font-size:1.3rem;">Milan • Montenapoleone</h3>
+              <p style="font-size:0.92rem; margin-top:8px; color:var(--text);">Via Montenapoleone 8, Quadrilatero della Moda, Milano, Italy</p>
+              <div style="margin-top:14px; font-size:0.88rem; color:var(--text-muted); display:grid; gap:6px;">
+                <div><strong>Phone:</strong> +39 02 7600 3211</div>
+                <div><strong>Email:</strong> milano@stackly.com</div>
+                <div><strong>Hours:</strong> Mon - Sat: 10:30 AM - 7:30 PM</div>
+              </div>
+              <div style="margin-top:18px;">
+                <a href="#inquiry" class="btn btn--sm btn--block btn--ghost">Reserve Milan Salon</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flagship 4: New York -->
+          <div style="background:var(--ink-card); border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <div style="background:#111; color:#FFF; padding:8px 16px; font-size:0.75rem; font-weight:700; text-transform:uppercase;">North American Suite</div>
+            <div style="padding:24px;">
+              <h3 style="font-size:1.3rem;">New York • Fifth Avenue</h3>
+              <p style="font-size:0.92rem; margin-top:8px; color:var(--text);">767 Fifth Avenue, Penthouse Salon, New York, NY 10153</p>
+              <div style="margin-top:14px; font-size:0.88rem; color:var(--text-muted); display:grid; gap:6px;">
+                <div><strong>Phone:</strong> +1 (212) 849-2100</div>
+                <div><strong>Email:</strong> newyork@stackly.com</div>
+                <div><strong>Hours:</strong> Mon - Fri: 9:00 AM - 6:00 PM</div>
+              </div>
+              <div style="margin-top:18px;">
+                <a href="#inquiry" class="btn btn--sm btn--block btn--ghost">Reserve NY Salon</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: DIRECT DEPARTMENTAL CONTACT CARDS -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">SPECIALIZED DESKS</span>
+          <h2>Connect with the Right Atelier Department</h2>
+          <p class="lead">Direct routing to our specialist directors ensures swift, authoritative replies.</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+          <div style="background:var(--ink-card); padding:26px; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <div style="font-size:1.8rem;">✨</div>
+            <h4 style="margin-top:12px; font-size:1.15rem;">VIP Client Relations</h4>
+            <p style="font-size:0.88rem; margin-top:6px;">Private orders, delivery status, bespoke fittings, and concierge requests.</p>
+            <div style="margin-top:12px; font-size:0.85rem; color:var(--accent); font-weight:700;">vip@stackly.com</div>
+          </div>
+
+          <div style="background:var(--ink-card); padding:26px; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <div style="font-size:1.8rem;">👰</div>
+            <h4 style="margin-top:12px; font-size:1.15rem;">Bespoke Bridal Salon</h4>
+            <p style="font-size:0.88rem; margin-top:6px;">Bridal suite buyouts, custom veils, and wedding party entourage fittings.</p>
+            <div style="margin-top:12px; font-size:0.85rem; color:var(--accent); font-weight:700;">bridal@stackly.com</div>
+          </div>
+
+          <div style="background:var(--ink-card); padding:26px; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <div style="font-size:1.8rem;">📸</div>
+            <h4 style="margin-top:12px; font-size:1.15rem;">Celebrity &amp; Press Loans</h4>
+            <p style="font-size:0.88rem; margin-top:6px;">Stylist pulls, red carpet loans for film festivals, awards, and editorial shoots.</p>
+            <div style="margin-top:12px; font-size:0.85rem; color:var(--accent); font-weight:700;">press@stackly.com</div>
+          </div>
+
+          <div style="background:var(--ink-card); padding:26px; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <div style="font-size:1.8rem;">🧵</div>
+            <h4 style="margin-top:12px; font-size:1.15rem;">Atelier Careers &amp; Guild</h4>
+            <p style="font-size:0.88rem; margin-top:6px;">Master tailors, pattern cutters, hand-embroiderers, and boutique directors.</p>
+            <div style="margin-top:12px; font-size:0.85rem; color:var(--accent); font-weight:700;">careers@stackly.com</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: INTERACTIVE CONFIDENTIAL VIP INQUIRY FORM -->
+    <section class="section" id="inquiry" style="background:#111114; color:#FFF;">
+      <div class="wrap">
+        <div class="section-head section-head--center">
+          <span class="eyebrow" style="color:var(--accent);">CONFIDENTIAL INQUIRY</span>
+          <h2 style="color:#FFF;">Direct Atelier Dispatch</h2>
+          <p class="lead" style="color:#9E9EA8;">Submit your private inquiry. Handled with absolute non-disclosure guarantee.</p>
+        </div>
+
+        <form id="contact-inquiry-form" style="max-width:760px; margin:40px auto 0; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.12); padding:clamp(24px, 4vw, 44px); border-radius:var(--radius-lg);" onsubmit="event.preventDefault(); window.handleContactSubmit(this);">
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:20px;">
+            <div>
+              <label style="display:block; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#AAA; margin-bottom:8px;">Full Name *</label>
+              <input type="text" required class="form-input" style="background:#1A1A22; border-color:rgba(255,255,255,0.15); color:#FFF;" placeholder="e.g. Eleanor Vance" />
+            </div>
+            <div>
+              <label style="display:block; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#AAA; margin-bottom:8px;">Email Address *</label>
+              <input type="email" required class="form-input" style="background:#1A1A22; border-color:rgba(255,255,255,0.15); color:#FFF;" placeholder="eleanor@vance.com" />
+            </div>
+            <div>
+              <label style="display:block; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#AAA; margin-bottom:8px;">Phone / WhatsApp *</label>
+              <input type="tel" required class="form-input" style="background:#1A1A22; border-color:rgba(255,255,255,0.15); color:#FFF;" placeholder="+1 (555) 234-5678" />
+            </div>
+            <div>
+              <label style="display:block; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#AAA; margin-bottom:8px;">Subject / Department *</label>
+              <select class="form-input" style="background:#1A1A22; border-color:rgba(255,255,255,0.15); color:#FFF;">
+                <option>Private Salon Fitting Reservation</option>
+                <option>Bespoke Bridal Suite Inquiry</option>
+                <option>Celebrity Stylist &amp; Red Carpet Loan</option>
+                <option>Traveling Tailor Concierge Request</option>
+                <option>Corporate Advisory &amp; Uniform Commissions</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-top:20px;">
+            <label style="display:block; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#AAA; margin-bottom:8px;">Inquiry &amp; Event Details *</label>
+            <textarea rows="4" required class="form-input" style="background:#1A1A22; border-color:rgba(255,255,255,0.15); color:#FFF;" placeholder="Please include relevant dates, location preference, or bespoke requirements..."></textarea>
+          </div>
+
+          <div style="margin-top:28px; text-align:center;">
+            <button type="submit" class="btn btn--block" style="padding-block:16px;">Transmit Confidential Message</button>
+            <p style="font-size:0.8rem; color:#888; margin-top:10px;">Our senior directors respond within 4 business hours.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- SECTION 5: 24/7 INTERNATIONAL PRIVATE CONCIERGE DESK -->
+    <section class="section" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+      <div class="wrap">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items:center;">
+          <div>
+            <span class="eyebrow">IMMEDIATE SARTORIAL ASSISTANCE</span>
+            <h2>24/7 Global International Concierge</h2>
+            <p class="lead" style="margin-top:14px;">
+              For urgent wardrobe emergencies, gala dressing assistance, or impromptu travel requests, our dedicated international desk operates across all global timezones.
+            </p>
+            <div style="margin-top:24px; display:grid; gap:16px;">
+              <div style="background:var(--ink-card); padding:18px; border-radius:var(--radius); border:1px solid var(--line);">
+                <div style="font-weight:700; font-size:1.05rem;">Global Direct Line: +91 98765 43210</div>
+                <div style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">Direct connection to Salem Global Head Office concierge operators.</div>
+              </div>
+              <div style="background:var(--ink-card); padding:18px; border-radius:var(--radius); border:1px solid var(--line);">
+                <div style="font-weight:700; font-size:1.05rem;">Encrypted VIP Messaging Desk</div>
+                <div style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">WhatsApp &amp; Signal channels active for authenticated VIP patrons.</div>
+              </div>
+            </div>
+          </div>
+          <div style="border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <img src="./images/contact-lounge.webp" alt="STACKLY Concierge Suite" style="width:100%; height:420px; object-fit:cover;" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: TRAVELING TAILOR TOUR SCHEDULE -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">WORLDWIDE TRUNK SHOWS</span>
+          <h2>Traveling Tailor Tour Schedule</h2>
+          <p class="lead">Our master cutters embark on international fitting tours. Reserve your private hotel suite appointment in advance.</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+          <div style="background:var(--ink-card); padding:26px; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <span style="font-size:0.75rem; color:var(--accent); font-weight:700;">OCTOBER 12 - 16</span>
+            <h3 style="margin-top:6px; font-size:1.25rem;">Tokyo • The Aman</h3>
+            <p style="font-size:0.88rem; margin-top:6px;">Private suite fittings overlooking the Imperial Palace gardens.</p>
+            <a href="#inquiry" class="btn btn--sm btn--ghost" style="margin-top:14px;">Reserve Slot</a>
+          </div>
+
+          <div style="background:var(--ink-card); padding:26px; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <span style="font-size:0.75rem; color:var(--accent); font-weight:700;">NOVEMBER 04 - 09</span>
+            <h3 style="margin-top:6px; font-size:1.25rem;">Dubai • Burj Al Arab</h3>
+            <p style="font-size:0.88rem; margin-top:6px;">Eveningwear and resort silk bespoke wardrobe consultations.</p>
+            <a href="#inquiry" class="btn btn--sm btn--ghost" style="margin-top:14px;">Reserve Slot</a>
+          </div>
+
+          <div style="background:var(--ink-card); padding:26px; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <span style="font-size:0.75rem; color:var(--accent); font-weight:700;">DECEMBER 01 - 05</span>
+            <h3 style="margin-top:6px; font-size:1.25rem;">Zurich • The Dolder Grand</h3>
+            <p style="font-size:0.88rem; margin-top:6px;">Winter gala suiting, cashmere coats, and private salon appointments.</p>
+            <a href="#inquiry" class="btn btn--sm btn--ghost" style="margin-top:14px;">Reserve Slot</a>
+          </div>
+
+          <div style="background:var(--ink-card); padding:26px; border-radius:var(--radius); border:1px solid var(--line); box-shadow:var(--card-shadow);">
+            <span style="font-size:0.75rem; color:var(--accent); font-weight:700;">JANUARY 15 - 20</span>
+            <h3 style="margin-top:6px; font-size:1.25rem;">Sydney • Crown Towers</h3>
+            <p style="font-size:0.88rem; margin-top:6px;">Return tour honoring our founding heritage with VIP private fittings.</p>
+            <a href="#inquiry" class="btn btn--sm btn--ghost" style="margin-top:14px;">Reserve Slot</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: CELEBRITY DRESSING & PRESS SAMPLE LOANS PROTOCOL -->
+    <section class="section" style="background:#111114; color:#FFF;">
+      <div class="wrap">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items:center;">
+          <div>
+            <span class="eyebrow" style="color:var(--accent);">ENTERTAINMENT &amp; EDITORIAL</span>
+            <h2 style="color:#FFF;">Press &amp; Red Carpet Sample Loans</h2>
+            <p class="lead" style="color:#9E9EA8; margin-top:14px;">
+              STACKLY maintains active press showrooms in Paris, New York, and Salem for credentialed stylists, film productions, and editorial shoots.
+            </p>
+            <div style="margin-top:20px; display:grid; gap:12px; font-size:0.92rem; color:#DDD;">
+              <div style="display:flex; gap:10px;"><span style="color:var(--accent);">✦</span> Sample sizes standard sample runway (US 2-4 / IT 38-40) &amp; bespoke alterations</div>
+              <div style="display:flex; gap:10px;"><span style="color:var(--accent);">✦</span> Fast courier shipping with dedicated insured air freight worldwide</div>
+              <div style="display:flex; gap:10px;"><span style="color:var(--accent);">✦</span> Immediate digital lookbook access for authorized agents</div>
+            </div>
+            <div style="margin-top:28px;">
+              <a href="#inquiry" class="btn">Submit Stylist Credentials</a>
+            </div>
+          </div>
+          <div style="border-radius:var(--radius-lg); overflow:hidden; border:1px solid rgba(255,255,255,0.12);">
+            <img src="./images/contact-press.webp" alt="Press Showroom" style="width:100%; height:420px; object-fit:cover;" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: DISCRETION & NON-DISCLOSURE PROTOCOL -->
+    <section class="section" style="background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+      <div class="wrap" style="max-width:860px; text-align:center;">
+        <span class="eyebrow" style="margin-inline:auto;">INTEGRITY &amp; TRUST</span>
+        <h2 style="margin-top:12px;">Our Non-Disclosure Commitment</h2>
+        <p class="lead" style="margin-top:14px;">
+          The House of STACKLY strictly adheres to confidentiality agreements. We never disclose patron identities, measurement archives, private fittings, or custom gala gown sketches to media outlets without written authorization.
+        </p>
+        <div style="margin-top:28px; display:inline-flex; align-items:center; gap:12px; background:var(--ink-card); padding:12px 24px; border-radius:30px; border:1px solid var(--line); font-size:0.9rem; font-weight:600;">
+          <span style="color:var(--accent); font-size:1.2rem;">🔒</span> Certified Sovereign Privacy &amp; Data Security Protocol
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: BOUTIQUE VISIT & CONTACT FAQ ACCORDION -->
+    <section class="section">
+      <div class="wrap" style="max-width:860px;">
+        <div class="section-head section-head--center">
+          <span class="eyebrow">VISITOR INFORMATION</span>
+          <h2>Frequently Asked Questions</h2>
+          <p class="lead">Practical details for planning your private salon consultation or flagship appointment.</p>
+        </div>
+
+        <div style="margin-top:36px; display:grid; gap:16px;">
+          <details style="background:var(--ink-card); padding:20px 24px; border-radius:var(--radius); border:1px solid var(--line); cursor:pointer;">
+            <summary style="font-weight:700; font-size:1.05rem; color:var(--text);">Are walk-in visits accepted at the salons?</summary>
+            <p style="margin-top:12px; font-size:0.92rem; color:var(--text-muted); line-height:1.6;">
+              To ensure uninterrupted attention and personal fitting privacy, all STACKLY boutique suites operate strictly by prior appointment. Same-day appointments may be arranged subject to concierge availability.
+            </p>
+          </details>
+
+          <details style="background:var(--ink-card); padding:20px 24px; border-radius:var(--radius); border:1px solid var(--line); cursor:pointer;">
+            <summary style="font-weight:700; font-size:1.05rem; color:var(--text);">Is there private parking or valet available?</summary>
+            <p style="margin-top:12px; font-size:0.92rem; color:var(--text-muted); line-height:1.6;">
+              Yes. All global flagships, including our Salem Executive Tower, Paris Place Vendôme, and New York Fifth Avenue salons, feature secured underground parking with dedicated valet and private elevator access.
+            </p>
+          </details>
+
+          <details style="background:var(--ink-card); padding:20px 24px; border-radius:var(--radius); border:1px solid var(--line); cursor:pointer;">
+            <summary style="font-weight:700; font-size:1.05rem; color:var(--text);">Can I bring guests or my personal stylist?</summary>
+            <p style="margin-top:12px; font-size:0.92rem; color:var(--text-muted); line-height:1.6;">
+              We welcome your trusted companions, personal stylists, or bridal party members. Our fitting salons accommodate up to six guests comfortably with champagne and tea service.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: DIRECT LIVE CONCIERGE WHATSAPP WIDGET CARD -->
+    <section class="section" style="background:var(--paper-2); border-top:1px solid var(--line);">
+      <div class="wrap text-center" style="max-width:760px; margin-inline:auto; text-align:center;">
+        <span class="eyebrow" style="margin-inline:auto;">INSTANT CONVERSATION</span>
+        <h2 style="margin-top:12px;">Prefer Direct WhatsApp Messaging?</h2>
+        <p class="lead" style="margin-top:14px;">
+          Connect instantly with our on-duty salon director for real-time fabric questions, fit advice, or rapid reservation assistance.
+        </p>
+        <div style="margin-top:28px;">
+          <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" class="btn" style="background:#25D366; color:#FFF; border-color:#25D366;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block; vertical-align:middle; margin-right:8px;"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+            Chat with Live Concierge (+91 98765 43210)
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MASTER FOOTER (Exact Match to User Screenshot 2) -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <!-- Col 1: STACKLY logo, paragraph, social icons -->
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <img src="./images/logo-footer-white.webp" alt="STACKLY" class="footer-logo-img" />
+          </a>
+          <p>
+            Premier strategic business advisory firm empowering enterprise leaders with actionable intelligence and sustainable scale.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-icon" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" class="footer-social-icon" aria-label="Twitter"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+            <a href="#" class="footer-social-icon" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./services.html">Services</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Practice Areas (Exact from screenshot 2) -->
+        <div class="footer-col">
+          <h4>Practice Areas</h4>
+          <ul>
+            <li><a href="./services.html">Corporate Strategy</a></li>
+            <li><a href="./services.html">M&amp;A Deal Advisory</a></li>
+            <li><a href="./services.html">Financial Restructuring</a></li>
+            <li><a href="./services.html">Operations Scaling</a></li>
+            <li><a href="./services.html">Board Governance</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Global Head Office (Exact from screenshot 2) -->
+        <div class="footer-col">
+          <h4>Global Head Office</h4>
+          <div class="footer-office-info">
+            <div class="footer-info-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>MMR Complex, Executive Tower, Salem, TN 636008</span>
+            </div>
+            <div class="footer-info-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              <span>+91 98765 43210</span>
+            </div>
+            <div class="footer-info-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <span>advisory@stackly.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Stackly Business Advisory. All rights reserved. Confidentiality &amp; Non-Disclosure Protected.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STACKLY | Haute Couture &amp; Boutique Dashboard</title>
+  <meta name="description" content="STACKLY Role-Based Boutique Dashboard — Bespoke Fittings, Wardrobe Suite, and Atelier Operations Console." />
+  <link rel="icon" href="./favicon.webp" type="image/webp" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="./css/auth-dash.css" />
+</head>
+
+<body class="dash-body">
+  <!-- TOP BAR -->
+  <header class="dash-topbar">
+    <div class="dash-topbar-left">
+      <a href="index.html" class="dash-brand" aria-label="STACKLY Home">
+        <img src="./images/logo-footer-pink.webp" alt="STACKLY" class="dash-brand-logo-img" style="height: 28px; width: auto; display: block;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div style="display:none; align-items:center; gap:8px;">
+          <svg class="dash-brand-icon" viewBox="0 0 24 24" fill="none" stroke="#FFD1DC" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg>
+          <span class="dash-brand-name">STACKLY</span>
+        </div>
+      </a>
+      <span class="dash-role-badge" id="role-badge">
+        <span class="badge-dot"></span>
+        <span id="role-badge-text">VIP CLIENT</span>
+      </span>
+    </div>
+
+    <div class="dash-topbar-right">
+      <div class="dash-user-identity">
+        <span id="user-display-email">lingalamanasa123@gmail.com</span>
+        <div class="dash-user-avatar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="dash-shell">
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar">
+      <div>
+        <div class="sidebar-section-title" id="sidebar-section-heading">YOUR ATELIER SUITE</div>
+        <nav class="sidebar-menu" id="sidebar-menu-list">
+          <!-- Populated dynamically based on role -->
+        </nav>
+      </div>
+
+      <!-- User Profile at bottom -->
+      <div class="sidebar-profile-card">
+        <div class="profile-card-top">
+          <div class="profile-avatar-circle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </div>
+          <div class="profile-card-meta">
+            <div class="profile-card-name" id="sidebar-profile-name">Lingalamanasa123</div>
+            <div class="profile-card-email" id="sidebar-profile-email">lingalamanasa123@gmail.com</div>
+          </div>
+        </div>
+        <a href="login.html" class="sidebar-logout-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>LOGOUT</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT VIEW -->
+    <main class="dash-content">
+      <!-- ====================================================================
+           1. USER: MY WARDROBE & ORDERS (4 SECTIONS)
+           ==================================================================== -->
+      <section id="page-user-wardrobe" class="dash-subpage active" aria-labelledby="heading-user-wardrobe">
+        <!-- Section 1: Header Banner & Filters -->
+        <div class="dash-header-banner">
+          <div>
+            <div class="dash-eyebrow">01 · ATELIER WARDROBE</div>
+            <h1 class="dash-title" id="heading-user-wardrobe">Garments crafted for you, and your next fitting</h1>
+            <p class="dash-subtitle">A personal archive of your bespoke couture pieces, runway reservations, and private salon fittings.</p>
+          </div>
+          <button type="button" class="dash-action-btn" onclick="navigateToTab('user', 'fittings')">
+            <span>BOOK BESPOKE FITTING</span> &rarr;
+          </button>
+        </div>
+
+        <!-- Section 2: 4 Key Metric Cards -->
+        <div class="dash-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-card-top">
+              <div class="metric-label-group">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span>COUTURE PIECES</span>
+              </div>
+            </div>
+            <div class="metric-number">7</div>
+            <div class="metric-caption">Custom garments tailored in your private collection.</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-top">
+              <div class="metric-label-group">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>ATELIERS VISITED</span>
+              </div>
+            </div>
+            <div class="metric-number">4</div>
+            <div class="metric-caption">Private salons in Salem, Paris, Milan &amp; New York.</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-top">
+              <div class="metric-label-group">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>RESERVED LOOKS</span>
+              </div>
+            </div>
+            <div class="metric-number">12</div>
+            <div class="metric-caption">Runway styles reserved for upcoming galas &amp; events.</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-top">
+              <div class="metric-label-group">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span>VIP POINTS</span>
+              </div>
+            </div>
+            <div class="metric-number">4,850</div>
+            <div class="metric-caption">Diamond tier VIP complimentary tailoring balance.</div>
+          </div>
+        </div>
+
+        <!-- 2-Column Lower Grid -->
+        <div class="dash-grid-2col">
+          <!-- Section 3: Recent Couture Orders -->
+          <div class="dash-panel">
+            <div class="panel-header">
+              <div class="panel-title">Recent couture orders</div>
+              <div class="panel-subtitle">Last 4 acquisitions</div>
+            </div>
+            <div class="journeys-list">
+              <div class="journey-item">
+                <div class="journey-left">
+                  <div class="journey-icon-wrap" style="background:#FEF3C7;color:#D97706;">👗</div>
+                  <div>
+                    <div class="journey-name">The Obsidian Silk Evening Gown</div>
+                    <div class="journey-meta">
+                      <span>Aug 2026</span> &bull; <span>Mulberry Silk</span> &bull; <span>Size S</span>
+                    </div>
+                  </div>
+                </div>
+                <span class="journey-status-pill upcoming">IN ATELIER</span>
+              </div>
+
+              <div class="journey-item">
+                <div class="journey-left">
+                  <div class="journey-icon-wrap" style="background:#E0F2FE;color:#0369A1;">🧥</div>
+                  <div>
+                    <div class="journey-name">Double-Breasted Cashmere Blazer</div>
+                    <div class="journey-meta">
+                      <span>Jul 2026</span> &bull; <span>Mongolian Cashmere</span> &bull; <span>Custom Fit</span>
+                    </div>
+                  </div>
+                </div>
+                <span class="journey-status-pill">DELIVERED</span>
+              </div>
+
+              <div class="journey-item">
+                <div class="journey-left">
+                  <div class="journey-icon-wrap" style="background:#FCE7F3;color:#BE185D;">✨</div>
+                  <div>
+                    <div class="journey-name">Champagne Pleated Chiffon Dress</div>
+                    <div class="journey-meta">
+                      <span>Apr 2026</span> &bull; <span>French Lurex Silk</span> &bull; <span>Size M</span>
+                    </div>
+                  </div>
+                </div>
+                <span class="journey-status-pill">DELIVERED</span>
+              </div>
+
+              <div class="journey-item">
+                <div class="journey-left">
+                  <div class="journey-icon-wrap" style="background:#E8F5E9;color:#2E7D32;">👘</div>
+                  <div>
+                    <div class="journey-name">Hand-Embroidered Velvet Kimono</div>
+                    <div class="journey-meta">
+                      <span>Feb 2026</span> &bull; <span>Kyoto Silk Velvet</span> &bull; <span>Standard Fit</span>
+                    </div>
+                  </div>
+                </div>
+                <span class="journey-status-pill">DELIVERED</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Bespoke Gown In Progress Pipeline -->
+          <div class="dash-panel">
+            <div class="panel-title">Bespoke gown in progress</div>
+            <div class="panel-subtitle" style="margin-top:4px;margin-bottom:18px;">A crafting snapshot for your Autumn Gala gown.</div>
+
+            <div class="progress-list">
+              <div>
+                <div class="progress-row-header">
+                  <span>Fabric selection &amp; draping</span>
+                  <span>100%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="progress-row-header">
+                  <span>Muslin fitting &amp; adjustments</span>
+                  <span>82%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 82%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="progress-row-header">
+                  <span>Hand embroidery &amp; beading</span>
+                  <span>60%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 60%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="progress-row-header">
+                  <span>Final press &amp; gala delivery</span>
+                  <span>35%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 35%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <button type="button" class="trip-plan-btn" onclick="navigateToTab('user', 'fittings')">
+              VIEW FITTING SCHEDULE &rarr;
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           2. USER: BESPOKE FITTINGS (4 SECTIONS)
+           ==================================================================== -->
+      <section id="page-user-fittings" class="dash-subpage" aria-labelledby="heading-user-fittings">
+        <!-- Section 1: Header Banner -->
+        <div class="dash-header-banner">
+          <div>
+            <div class="dash-eyebrow">02 · PRIVATE ATELIER SUITES</div>
+            <h1 class="dash-title" id="heading-user-fittings">Bespoke Fitting Appointments &amp; Tailoring Suites</h1>
+            <p class="dash-subtitle">Schedule private sessions in our Salem flagship salon or international suites in Paris, Milan &amp; New York.</p>
+          </div>
+          <button type="button" class="dash-action-btn" onclick="alert('Booking private fitting suite at STACKLY Salem Flagship...');">
+            <span>BOOK NEW SUITE SESSION</span> &rarr;
+          </button>
+        </div>
+
+        <!-- Section 2: 4 Fitting Stats -->
+        <div class="dash-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-card-top">
+              <div class="metric-label-group"><span>UPCOMING FITTINGS</span></div>
+              <span class="metric-badge">Confirmed</span>
+            </div>
+            <div class="metric-number">2</div>
+            <div class="metric-caption">Sessions scheduled in Salem and Paris salons.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>COMPLETED FITTINGS</span></div></div>
+            <div class="metric-number">8</div>
+            <div class="metric-caption">Perfect silhouettes achieved this year.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>ALTERATION SPECS</span></div></div>
+            <div class="metric-number">14</div>
+            <div class="metric-caption">Custom pattern modifications archived.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>SALON SUITES ACCESS</span></div></div>
+            <div class="metric-number">4</div>
+            <div class="metric-caption">Global VIP access to private dressing suites.</div>
+          </div>
+        </div>
+
+        <!-- Section 3: Upcoming Fitting Appointments Grid -->
+        <div class="dash-panel" style="margin-bottom: 24px;">
+          <div class="panel-header">
+            <div class="panel-title">Confirmed Salon Appointments</div>
+            <div class="panel-subtitle">Upcoming 30 Days</div>
+          </div>
+          <div class="dash-grid-3col">
+            <div class="status-mini-card" style="background:#FFFFFF;border:1.5px solid #E5E0D8;">
+              <div class="status-mini-top">
+                <span class="status-mini-label">SALEM FLAGSHIP SUITE</span>
+                <span class="status-pill ok">● OCT 14</span>
+              </div>
+              <div style="font-weight:700;font-size:1.05rem;color:var(--dash-text-dark);margin-top:4px;">Autumn Gala Final Draping</div>
+              <div style="font-size:0.8rem;color:var(--dash-text-muted);margin-top:4px;">2:00 PM – 3:30 PM • Master Tailor Marco</div>
+              <div style="margin-top:14px;display:flex;gap:8px;">
+                <button type="button" class="table-pill-btn" onclick="alert('Rescheduling appointment request sent.');">Reschedule</button>
+                <button type="button" class="table-pill-btn" style="background: linear-gradient(135deg, #D47A88 0%, #B82E55 100%); color: #fff; border-color: #B82E55;" onclick="alert('Appointment details confirmed.');">View Suite Pass</button>
+              </div>
+            </div>
+
+            <div class="status-mini-card" style="background:#FFFFFF;border:1.5px solid #E5E0D8;">
+              <div class="status-mini-top">
+                <span class="status-mini-label">PARIS MONTAIGNE ATELIER</span>
+                <span class="status-pill ok">● NOV 02</span>
+              </div>
+              <div style="font-weight:700;font-size:1.05rem;color:var(--dash-text-dark);margin-top:4px;">Cashmere Blazer Sleeve Adjustment</div>
+              <div style="font-size:0.8rem;color:var(--dash-text-muted);margin-top:4px;">11:30 AM – 1:00 PM • Stylist Amélie</div>
+              <div style="margin-top:14px;display:flex;gap:8px;">
+                <button type="button" class="table-pill-btn" onclick="alert('Rescheduling appointment request sent.');">Reschedule</button>
+                <button type="button" class="table-pill-btn" style="background: linear-gradient(135deg, #D47A88 0%, #B82E55 100%); color: #fff; border-color: #B82E55;" onclick="alert('Appointment details confirmed.');">View Suite Pass</button>
+              </div>
+            </div>
+
+            <div class="status-mini-card" style="background:#FFFFFF;border:1.5px solid #E5E0D8;">
+              <div class="status-mini-top">
+                <span class="status-mini-label">MILAN GALLERIA SUITE</span>
+                <span class="status-pill pending">● DEC 18</span>
+              </div>
+              <div style="font-weight:700;font-size:1.05rem;color:var(--dash-text-dark);margin-top:4px;">Silk Charmeuse Gown Hemming</div>
+              <div style="font-size:0.8rem;color:var(--dash-text-muted);margin-top:4px;">4:00 PM – 5:15 PM • Senior Fitter Matteo</div>
+              <div style="margin-top:14px;display:flex;gap:8px;">
+                <button type="button" class="table-pill-btn" onclick="alert('Rescheduling appointment request sent.');">Reschedule</button>
+                <button type="button" class="table-pill-btn" style="background: linear-gradient(135deg, #D47A88 0%, #B82E55 100%); color: #fff; border-color: #B82E55;" onclick="alert('Appointment details confirmed.');">View Suite Pass</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4: Tailoring Notes & Signoff History -->
+        <div class="dash-panel">
+          <div class="panel-header">
+            <div class="panel-title">Master Tailor Adjustment Log</div>
+            <div class="panel-subtitle">Archived Silhouette Adjustments</div>
+          </div>
+          <div class="table-responsive">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Garment</th>
+                  <th>Salon</th>
+                  <th>Specification</th>
+                  <th>Master Tailor</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight:700;">Obsidian Silk Evening Gown</td>
+                  <td>Salem Flagship</td>
+                  <td>Cowl drape raised 1.5 cm; train lined in mulberry silk</td>
+                  <td>Marco Valenti</td>
+                  <td><span class="journey-status-pill upcoming">Approved</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;">Cashmere Tailored Blazer</td>
+                  <td>Paris Montaigne</td>
+                  <td>Shoulder pad tapered 0.5 cm; horn buttons gold-plated</td>
+                  <td>Amélie Laurent</td>
+                  <td><span class="journey-status-pill">Completed</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;">Champagne Chiffon Dress</td>
+                  <td>Milan Galleria</td>
+                  <td>Waist stay reinforced with spiral boning</td>
+                  <td>Matteo Rossi</td>
+                  <td><span class="journey-status-pill">Completed</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           3. USER: CURATED WISHLIST (4 SECTIONS)
+           ==================================================================== -->
+      <section id="page-user-wishlist" class="dash-subpage" aria-labelledby="heading-user-wishlist">
+        <!-- Section 1: Header Banner -->
+        <div class="dash-header-banner">
+          <div>
+            <div class="dash-eyebrow">03 · CURATED RUNWAY WISHLIST</div>
+            <h1 class="dash-title" id="heading-user-wishlist">Your Reserved Silhouettes &amp; Atelier Wishlist</h1>
+            <p class="dash-subtitle">Pieces shortlisted by you and your personal stylist for upcoming seasons, galas, and bespoke commissions.</p>
+          </div>
+          <button type="button" class="dash-action-btn" onclick="alert('Private viewing trunk show requested for your saved pieces.');">
+            <span>REQUEST TRUNK SHOW VIEWING</span> &rarr;
+          </button>
+        </div>
+
+        <!-- Section 2: 4 Wishlist Metrics -->
+        <div class="dash-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>SAVED PIECES</span></div></div>
+            <div class="metric-number">4</div>
+            <div class="metric-caption">Ready for bespoke salon ordering.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>FABRIC SWATCHES</span></div><span class="metric-badge">En Route</span></div>
+            <div class="metric-number">3</div>
+            <div class="metric-caption">Silk and velvet swatches mailed to your residence.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>RESERVED RUNWAY</span></div></div>
+            <div class="metric-number">2</div>
+            <div class="metric-caption">Pre-allocated before public release.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>ESTIMATED VALUE</span></div></div>
+            <div class="metric-number">$7,650</div>
+            <div class="metric-caption">Complimentary VIP alteration package included.</div>
+          </div>
+        </div>
+
+        <!-- Section 3: 4-Item Curated Wishlist Grid -->
+        <div class="dash-grid-3col">
+          <div class="wish-card">
+            <img src="./images/prod-1.webp" alt="The Obsidian Silk Evening Gown" class="wish-card-img" />
+            <div class="wish-card-body">
+              <div>
+                <span class="journey-status-pill" style="margin-bottom:8px;display:inline-block;">Evening Couture</span>
+                <h3 style="font-size:1.05rem;font-weight:700;color:var(--dash-text-dark);">The Obsidian Silk Evening Gown</h3>
+                <p style="font-size:0.8rem;color:var(--dash-text-muted);margin-top:4px;">100% Grade 6A Mulberry Silk • Como, Italy</p>
+                <div style="font-weight:800;font-size:1.15rem;margin-top:8px;">$2,450</div>
+              </div>
+              <div style="margin-top:16px;display:flex;gap:8px;">
+                <button type="button" class="dash-action-btn" style="flex:1;padding:10px;justify-content:center;" onclick="alert('Added to your active bespoke fitting queue.');">Order Bespoke</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="wish-card">
+            <img src="./images/prod-2.webp" alt="Double-Breasted Cashmere Blazer" class="wish-card-img" />
+            <div class="wish-card-body">
+              <div>
+                <span class="journey-status-pill" style="margin-bottom:8px;display:inline-block;">Tailored Outerwear</span>
+                <h3 style="font-size:1.05rem;font-weight:700;color:var(--dash-text-dark);">Double-Breasted Cashmere Blazer</h3>
+                <p style="font-size:0.8rem;color:var(--dash-text-muted);margin-top:4px;">100% Organic Mongolian Cashmere • Gilded Buttons</p>
+                <div style="font-weight:800;font-size:1.15rem;margin-top:8px;">$1,850</div>
+              </div>
+              <div style="margin-top:16px;display:flex;gap:8px;">
+                <button type="button" class="dash-action-btn" style="flex:1;padding:10px;justify-content:center;" onclick="alert('Added to your active bespoke fitting queue.');">Order Bespoke</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="wish-card">
+            <img src="./images/prod-3.webp" alt="Champagne Pleated Chiffon Dress" class="wish-card-img" />
+            <div class="wish-card-body">
+              <div>
+                <span class="journey-status-pill" style="margin-bottom:8px;display:inline-block;">Cocktail Dresses</span>
+                <h3 style="font-size:1.05rem;font-weight:700;color:var(--dash-text-dark);">Champagne Pleated Chiffon Dress</h3>
+                <p style="font-size:0.8rem;color:var(--dash-text-muted);margin-top:4px;">Sunray Pleating • Lyon Silk-Lurex Chiffon</p>
+                <div style="font-weight:800;font-size:1.15rem;margin-top:8px;">$2,100</div>
+              </div>
+              <div style="margin-top:16px;display:flex;gap:8px;">
+                <button type="button" class="dash-action-btn" style="flex:1;padding:10px;justify-content:center;" onclick="alert('Added to your active bespoke fitting queue.');">Order Bespoke</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="wish-card">
+            <img src="./images/prod-8.webp" alt="Architectural Boned Corset Bustier" class="wish-card-img" />
+            <div class="wish-card-body">
+              <div>
+                <span class="journey-status-pill" style="margin-bottom:8px;display:inline-block;">Corsetry &amp; Tops</span>
+                <h3 style="font-size:1.05rem;font-weight:700;color:var(--dash-text-dark);">Architectural Boned Corset Bustier</h3>
+                <p style="font-size:0.8rem;color:var(--dash-text-muted);margin-top:4px;">Spiral Steel Boning • French Chantilly Lace</p>
+                <div style="font-weight:800;font-size:1.15rem;margin-top:8px;">$1,250</div>
+              </div>
+              <div style="margin-top:16px;display:flex;gap:8px;">
+                <button type="button" class="dash-action-btn" style="flex:1;padding:10px;justify-content:center;" onclick="alert('Added to your active bespoke fitting queue.');">Order Bespoke</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4: Stylist Pairing Notes -->
+        <div class="dash-panel">
+          <div class="panel-header">
+            <div class="panel-title">Stylist Curation &amp; Pairing Notes</div>
+            <div class="panel-subtitle">By Elena Rossi, Head VIP Stylist</div>
+          </div>
+          <div style="line-height:1.7;color:var(--dash-text-dark);font-size:0.9rem;">
+            <p><strong>Recommendation for Autumn Season:</strong> The <em>Obsidian Silk Gown</em> pairs exceptionally with our <em>Mongolian Cashmere Blazer</em> for evening transitions. We have placed the matching Silk Chiffon Scarf on reserve for your fitting in Salem next month. Fabric sample swatch book (Grade 6A Mulberry Silk &amp; Velvet) was dispatched to your address.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           4. USER: STYLIST SESSIONS (4 SECTIONS)
+           ==================================================================== -->
+      <section id="page-user-stylist" class="dash-subpage" aria-labelledby="heading-user-stylist">
+        <!-- Section 1: Header Banner -->
+        <div class="dash-header-banner">
+          <div>
+            <div class="dash-eyebrow">04 · VIP SARTORIAL ADVISORY</div>
+            <h1 class="dash-title" id="heading-user-stylist">Private Stylist Sessions &amp; Runway Lookbooks</h1>
+            <p class="dash-subtitle">Collaborate 1-on-1 with your dedicated Haute Couture stylist for gala ensembles, red carpet curation, and wardrobe capsule planning.</p>
+          </div>
+          <button type="button" class="dash-action-btn" onclick="alert('Scheduling video or in-salon stylist session with Elena Rossi...');">
+            <span>SCHEDULE STYLIST CONSULTATION</span> &rarr;
+          </button>
+        </div>
+
+        <!-- Section 2: 4 Stylist Stats -->
+        <div class="dash-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>ASSIGNED STYLIST</span></div><span class="metric-badge">Senior Director</span></div>
+            <div class="metric-number" style="font-size:1.6rem;margin-top:4px;">Elena Rossi</div>
+            <div class="metric-caption">Atelier Paris &amp; Salem Specialist.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>HOURS CONSULTED</span></div></div>
+            <div class="metric-number">18h</div>
+            <div class="metric-caption">One-on-one styling guidance this season.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>LOOKBOOKS GENERATED</span></div></div>
+            <div class="metric-number">5</div>
+            <div class="metric-caption">Personalized runway palettes prepared.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>GALAS CURATED</span></div></div>
+            <div class="metric-number">3</div>
+            <div class="metric-caption">Signature bespoke gowns designed.</div>
+          </div>
+        </div>
+
+        <!-- Section 3: Active Lookbooks Grid -->
+        <div class="dash-panel" style="margin-bottom:24px;">
+          <div class="panel-header">
+            <div class="panel-title">Curated Personal Lookbooks</div>
+            <div class="panel-subtitle">Autumn / Winter Edition</div>
+          </div>
+          <div class="dash-grid-3col">
+            <div class="status-mini-card" style="background:#FAF7F0;border:1px solid #E5E0D8;">
+              <span class="status-pill ok">● READY</span>
+              <h4 style="font-size:1rem;margin-top:8px;">The Black-Tie Gala Capsule</h4>
+              <p style="font-size:0.78rem;color:var(--dash-text-muted);margin-top:4px;">Obsidian Mulberry Silk, Champagne Pearl Lurex, and liquid silk capelets for December galas.</p>
+              <button type="button" class="table-pill-btn" style="margin-top:12px;" onclick="alert('Opening Lookbook PDF dossier...');">Open Lookbook &rarr;</button>
+            </div>
+
+            <div class="status-mini-card" style="background:#FAF7F0;border:1px solid #E5E0D8;">
+              <span class="status-pill ok">● READY</span>
+              <h4 style="font-size:1rem;margin-top:8px;">Executive Tailored Power</h4>
+              <p style="font-size:0.78rem;color:var(--dash-text-muted);margin-top:4px;">Double-breasted Mongolian cashmere blazer, silk faille trousers, and horn closures.</p>
+              <button type="button" class="table-pill-btn" style="margin-top:12px;" onclick="alert('Opening Lookbook PDF dossier...');">Open Lookbook &rarr;</button>
+            </div>
+
+            <div class="status-mini-card" style="background:#FAF7F0;border:1px solid #E5E0D8;">
+              <span class="status-pill pending">● IN DRAFT</span>
+              <h4 style="font-size:1rem;margin-top:8px;">Riviera Summer Silk Retreat</h4>
+              <p style="font-size:0.78rem;color:var(--dash-text-muted);margin-top:4px;">Emerald cowl satin slip dresses and hand-embroidered velvet lounging kimonos.</p>
+              <button type="button" class="table-pill-btn" style="margin-top:12px;" onclick="alert('Opening draft preview...');">Preview Draft &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4: Direct Stylist Notes & Chat Feed -->
+        <div class="dash-panel">
+          <div class="panel-header">
+            <div class="panel-title">Stylist Message Channel</div>
+            <div class="panel-subtitle">Direct Atelier Communication</div>
+          </div>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-left">
+                <div class="activity-icon" style="background:#FEF3C7;color:#B45309;">💬</div>
+                <div>
+                  <div class="activity-title">Elena Rossi (Head Stylist)</div>
+                  <div class="activity-desc">"I've added the French Chantilly lace corset to your wishlist for the October fitting. The boning will enhance the waistline of the Obsidian gown seamlessly."</div>
+                </div>
+              </div>
+              <div class="activity-time">Yesterday, 4:15 PM</div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-left">
+                <div class="activity-icon" style="background:#E0F2FE;color:#0369A1;">✓</div>
+                <div>
+                  <div class="activity-title">Salem Flagship Concierge</div>
+                  <div class="activity-desc">"Your private fitting suite has been reserved with chilled champagne and custom footwear pairings."</div>
+                </div>
+              </div>
+              <div class="activity-time">Sep 26, 11:20 AM</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           5. USER: VIP MEASUREMENTS (4 SECTIONS)
+           ==================================================================== -->
+      <section id="page-user-measurements" class="dash-subpage" aria-labelledby="heading-user-measurements">
+        <!-- Section 1: Header Banner -->
+        <div class="dash-header-banner">
+          <div>
+            <div class="dash-eyebrow">05 · ANATOMICAL BESPOKE PROFILE</div>
+            <h1 class="dash-title" id="heading-user-measurements">Your Master Anatomical Measurements &amp; Fit Specs</h1>
+            <p class="dash-subtitle">Digitally scanned and verified by master patternmakers across Salem, Paris, and Milan ateliers for zero-tolerance precision tailoring.</p>
+          </div>
+          <button type="button" class="dash-action-btn" onclick="alert('Requesting complimentary in-salon 3D anatomical laser scan...');">
+            <span>REQUEST 3D RE-SCAN</span> &rarr;
+          </button>
+        </div>
+
+        <!-- Section 2: 4 Fit Metrics -->
+        <div class="dash-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>PATTERN STATUS</span></div><span class="metric-badge">Verified</span></div>
+            <div class="metric-number" style="font-size:1.6rem;margin-top:4px;">Digitized 3D</div>
+            <div class="metric-caption">Master sloper archived on file.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>LAST RE-MEASURED</span></div></div>
+            <div class="metric-number">14 Days</div>
+            <div class="metric-caption">Salem Flagship Salon session.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>TAILOR PRECISION</span></div></div>
+            <div class="metric-number">99.8%</div>
+            <div class="metric-caption">Zero alteration discrepancy rate.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>SAVED FIT PROFILES</span></div></div>
+            <div class="metric-number">2</div>
+            <div class="metric-caption">Evening Gown &amp; Tailored Suiting profiles.</div>
+          </div>
+        </div>
+
+        <!-- Section 3: Anatomical Measurement Matrix (8 Points) -->
+        <div class="dash-panel" style="margin-bottom: 24px;">
+          <div class="panel-header">
+            <div class="panel-title">Couture Sizing Matrix (Evening Wear Silhouette)</div>
+            <div class="panel-subtitle">Tolerance: &plusmn; 0.2 cm</div>
+          </div>
+          <div class="measurements-grid">
+            <div class="measure-box">
+              <div class="measure-label">Bust Circumference</div>
+              <div class="measure-val">34.5<span class="measure-cm">in (87.6 cm)</span></div>
+            </div>
+            <div class="measure-box">
+              <div class="measure-label">Underbust Band</div>
+              <div class="measure-val">29.0<span class="measure-cm">in (73.7 cm)</span></div>
+            </div>
+            <div class="measure-box">
+              <div class="measure-label">Natural Waist</div>
+              <div class="measure-val">26.5<span class="measure-cm">in (67.3 cm)</span></div>
+            </div>
+            <div class="measure-box">
+              <div class="measure-label">High Hip</div>
+              <div class="measure-val">35.0<span class="measure-cm">in (88.9 cm)</span></div>
+            </div>
+            <div class="measure-box">
+              <div class="measure-label">Full Seat / Hip</div>
+              <div class="measure-val">37.5<span class="measure-cm">in (95.2 cm)</span></div>
+            </div>
+            <div class="measure-box">
+              <div class="measure-label">Shoulder Width</div>
+              <div class="measure-val">15.5<span class="measure-cm">in (39.4 cm)</span></div>
+            </div>
+            <div class="measure-box">
+              <div class="measure-label">Sleeve (Nape to Wrist)</div>
+              <div class="measure-val">23.5<span class="measure-cm">in (59.7 cm)</span></div>
+            </div>
+            <div class="measure-box">
+              <div class="measure-label">Floor Inseam (with 4" heel)</div>
+              <div class="measure-val">32.5<span class="measure-cm">in (82.5 cm)</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4: Posture & Draping Preferences -->
+        <div class="dash-panel">
+          <div class="panel-header">
+            <div class="panel-title">Silhouette Preferences &amp; Drape Dynamics</div>
+            <div class="panel-subtitle">Patternmaker Directives</div>
+          </div>
+          <div class="table-responsive">
+            <table class="dash-table">
+              <tbody>
+                <tr>
+                  <td style="font-weight:700;width:240px;">Preferred Hemline Clearance</td>
+                  <td>Floor skimming at 0.5 cm with Christian Louboutin 100 mm pump calibration.</td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;">Corsetry Steel Boning Tension</td>
+                  <td>Comfort medium: Spiral steel on side seams, spring steel on back closure.</td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;">Fabric Sensitivity</td>
+                  <td>Pure natural mulberry silk and organic cashmere only; cupro Bemberg lining preferred.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           6. ADMIN: STORE OVERVIEW (4 SECTIONS)
+           ==================================================================== -->
+      <section id="page-admin-overview" class="dash-subpage" aria-labelledby="heading-admin-overview">
+        <!-- Section 1: Header Banner -->
+        <div class="dash-header-banner">
+          <div>
+            <div class="dash-eyebrow">01 · BOUTIQUE OPERATIONS</div>
+            <h1 class="dash-title" id="heading-admin-overview">Everything happening across STACKLY Ateliers, at a glance</h1>
+            <p class="dash-subtitle">Operational snapshot across global salons. Live inventory tracking, VIP fitting appointments, orders, and boutique revenue.</p>
+          </div>
+          <button type="button" class="dash-action-btn" onclick="alert('Exporting quarterly boutique financial & inventory report (CSV)...');">
+            <span>EXPORT SALES REPORT</span> &rarr;
+          </button>
+        </div>
+
+        <!-- Section 2: 4 Metric Cards -->
+        <div class="dash-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-card-top">
+              <div class="metric-label-group">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span>ACTIVE ORDERS</span>
+              </div>
+              <span class="metric-badge">+3</span>
+            </div>
+            <div class="metric-number">14</div>
+            <div class="metric-caption">Bespoke couture garments currently in atelier production.</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-top">
+              <div class="metric-label-group">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <span>VIP CLIENTS ACTIVE</span>
+              </div>
+              <span class="metric-badge">+12</span>
+            </div>
+            <div class="metric-number">98</div>
+            <div class="metric-caption">Private salon appointments and client suites this month.</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-top">
+              <div class="metric-label-group">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                <span>MASTER TAILORS</span>
+              </div>
+              <span class="metric-badge" style="background:#F3F4F6;color:#6B7280;">0</span>
+            </div>
+            <div class="metric-number">11</div>
+            <div class="metric-caption">Artisans and patternmakers on active commission.</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-top">
+              <div class="metric-label-group">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>ALTERATIONS</span>
+              </div>
+              <span class="metric-badge badge-incident">+1</span>
+            </div>
+            <div class="metric-number">2</div>
+            <div class="metric-caption">Priority express gala fittings requiring stylist attention.</div>
+          </div>
+        </div>
+
+        <!-- Section 3: Revenue Trend & Atelier Status Grid -->
+        <div class="dash-grid-2col">
+          <div class="dash-panel">
+            <div class="panel-header">
+              <div class="panel-title">Boutique revenue &amp; orders trend</div>
+              <div class="panel-subtitle">Last 12 months</div>
+            </div>
+            <div class="chart-container">
+              <svg class="chart-svg" viewBox="0 0 540 180" preserveAspectRatio="none">
+                <line x1="30" y1="20" x2="520" y2="20" stroke="#EAE6DE" stroke-width="1" />
+                <line x1="30" y1="60" x2="520" y2="60" stroke="#EAE6DE" stroke-width="1" />
+                <line x1="30" y1="100" x2="520" y2="100" stroke="#EAE6DE" stroke-width="1" />
+                <line x1="30" y1="140" x2="520" y2="140" stroke="#EAE6DE" stroke-width="1" />
+                <line x1="30" y1="170" x2="520" y2="170" stroke="#EAE6DE" stroke-width="1" />
+                <text x="5" y="24" fill="#9CA3AF" font-size="10" font-family="Plus Jakarta Sans">$120k</text>
+                <text x="8" y="64" fill="#9CA3AF" font-size="10" font-family="Plus Jakarta Sans">$90k</text>
+                <text x="8" y="104" fill="#9CA3AF" font-size="10" font-family="Plus Jakarta Sans">$60k</text>
+                <text x="8" y="144" fill="#9CA3AF" font-size="10" font-family="Plus Jakarta Sans">$30k</text>
+                <text x="14" y="174" fill="#9CA3AF" font-size="10" font-family="Plus Jakarta Sans">$0</text>
+                <path d="M 40 145 C 100 138, 160 128, 220 120 C 300 110, 380 98, 440 85 C 470 78, 500 70, 520 68" fill="none" stroke="#F472B6" stroke-width="2.2" stroke-dasharray="5 4" />
+                <path d="M 40 135 C 100 120, 160 102, 220 90 C 290 76, 360 62, 430 48 C 470 40, 500 32, 518 30" fill="none" stroke="#B82E55" stroke-width="2.5" />
+                <circle cx="518" cy="30" r="4.5" fill="#B82E55" />
+              </svg>
+            </div>
+            <div class="chart-legend">
+              <div class="legend-item"><span class="legend-line-solid"></span><span>Revenue ($)</span></div>
+              <div class="legend-item"><span class="legend-line-dashed"></span><span>Bespoke Orders</span></div>
+            </div>
+          </div>
+
+          <div class="dash-panel">
+            <div class="panel-header">
+              <div class="panel-title">Atelier status</div>
+              <div class="panel-subtitle">Live &bull; today</div>
+            </div>
+            <div class="status-2x2-grid">
+              <div class="status-mini-card">
+                <div class="status-mini-top"><span class="status-mini-label">FULFILLMENT</span><span class="status-pill ok">● OK</span></div>
+                <div class="status-mini-val">100%</div>
+                <div class="status-mini-desc">All bespoke deliveries on schedule.</div>
+              </div>
+              <div class="status-mini-card">
+                <div class="status-mini-top"><span class="status-mini-label">FABRIC IMPORTS</span><span class="status-pill pending">● PENDING</span></div>
+                <div class="status-mini-val">4</div>
+                <div class="status-mini-desc">Como silk awaiting salon intake.</div>
+              </div>
+              <div class="status-mini-card">
+                <div class="status-mini-top"><span class="status-mini-label">FITTING SUITES</span><span class="status-pill ok">● OK</span></div>
+                <div class="status-mini-val">11/12</div>
+                <div class="status-mini-desc">Private suites booked today.</div>
+              </div>
+              <div class="status-mini-card">
+                <div class="status-mini-top"><span class="status-mini-label">SILK STOCK</span><span class="status-pill monitoring">● MONITORING</span></div>
+                <div class="status-mini-val" style="font-size:1.15rem;">Watch</div>
+                <div class="status-mini-desc">Grade 6A Mulberry silk arriving.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4: Salon Performance & Recent Activity -->
+        <div class="dash-bottom-grid">
+          <div class="dash-panel">
+            <div class="panel-header"><div class="panel-title">Salon performance</div><div class="panel-subtitle">Occupancy this month</div></div>
+            <div class="progress-list">
+              <div>
+                <div class="progress-row-header"><span>Salem Flagship Salon</span><span style="font-weight:700;">92%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width: 92%; background: linear-gradient(90deg, #D47A88, #B82E55);"></div></div>
+              </div>
+              <div>
+                <div class="progress-row-header"><span>Paris Montaigne Suite</span><span style="font-weight:700;">88%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width: 88%; background: linear-gradient(90deg, #E27396, #C43862);"></div></div>
+              </div>
+              <div>
+                <div class="progress-row-header"><span>Milan Galleria Atelier</span><span style="font-weight:700;">74%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width: 74%; background: linear-gradient(90deg, #F472B6, #D47A88);"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-panel">
+            <div class="panel-header"><div class="panel-title">Recent boutique activity</div><div class="panel-subtitle">Last 24 hours</div></div>
+            <div class="activity-list">
+              <div class="activity-item">
+                <div class="activity-left">
+                  <div class="activity-icon">💎</div>
+                  <div>
+                    <div class="activity-title">VIP Order placed &bull; Salem Flagship</div>
+                    <div class="activity-desc">The Obsidian Silk Evening Gown &bull; Gold Tier VIP</div>
+                  </div>
+                </div>
+                <div class="activity-time">12m ago</div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-left">
+                  <div class="activity-icon" style="background:#E0F2FE;color:#0369A1;">✂️</div>
+                  <div>
+                    <div class="activity-title">Couture Fitting Confirmed &bull; Paris</div>
+                    <div class="activity-desc">Private appointment confirmed for Autumn Gala lookbook</div>
+                  </div>
+                </div>
+                <div class="activity-time">1h ago</div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-left">
+                  <div class="activity-icon" style="background:#FEF3C7;color:#B45309;">🪡</div>
+                  <div>
+                    <div class="activity-title">Master Tailor Commissioned</div>
+                    <div class="activity-desc">Elena M. assigned to Double-Breasted Cashmere Blazer series</div>
+                  </div>
+                </div>
+                <div class="activity-time">3h ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           7. ADMIN: BOUTIQUE CATALOG (4 SECTIONS)
+           ==================================================================== -->
+      <section id="page-admin-catalog" class="dash-subpage" aria-labelledby="heading-admin-catalog">
+        <!-- Section 1: Header Banner -->
+        <div class="dash-header-banner">
+          <div>
+            <div class="dash-eyebrow">02 · COUTURE COLLECTION CATALOG</div>
+            <h1 class="dash-title" id="heading-admin-catalog">Atelier Garment Inventory &amp; Capsule Registry</h1>
+            <p class="dash-subtitle">Manage SKUs, custom silk drapings, pricing tiers, and global boutique distribution.</p>
+          </div>
+          <button type="button" class="dash-action-btn" onclick="alert('Opening new couture silhouette creation modal...');">
+            <span>ADD NEW RUNWAY PIECE</span> &rarr;
+          </button>
+        </div>
+
+        <!-- Section 2: 4 Catalog Metrics -->
+        <div class="dash-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>TOTAL ACTIVE SKUS</span></div></div>
+            <div class="metric-number">28</div>
+            <div class="metric-caption">Couture silhouettes across 4 salons.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>READY-TO-WEAR STOCK</span></div></div>
+            <div class="metric-number">142</div>
+            <div class="metric-caption">Hand-finished units ready for delivery.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>BESPOKE SLOPERS</span></div></div>
+            <div class="metric-number">18</div>
+            <div class="metric-caption">Exclusive patron pattern blocks.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>CAPSULE EDITIONS</span></div><span class="metric-badge">Live</span></div>
+            <div class="metric-number">4</div>
+            <div class="metric-caption">Autumn / Winter Haute Couture.</div>
+          </div>
+        </div>
+
+        <!-- Section 3: Master Garment Table -->
+        <div class="dash-panel" style="margin-bottom:24px;">
+          <div class="panel-header">
+            <div class="panel-title">Master Atelier Collection Inventory</div>
+            <div class="panel-subtitle">Displaying 4 Featured Couture Items</div>
+          </div>
+          <div class="table-responsive">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Garment Name</th>
+                  <th>Category</th>
+                  <th>Fabric &amp; Origin</th>
+                  <th>Price</th>
+                  <th>Inventory Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight:700;">The Obsidian Silk Evening Gown</td>
+                  <td>Maxi Gowns</td>
+                  <td>Grade 6A Mulberry Silk (Como, Italy)</td>
+                  <td style="font-weight:800;">$2,450</td>
+                  <td><span class="journey-status-pill upcoming">In Stock (12)</span></td>
+                  <td><button type="button" class="table-pill-btn" onclick="alert('Editing Obsidian Silk Gown SKU...');">Edit</button></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;">Double-Breasted Cashmere Blazer</td>
+                  <td>Tailored Outerwear</td>
+                  <td>Mongolian Organic Cashmere &amp; Cupro</td>
+                  <td style="font-weight:800;">$1,850</td>
+                  <td><span class="journey-status-pill pending" style="background:#FEF3C7;color:#B45309;">Low Stock (3)</span></td>
+                  <td><button type="button" class="table-pill-btn" onclick="alert('Editing Cashmere Blazer SKU...');">Edit</button></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;">Champagne Pleated Chiffon Dress</td>
+                  <td>Cocktail Dresses</td>
+                  <td>Silk-Lurex Chiffon (Lyon, France)</td>
+                  <td style="font-weight:800;">$2,100</td>
+                  <td><span class="journey-status-pill upcoming">In Stock (8)</span></td>
+                  <td><button type="button" class="table-pill-btn" onclick="alert('Editing Chiffon Dress SKU...');">Edit</button></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;">Architectural Boned Corset Bustier</td>
+                  <td>Corsetry &amp; Tops</td>
+                  <td>Duchesse Satin &amp; Chantilly Lace</td>
+                  <td style="font-weight:800;">$1,250</td>
+                  <td><span class="journey-status-pill upcoming">In Stock (16)</span></td>
+                  <td><button type="button" class="table-pill-btn" onclick="alert('Editing Corset Bustier SKU...');">Edit</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Section 4: Fabric Roll Allocation Breakdown -->
+        <div class="dash-panel">
+          <div class="panel-header">
+            <div class="panel-title">Fabric Roll Vault Allocation</div>
+            <div class="panel-subtitle">Textile Consumption Rates</div>
+          </div>
+          <div class="progress-list">
+            <div>
+              <div class="progress-row-header"><span>Como Mulberry Silk Charmeuse (Grade 6A)</span><span style="font-weight:700;">85% Allocated (34/40 bolts)</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width: 85%; background: linear-gradient(90deg, #D47A88, #B82E55);"></div></div>
+            </div>
+            <div>
+              <div class="progress-row-header"><span>Organic Mongolian Cashmere (380gsm)</span><span style="font-weight:700;">64% Allocated (16/25 bolts)</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width: 64%; background: linear-gradient(90deg, #E27396, #C43862);"></div></div>
+            </div>
+            <div>
+              <div class="progress-row-header"><span>Lyon Sunray Metallic Chiffon</span><span style="font-weight:700;">92% Allocated (23/25 bolts)</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width: 92%; background: linear-gradient(90deg, #F472B6, #D47A88);"></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           8. ADMIN: CLIENT ORDERS (4 SECTIONS)
+           ==================================================================== -->
+      <section id="page-admin-orders" class="dash-subpage" aria-labelledby="heading-admin-orders">
+        <!-- Section 1: Header Banner -->
+        <div class="dash-header-banner">
+          <div>
+            <div class="dash-eyebrow">03 · CLIENT COMMISSIONS &amp; ORDERS</div>
+            <h1 class="dash-title" id="heading-admin-orders">Bespoke Orders &amp; Global Atelier Production Pipeline</h1>
+            <p class="dash-subtitle">Track custom couture garments from initial pattern cut and muslin fitting to final hand embroidery and delivery.</p>
+          </div>
+          <button type="button" class="dash-action-btn" onclick="alert('Creating manual bespoke commission order...');">
+            <span>NEW BESPOKE ORDER</span> &rarr;
+          </button>
+        </div>
+
+        <!-- Section 2: 4 Order Pipeline Metrics -->
+        <div class="dash-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>ORDERS IN QUEUE</span></div><span class="metric-badge">+4</span></div>
+            <div class="metric-number">24</div>
+            <div class="metric-caption">Active client commissions.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>IN PATTERN CUTTING</span></div></div>
+            <div class="metric-number">8</div>
+            <div class="metric-caption">Precision muslin slopers being drafted.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>HAND EMBROIDERY</span></div></div>
+            <div class="metric-number">10</div>
+            <div class="metric-caption">Artisans hand-beading couture gowns.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>READY FOR DISPATCH</span></div><span class="metric-badge">Express</span></div>
+            <div class="metric-number">6</div>
+            <div class="metric-caption">VIP courier packaging ready.</div>
+          </div>
+        </div>
+
+        <!-- Section 3: Master Orders Table -->
+        <div class="dash-panel" style="margin-bottom:24px;">
+          <div class="panel-header">
+            <div class="panel-title">Active Client Commissions</div>
+            <div class="panel-subtitle">Live Tracking Queue</div>
+          </div>
+          <div class="table-responsive">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>VIP Client</th>
+                  <th>Garment Silhouette</th>
+                  <th>Salon Suite</th>
+                  <th>Target Gala Date</th>
+                  <th>Stage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight:700;color:var(--dash-mint);">#STK-8921</td>
+                  <td style="font-weight:700;">Lady Genevieve</td>
+                  <td>Obsidian Silk Evening Gown (Custom Train)</td>
+                  <td>Paris Montaigne</td>
+                  <td>Oct 10, 2026</td>
+                  <td><span class="journey-status-pill upcoming">Hand-Stitching</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;color:var(--dash-mint);">#STK-8920</td>
+                  <td style="font-weight:700;">Elena Rostova</td>
+                  <td>Cashmere Double-Breasted Blazer (Navy)</td>
+                  <td>Milan Galleria</td>
+                  <td>Oct 14, 2026</td>
+                  <td><span class="journey-status-pill">Pattern Cutting</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;color:var(--dash-mint);">#STK-8919</td>
+                  <td style="font-weight:700;">Manasa Lingala</td>
+                  <td>Champagne Pleated Chiffon Gown</td>
+                  <td>Salem Flagship</td>
+                  <td>Oct 18, 2026</td>
+                  <td><span class="journey-status-pill upcoming">Muslin Fitting</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;color:var(--dash-mint);">#STK-8918</td>
+                  <td style="font-weight:700;">Sarah Jenkins</td>
+                  <td>Hand-Embroidered Velvet Kimono</td>
+                  <td>New York Salon</td>
+                  <td>Oct 20, 2026</td>
+                  <td><span class="journey-status-pill">VIP Packaging</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Section 4: Gala Alterations Priority Queue -->
+        <div class="dash-panel">
+          <div class="panel-header">
+            <div class="panel-title">Expedited Alterations Priority Queue</div>
+            <div class="panel-subtitle">24H Turnaround Express Units</div>
+          </div>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-left">
+                <div class="activity-icon" style="background:#FEE2E2;color:#991B1B;">⚡</div>
+                <div>
+                  <div class="activity-title">Salem Flagship &bull; Express Hem Adjustment</div>
+                  <div class="activity-desc">Client attending Mumbai Autumn Gala &bull; 4cm floor lift &bull; Tailor Marco assigned</div>
+                </div>
+              </div>
+              <div class="activity-time">Due in 8 Hours</div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-left">
+                <div class="activity-icon" style="background:#FEF3C7;color:#B45309;">⚡</div>
+                <div>
+                  <div class="activity-title">Paris Montaigne &bull; Bustier Boning Reinforcement</div>
+                  <div class="activity-desc">Palais Garnier Gala look &bull; Spiral steel swap &bull; Tailor Elena assigned</div>
+                </div>
+              </div>
+              <div class="activity-time">Due Tomorrow</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           9. ADMIN: ARTISANS & INVENTORY (4 SECTIONS)
+           ==================================================================== -->
+      <section id="page-admin-artisans" class="dash-subpage" aria-labelledby="heading-admin-artisans">
+        <!-- Section 1: Header Banner -->
+        <div class="dash-header-banner">
+          <div>
+            <div class="dash-eyebrow">04 · ARTISANS &amp; RAW TEXTILE VAULT</div>
+            <h1 class="dash-title" id="heading-admin-artisans">Master Tailors, Embroiderers &amp; Silk Inventory</h1>
+            <p class="dash-subtitle">Manage atelier artisan workload allocation, master certifications, and luxury raw fabric imports from Italy and France.</p>
+          </div>
+          <button type="button" class="dash-action-btn" onclick="alert('Logging new incoming Como silk fabric shipment...');">
+            <span>LOG TEXTILE SHIPMENT</span> &rarr;
+          </button>
+        </div>
+
+        <!-- Section 2: 4 Workshop Metrics -->
+        <div class="dash-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>MASTER ARTISANS</span></div><span class="metric-badge">Full Capacity</span></div>
+            <div class="metric-number">11</div>
+            <div class="metric-caption">Couturiers &amp; patternmakers.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>EMBROIDERERS</span></div></div>
+            <div class="metric-number">6</div>
+            <div class="metric-caption">Botanical gold-thread specialists.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>FABRIC ROLLS IN VAULT</span></div></div>
+            <div class="metric-number">84</div>
+            <div class="metric-caption">Silk, cashmere, velvet &amp; lace bolts.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>WEEKLY HOURS LOGGED</span></div></div>
+            <div class="metric-number">440h</div>
+            <div class="metric-caption">Artisanal handcrafting throughput.</div>
+          </div>
+        </div>
+
+        <!-- Section 3: Master Artisan Roster -->
+        <div class="dash-panel" style="margin-bottom:24px;">
+          <div class="panel-header">
+            <div class="panel-title">Master Artisan Commission Load</div>
+            <div class="panel-subtitle">Active Atelier Roster</div>
+          </div>
+          <div class="table-responsive">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Master Artisan</th>
+                  <th>Specialty</th>
+                  <th>Home Atelier</th>
+                  <th>Active Commissions</th>
+                  <th>Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight:700;">Elena Markov</td>
+                  <td>Architectural Corsetry &amp; Lace</td>
+                  <td>Paris Montaigne</td>
+                  <td>3 Garments</td>
+                  <td><span class="journey-status-pill upcoming">99.8%</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;">Marco Valenti</td>
+                  <td>Tailored Outerwear &amp; Suiting</td>
+                  <td>Salem Flagship</td>
+                  <td>4 Garments</td>
+                  <td><span class="journey-status-pill upcoming">100.0%</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;">Aiko Tanaka</td>
+                  <td>Botanical Gold Silk Embroidery</td>
+                  <td>Kyoto / Paris</td>
+                  <td>2 Garments</td>
+                  <td><span class="journey-status-pill upcoming">99.5%</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;">Julian Thorne</td>
+                  <td>Bias Draping &amp; Evening Slopers</td>
+                  <td>Milan Galleria</td>
+                  <td>5 Garments</td>
+                  <td><span class="journey-status-pill upcoming">99.2%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Section 4: Raw Luxury Textile Vault -->
+        <div class="dash-panel">
+          <div class="panel-header">
+            <div class="panel-title">Raw Luxury Textile Vault Status</div>
+            <div class="panel-subtitle">Controlled Climate Storage</div>
+          </div>
+          <div class="table-responsive">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Textile Variety</th>
+                  <th>Mill / Origin</th>
+                  <th>Weight (GSM)</th>
+                  <th>In Stock</th>
+                  <th>Condition</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight:700;">Double-Faced Mulberry Silk (6A)</td>
+                  <td>Lake Como, Italy</td>
+                  <td>110 gsm</td>
+                  <td>280 Meters</td>
+                  <td><span class="status-pill ok">● Optimal</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;">Organic Mongolian Cashmere</td>
+                  <td>Ulaanbaatar, Mongolia</td>
+                  <td>380 gsm</td>
+                  <td>145 Meters</td>
+                  <td><span class="status-pill ok">● Optimal</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;">French Chantilly Scalloped Lace</td>
+                  <td>Caudry, France</td>
+                  <td>85 gsm</td>
+                  <td>90 Meters</td>
+                  <td><span class="status-pill ok">● Optimal</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           10. ADMIN: FINANCIAL ANALYTICS (4 SECTIONS)
+           ==================================================================== -->
+      <section id="page-admin-analytics" class="dash-subpage" aria-labelledby="heading-admin-analytics">
+        <!-- Section 1: Header Banner -->
+        <div class="dash-header-banner">
+          <div>
+            <div class="dash-eyebrow">05 · COMMERCIAL PERFORMANCE ANALYTICS</div>
+            <h1 class="dash-title" id="heading-admin-analytics">Boutique Commercial Revenue &amp; VIP Metrics</h1>
+            <p class="dash-subtitle">Real-time financial audits, salon profitability, average order values, and client lifetime value metrics.</p>
+          </div>
+          <button type="button" class="dash-action-btn" onclick="alert('Generating comprehensive financial audit dossier (PDF)...');">
+            <span>DOWNLOAD AUDIT DOSSIER</span> &rarr;
+          </button>
+        </div>
+
+        <!-- Section 2: 4 Financial KPIs -->
+        <div class="dash-metrics-grid">
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>TOTAL REVENUE</span></div><span class="metric-badge">+18.4%</span></div>
+            <div class="metric-number">$184.5k</div>
+            <div class="metric-caption">Quarter-to-date atelier sales.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>AVERAGE ORDER VALUE</span></div></div>
+            <div class="metric-number">$2,380</div>
+            <div class="metric-caption">Across all bespoke commissions.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>VIP RETENTION RATE</span></div><span class="metric-badge">Diamond</span></div>
+            <div class="metric-number">94.2%</div>
+            <div class="metric-caption">Clients ordering 2+ garments yearly.</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card-top"><div class="metric-label-group"><span>GROSS COUTURE MARGIN</span></div></div>
+            <div class="metric-number">68.5%</div>
+            <div class="metric-caption">Reflecting premium Italian fabric costs.</div>
+          </div>
+        </div>
+
+        <!-- Section 3: Revenue by Category Breakdown -->
+        <div class="dash-panel" style="margin-bottom:24px;">
+          <div class="panel-header">
+            <div class="panel-title">Revenue Share by Apparel Category</div>
+            <div class="panel-subtitle">Current Autumn / Winter Fiscal Quarter</div>
+          </div>
+          <div class="progress-list">
+            <div>
+              <div class="progress-row-header"><span>Evening Gowns &amp; Galas ($88,200)</span><span style="font-weight:700;">47.8%</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width: 47.8%; background: linear-gradient(90deg, #D47A88, #B82E55);"></div></div>
+            </div>
+            <div>
+              <div class="progress-row-header"><span>Tailored Cashmere Blazers &amp; Suiting ($48,100)</span><span style="font-weight:700;">26.1%</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width: 26.1%; background: linear-gradient(90deg, #E27396, #C43862);"></div></div>
+            </div>
+            <div>
+              <div class="progress-row-header"><span>Architectural Corsetry &amp; Bustiers ($28,750)</span><span style="font-weight:700;">15.6%</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width: 15.6%; background: linear-gradient(90deg, #F472B6, #D47A88);"></div></div>
+            </div>
+            <div>
+              <div class="progress-row-header"><span>Silk &amp; Velvet Loungewear ($19,450)</span><span style="font-weight:700;">10.5%</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width: 10.5%; background: linear-gradient(90deg, #F9A8D4, #F472B6);"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4: Regional Salon Financial Breakdown -->
+        <div class="dash-panel">
+          <div class="panel-header">
+            <div class="panel-title">Regional Flagship Commercial Contribution</div>
+            <div class="panel-subtitle">Global Performance Audit</div>
+          </div>
+          <div class="table-responsive">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Salon Flagship</th>
+                  <th>Commissions</th>
+                  <th>Revenue (USD)</th>
+                  <th>Average Fitting Duration</th>
+                  <th>Client NPS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight:700;">Salem Flagship Salon</td>
+                  <td>32 Orders</td>
+                  <td style="font-weight:800;">$78,400</td>
+                  <td>1.5 Hours</td>
+                  <td><span class="journey-status-pill upcoming">99.4</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;">Paris Montaigne Atelier</td>
+                  <td>24 Orders</td>
+                  <td style="font-weight:800;">$58,800</td>
+                  <td>1.8 Hours</td>
+                  <td><span class="journey-status-pill upcoming">98.9</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;">Milan Galleria Suite</td>
+                  <td>18 Orders</td>
+                  <td style="font-weight:800;">$47,300</td>
+                  <td>1.4 Hours</td>
+                  <td><span class="journey-status-pill upcoming">99.1</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- COMPREHENSIVE JAVASCRIPT ENGINE FOR MULTI-TAB ROUTING -->
+  <script>
+    // USER/CLIENT ATELIER MENU CONFIG
+    const USER_BOUTIQUE_MENU = [
+      { id: "wardrobe", label: "My Wardrobe & Orders", pageId: "page-user-wardrobe", icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>` },
+      { id: "fittings", label: "Bespoke Fittings", pageId: "page-user-fittings", icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>` },
+      { id: "wishlist", label: "Curated Wishlist", pageId: "page-user-wishlist", icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>` },
+      { id: "stylist", label: "Stylist Sessions", pageId: "page-user-stylist", icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>` },
+      { id: "measurements", label: "VIP Measurements", pageId: "page-user-measurements", icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>` }
+    ];
+
+    // ADMIN BOUTIQUE MENU CONFIG
+    const ADMIN_BOUTIQUE_MENU = [
+      { id: "overview", label: "Store Overview", pageId: "page-admin-overview", icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>` },
+      { id: "catalog", label: "Boutique Catalog", pageId: "page-admin-catalog", icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>` },
+      { id: "orders", label: "Client Orders", pageId: "page-admin-orders", icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>` },
+      { id: "artisans", label: "Artisans & Inventory", pageId: "page-admin-artisans", icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>` },
+      { id: "analytics", label: "Financial Analytics", pageId: "page-admin-analytics", icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>` }
+    ];
+
+    let currentRole = "user";
+    let currentTab = "wardrobe";
+
+    function renderSidebar(role, activeTabId) {
+      const headingEl = document.getElementById("sidebar-section-heading");
+      const listEl = document.getElementById("sidebar-menu-list");
+      
+      const items = role === "admin" ? ADMIN_BOUTIQUE_MENU : USER_BOUTIQUE_MENU;
+      headingEl.textContent = role === "admin" ? "BOUTIQUE OPERATIONS" : "YOUR ATELIER SUITE";
+
+      listEl.innerHTML = items.map(item => {
+        const isActive = item.id === activeTabId;
+        return `
+          <a href="#${item.id}" class="sidebar-item ${isActive ? "active" : ""}" data-tab="${item.id}" onclick="onSidebarItemClick('${role}', '${item.id}', event)">
+            <div class="sidebar-item-left">
+              ${item.icon}
+              <span>${item.label}</span>
+            </div>
+            ${isActive ? '<span class="sidebar-active-dot"></span>' : ''}
+          </a>
+        `;
+      }).join("");
+    }
+
+    function onSidebarItemClick(role, tabId, e) {
+      if (e) e.preventDefault();
+      navigateToTab(role, tabId);
+    }
+
+    function navigateToTab(role, tabId) {
+      currentRole = role;
+      currentTab = tabId;
+
+      const items = role === "admin" ? ADMIN_BOUTIQUE_MENU : USER_BOUTIQUE_MENU;
+      const targetItem = items.find(i => i.id === tabId) || items[0];
+
+      // Hide all subpages
+      document.querySelectorAll(".dash-subpage").forEach(page => {
+        page.classList.remove("active");
+        page.style.display = "none";
+      });
+
+      // Show the selected subpage
+      const activePage = document.getElementById(targetItem.pageId);
+      if (activePage) {
+        activePage.style.display = "block";
+        activePage.classList.add("active");
+      }
+
+      // Re-render sidebar to highlight active item
+      renderSidebar(role, targetItem.id);
+
+      // Scroll smoothly to top of main content
+      const contentEl = document.querySelector(".dash-content");
+      if (contentEl) contentEl.scrollTop = 0;
+
+      // Update URL search parameters without reloading
+      const url = new URL(window.location);
+      url.searchParams.set("role", role);
+      url.searchParams.set("tab", targetItem.id);
+      window.history.replaceState({}, "", url);
+    }
+
+    function switchDashboardRole(role) {
+      const btnUser = document.getElementById("btn-role-user");
+      const btnAdmin = document.getElementById("btn-role-admin");
+      const badgeText = document.getElementById("role-badge-text");
+
+      currentRole = role;
+
+      if (role === "admin") {
+        if (btnUser) btnUser.classList.remove("active");
+        if (btnAdmin) btnAdmin.classList.add("active");
+        if (badgeText) badgeText.textContent = "ATELIER ADMIN";
+        currentTab = "overview";
+      } else {
+        if (btnAdmin) btnAdmin.classList.remove("active");
+        if (btnUser) btnUser.classList.add("active");
+        if (badgeText) badgeText.textContent = "VIP CLIENT";
+        currentTab = "wardrobe";
+      }
+
+      navigateToTab(role, currentTab);
+    }
+
+    // Initialize state on load
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      let role = params.get("role");
+      let tab = params.get("tab");
+
+      if (!role) {
+        try {
+          const authData = JSON.parse(localStorage.getItem("stackly_auth_user"));
+          if (authData && authData.role) role = authData.role;
+        } catch(e) {}
+      }
+
+      if (role !== "admin" && role !== "user") {
+        role = "user";
+      }
+
+      if (!tab) {
+        tab = role === "admin" ? "overview" : "wardrobe";
+      }
+
+      // Check stored user email
+      try {
+        const authData = JSON.parse(localStorage.getItem("stackly_auth_user"));
+        if (authData && authData.email) {
+          const cleanEmail = authData.email;
+          document.getElementById("user-display-email").textContent = cleanEmail;
+          document.getElementById("sidebar-profile-email").textContent = cleanEmail;
+          const namePart = cleanEmail.split('@')[0];
+          document.getElementById("sidebar-profile-name").textContent = namePart.charAt(0).toUpperCase() + namePart.slice(1);
+        }
+      } catch(e) {}
+
+      // Activate initial view
+      const btnUser = document.getElementById("btn-role-user");
+      const btnAdmin = document.getElementById("btn-role-admin");
+      const badgeText = document.getElementById("role-badge-text");
+
+      if (role === "admin") {
+        if (btnUser) btnUser.classList.remove("active");
+        if (btnAdmin) btnAdmin.classList.add("active");
+        if (badgeText) badgeText.textContent = "ATELIER ADMIN";
+      } else {
+        if (btnAdmin) btnAdmin.classList.remove("active");
+        if (btnUser) btnUser.classList.add("active");
+        if (badgeText) badgeText.textContent = "VIP CLIENT";
+      }
+
+      navigateToTab(role, tab);
+    });
+  </script>
+</body>
+</html>
