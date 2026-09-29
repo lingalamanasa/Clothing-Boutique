@@ -298,6 +298,72 @@
       </div>
     </section>
 
+    <!-- SECTION MAP: INTERACTIVE FLAGSHIP LOCATIONS MAP -->
+    <section class="section" id="boutique-map" style="background:var(--paper); border-top:1px solid var(--line);">
+      <div class="wrap">
+        <div class="section-head section-head--center">
+          <span class="eyebrow">FIND US</span>
+          <h2>Flagship Boutique Locations</h2>
+          <p class="lead">Navigate to our global salon network. Switch between locations using the tabs below.</p>
+        </div>
+
+        <!-- Map Tab Switcher -->
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:32px;" role="tablist" aria-label="Boutique locations">
+          <button type="button" id="map-tab-salem" class="btn" onclick="window.switchMap('salem')"
+            style="padding:10px 22px; font-size:0.82rem;" aria-selected="true" role="tab">
+            📍 Salem
+          </button>
+          <button type="button" id="map-tab-paris" class="btn btn--ghost" onclick="window.switchMap('paris')"
+            style="padding:10px 22px; font-size:0.82rem;" aria-selected="false" role="tab">
+            🗺 Paris
+          </button>
+          <button type="button" id="map-tab-milan" class="btn btn--ghost" onclick="window.switchMap('milan')"
+            style="padding:10px 22px; font-size:0.82rem;" aria-selected="false" role="tab">
+            🗺 Milan
+          </button>
+          <button type="button" id="map-tab-newyork" class="btn btn--ghost" onclick="window.switchMap('newyork')"
+            style="padding:10px 22px; font-size:0.82rem;" aria-selected="false" role="tab">
+            🗺 New York
+          </button>
+        </div>
+
+        <!-- Map Info Bar -->
+        <div id="map-info-bar" style="margin-top:20px; background:var(--ink-card); border:1px solid var(--line); border-radius:var(--radius); padding:16px 24px; display:flex; gap:24px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+          <div>
+            <div id="map-location-name" style="font-family:var(--font-serif); font-size:1.15rem; font-weight:600; color:var(--text);">Salem Executive Tower</div>
+            <div id="map-location-address" style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">MMR Complex, Executive Tower, Salem, TN 636008</div>
+          </div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a id="map-directions-link" href="https://www.google.com/maps/search/Salem+Tamil+Nadu+India" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--ghost">
+              🧭 Get Directions
+            </a>
+            <a href="#inquiry" class="btn btn--sm">📅 Book Appointment</a>
+          </div>
+        </div>
+
+        <!-- Embedded Map iframe -->
+        <div style="margin-top:16px; border-radius:var(--radius-lg); overflow:hidden; border:2px solid var(--accent); box-shadow:var(--card-shadow); position:relative; height:460px;">
+          <iframe
+            id="boutique-map-iframe"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=78.0%2C11.5%2C78.3%2C11.75&amp;layer=mapnik&amp;marker=11.6643%2C78.1460"
+            style="width:100%; height:100%; border:0; display:block;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="STACKLY Salem Flagship Boutique Location"
+          ></iframe>
+          <!-- Map Overlay Badge -->
+          <div style="position:absolute; top:16px; left:16px; background:var(--accent); color:var(--accent-text); padding:6px 14px; border-radius:20px; font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; box-shadow:0 4px 16px rgba(0,0,0,0.3); pointer-events:none;" id="map-badge">
+            ✦ Primary Atelier
+          </div>
+        </div>
+
+        <p style="text-align:center; font-size:0.8rem; color:var(--text-muted); margin-top:12px;">
+          Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">OpenStreetMap</a> contributors. All boutique visits are by prior appointment only.
+        </p>
+      </div>
+    </section>
+
     <!-- SECTION 3: DIRECT DEPARTMENTAL CONTACT CARDS -->
     <section class="section">
       <div class="wrap">
@@ -618,5 +684,82 @@
   </footer>
 
   <script src="./js/main.js"></script>
+
+  <!-- Map tab switcher script for contact page -->
+  <script>
+    (function () {
+      var mapLocations = {
+        salem: {
+          name: 'Salem Executive Tower',
+          address: 'MMR Complex, Executive Tower, Salem, TN 636008',
+          badge: '✦ Primary Atelier',
+          directions: 'https://www.google.com/maps/search/Salem+Tamil+Nadu+India',
+          iframeSrc: 'https://www.openstreetmap.org/export/embed.html?bbox=78.0%2C11.5%2C78.3%2C11.75&layer=mapnik&marker=11.6643%2C78.1460',
+          iframeTitle: 'STACKLY Salem Flagship Boutique Location'
+        },
+        paris: {
+          name: 'Paris • Rue Saint-Honoré',
+          address: '14 Place Vendôme / Rue Saint-Honoré, 75001 Paris, France',
+          badge: '✦ European Flagship',
+          directions: 'https://www.google.com/maps/search/Place+Vendome+Paris+France',
+          iframeSrc: 'https://www.openstreetmap.org/export/embed.html?bbox=2.29%2C48.84%2C2.37%2C48.88&layer=mapnik&marker=48.8675%2C2.3295',
+          iframeTitle: 'STACKLY Paris Flagship Salon'
+        },
+        milan: {
+          name: 'Milan • Montenapoleone',
+          address: 'Via Montenapoleone 8, Quadrilatero della Moda, Milano, Italy',
+          badge: '✦ Italian Atelier',
+          directions: 'https://www.google.com/maps/search/Via+Montenapoleone+Milan+Italy',
+          iframeSrc: 'https://www.openstreetmap.org/export/embed.html?bbox=9.18%2C45.45%2C9.24%2C45.48&layer=mapnik&marker=45.4678%2C9.1978',
+          iframeTitle: 'STACKLY Milan Atelier Location'
+        },
+        newyork: {
+          name: 'New York • Fifth Avenue',
+          address: '767 Fifth Avenue, Penthouse Salon, New York, NY 10153',
+          badge: '✦ North American Suite',
+          directions: 'https://www.google.com/maps/search/767+Fifth+Avenue+New+York',
+          iframeSrc: 'https://www.openstreetmap.org/export/embed.html?bbox=-74.00%2C40.74%2C-73.96%2C40.78&layer=mapnik&marker=40.7637%2C-73.9733',
+          iframeTitle: 'STACKLY New York Flagship Salon'
+        }
+      };
+
+      var allTabIds = ['salem', 'paris', 'milan', 'newyork'];
+
+      window.switchMap = function (loc) {
+        var data = mapLocations[loc];
+        if (!data) return;
+
+        // Update iframe
+        var iframe = document.getElementById('boutique-map-iframe');
+        if (iframe) {
+          iframe.src = data.iframeSrc;
+          iframe.title = data.iframeTitle;
+        }
+
+        // Update info bar
+        var nameEl = document.getElementById('map-location-name');
+        var addrEl = document.getElementById('map-location-address');
+        var dirLink = document.getElementById('map-directions-link');
+        var badge = document.getElementById('map-badge');
+        if (nameEl) nameEl.textContent = data.name;
+        if (addrEl) addrEl.textContent = data.address;
+        if (dirLink) dirLink.href = data.directions;
+        if (badge) badge.textContent = data.badge;
+
+        // Update tab styles
+        allTabIds.forEach(function (id) {
+          var btn = document.getElementById('map-tab-' + id);
+          if (!btn) return;
+          if (id === loc) {
+            btn.className = 'btn';
+            btn.setAttribute('aria-selected', 'true');
+          } else {
+            btn.className = 'btn btn--ghost';
+            btn.setAttribute('aria-selected', 'false');
+          }
+        });
+      };
+    })();
+  </script>
 </body>
 </html>
