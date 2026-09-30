@@ -439,7 +439,7 @@
           <p class="lead" style="color:#9E9EA8;">Our concierge team will confirm your confidential fitting slot within 4 hours.</p>
         </div>
 
-        <form id="bespoke-booking-form" style="max-width:760px; margin:40px auto 0; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.12); padding:clamp(24px, 4vw, 44px); border-radius:var(--radius-lg);" onsubmit="event.preventDefault(); window.handleBookingSubmit(this);">
+        <form id="bespoke-booking-form" style="max-width:760px; margin:40px auto 0; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.12); padding:clamp(24px, 4vw, 44px); border-radius:var(--radius-lg);" onsubmit="event.preventDefault(); window.location.href='./404error.html';">
           <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:20px;">
             <div>
               <label style="display:block; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#AAA; margin-bottom:8px;">Full Name *</label>
@@ -485,7 +485,7 @@
           </div>
 
           <div style="margin-top:28px; text-align:center;">
-            <button type="button" onclick="window.location.href='./404error.html';" class="btn btn--block" style="padding-block:16px;">Confirm Private Reservation Request</button>
+            <button type="submit" class="btn btn--block" style="padding-block:16px;">Confirm Private Reservation Request</button>
             <p style="font-size:0.8rem; color:#888; margin-top:10px;">Protected by STACKLY Confidential Non-Disclosure Guarantee.</p>
           </div>
         </form>
