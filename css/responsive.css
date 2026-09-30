@@ -446,8 +446,23 @@ textarea.form-input {
 /* --- 15. SERVICES GRID --- */
 .services-menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
-  gap: clamp(16px, 3vw, 32px);
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.5vw, 32px);
+  margin-top: 40px;
+}
+
+@media (max-width: 1024px) {
+  .services-menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-menu-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
 
 /* --- 16. CONTACT PAGE MAP --- */
