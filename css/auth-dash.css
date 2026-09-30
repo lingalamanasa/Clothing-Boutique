@@ -391,6 +391,60 @@ body.auth-body {
   color: #111827;
 }
 
+/* --- Mobile/Tablet Fashion Banner (Visible on mobile/tablet) --- */
+.auth-hero-banner {
+  display: none;
+  width: 100%;
+  height: clamp(140px, 32vw, 210px);
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.auth-hero-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+}
+
+.auth-hero-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(17, 17, 20, 0.65) 100%);
+  pointer-events: none;
+}
+
+.auth-hero-banner-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #111114;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+}
+
+@media (max-width: 990px) {
+  .auth-hero-banner {
+    display: block;
+  }
+}
+
 /* --- Right Side: Visual Showcase Card --- */
 .auth-showcase-side {
   background: #0B111E;
@@ -1384,7 +1438,7 @@ body.dash-body {
   }
 
   .auth-showcase-side {
-    min-height: 400px;
+    display: none;
   }
 
   .dash-shell {
