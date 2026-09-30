@@ -97,40 +97,21 @@
   </aside>
   <div class="overlay" id="overlay"></div>
 
+  <!-- SUB-HEADER WELCOME BAR (Replaces buttons in both mobile & desktop view) -->
+  <section class="dash-welcome-bar" aria-label="User Welcome Banner">
+    <div class="dash-welcome-container">
+      <div class="dash-welcome-left">
+        <span class="dash-welcome-prefix">Welcome,</span>
+        <span class="dash-welcome-username" id="dash-welcome-user-name">Lingalamanasa123</span>
+        <span class="dash-welcome-role-pill" id="dash-welcome-role-pill">VIP Client</span>
+      </div>
+      <div class="dash-welcome-right">
+        <span class="dash-welcome-portal" id="dash-welcome-portal-title">My Wardrobe &amp; Orders</span>
+      </div>
+    </div>
+  </section>
+
   <div class="dash-shell">
-    <!-- SIDEBAR -->
-    <aside class="dash-sidebar">
-      <div>
-        <div class="sidebar-section-title" id="sidebar-section-heading">YOUR ATELIER SUITE</div>
-        <nav class="sidebar-menu" id="sidebar-menu-list">
-          <!-- Populated dynamically based on role -->
-        </nav>
-      </div>
-
-      <!-- User Profile at bottom -->
-      <div class="sidebar-profile-card">
-        <div class="profile-card-top">
-          <div class="profile-avatar-circle">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-            </svg>
-          </div>
-          <div class="profile-card-meta">
-            <div class="profile-card-name" id="sidebar-profile-name">Lingalamanasa123</div>
-            <div class="profile-card-email" id="sidebar-profile-email">lingalamanasa123@gmail.com</div>
-          </div>
-        </div>
-        <a href="./login.html" class="sidebar-logout-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-            <polyline points="16 17 21 12 16 7"></polyline>
-            <line x1="21" y1="12" x2="9" y2="12"></line>
-          </svg>
-          <span>LOGOUT</span>
-        </a>
-      </div>
-    </aside>
-
     <!-- MAIN CONTENT VIEW -->
     <main class="dash-content">
       <!-- ====================================================================
@@ -1478,30 +1459,21 @@
     let currentTab = "wardrobe";
 
     function renderSidebar(role, activeTabId) {
-      const headingEl = document.getElementById("sidebar-section-heading");
-      const listEl = document.getElementById("sidebar-menu-list");
-      
       const items = role === "admin" ? ADMIN_BOUTIQUE_MENU : USER_BOUTIQUE_MENU;
-      if (headingEl) {
-        headingEl.textContent = role === "admin" ? "BOUTIQUE OPERATIONS" : "YOUR ATELIER SUITE";
+      const currentItem = items.find(i => i.id === activeTabId) || items[0];
+
+      // Update Welcome Bar elements in both desktop and mobile
+      const welcomeRolePill = document.getElementById("dash-welcome-role-pill");
+      if (welcomeRolePill) {
+        welcomeRolePill.textContent = role === "admin" ? "Atelier Admin" : "VIP Client";
       }
 
-      if (listEl) {
-        listEl.innerHTML = items.map(item => {
-          const isActive = item.id === activeTabId;
-          return `
-            <a href="#${item.id}" class="sidebar-item ${isActive ? "active" : ""}" data-tab="${item.id}" onclick="onSidebarItemClick('${role}', '${item.id}', event)">
-              <div class="sidebar-item-left">
-                ${item.icon}
-                <span>${item.label}</span>
-              </div>
-              ${isActive ? '<span class="sidebar-active-dot"></span>' : ''}
-            </a>
-          `;
-        }).join("");
+      const welcomePortalTitle = document.getElementById("dash-welcome-portal-title");
+      if (welcomePortalTitle && currentItem) {
+        welcomePortalTitle.textContent = currentItem.label;
       }
 
-      // Also render drawer buttons matching user request
+      // Render drawer buttons matching user request
       renderDrawerMenu(role, activeTabId);
     }
 
@@ -1622,23 +1594,38 @@
         tab = role === "admin" ? "overview" : "wardrobe";
       }
 
-      // Check stored user email
+      // Check stored user email & username
       try {
         const authData = JSON.parse(localStorage.getItem("stackly_auth_user"));
-        if (authData && authData.email) {
-          const cleanEmail = authData.email;
-          document.getElementById("user-display-email").textContent = cleanEmail;
-          document.getElementById("sidebar-profile-email").textContent = cleanEmail;
-          const namePart = cleanEmail.split('@')[0];
-          const formattedName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
-          document.getElementById("sidebar-profile-name").textContent = formattedName;
+        let nameToUse = "Lingalamanasa123";
+        let cleanEmail = "lingalamanasa123@gmail.com";
 
-          const dEmail = document.getElementById("drawer-profile-email");
-          const dName = document.getElementById("drawer-profile-name");
-          if (dEmail) dEmail.textContent = cleanEmail;
-          if (dName) dName.textContent = formattedName;
+        if (authData) {
+          if (authData.email) cleanEmail = authData.email;
+          if (authData.username) {
+            nameToUse = authData.username;
+          } else if (authData.name) {
+            nameToUse = authData.name;
+          } else if (authData.email) {
+            const namePart = cleanEmail.split('@')[0];
+            nameToUse = namePart.charAt(0).toUpperCase() + namePart.slice(1);
+          }
         }
-      } catch(e) {}
+
+        const userEmailEl = document.getElementById("user-display-email");
+        if (userEmailEl) userEmailEl.textContent = cleanEmail;
+
+        const welcomeUserEl = document.getElementById("dash-welcome-user-name");
+        if (welcomeUserEl) welcomeUserEl.textContent = nameToUse;
+
+        const dEmail = document.getElementById("drawer-profile-email");
+        const dName = document.getElementById("drawer-profile-name");
+        if (dEmail) dEmail.textContent = cleanEmail;
+        if (dName) dName.textContent = nameToUse;
+      } catch(e) {
+        const welcomeUserEl = document.getElementById("dash-welcome-user-name");
+        if (welcomeUserEl) welcomeUserEl.textContent = "Lingalamanasa123";
+      }
 
       // Activate initial view
       const btnUser = document.getElementById("btn-role-user");
