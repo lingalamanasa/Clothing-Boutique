@@ -367,12 +367,25 @@
   function openCart() {
     const drawer = document.getElementById("cart-drawer");
     const overlay = document.getElementById("overlay");
-    if (drawer && overlay) {
+    if (drawer) {
       drawer.classList.add("open");
-      overlay.classList.add("open");
+      if (overlay) overlay.classList.add("open");
       document.body.classList.add("no-scroll");
     }
   }
+
+  // Checkout simulation — used by pages that call window.checkoutAlert()
+  window.checkoutAlert = function () {
+    const cart = JSON.parse(localStorage.getItem("stackly_cart") || "[]");
+    if (cart.length === 0) {
+      window.showToast("Your shopping bag is empty.", "!");
+      return;
+    }
+    window.showToast("Initiating VIP Checkout...", "🔒");
+    setTimeout(() => {
+      window.location.href = "./dashboard.html?role=user&tab=orders";
+    }, 1200);
+  };
 
   function closeAllDrawers() {
     document.querySelectorAll(".drawer, .cart-drawer, .search-panel, .modal-wrap").forEach((el) => {
@@ -429,7 +442,7 @@
               <button class="btn btn--block" style="flex:1" onclick="window.addToCart('${item.id}');window.closeQuickView();">
                 <span>Add to Shopping Bag</span>
               </button>
-              <a href="product-details.html?id=${item.id}" class="btn btn--ghost" style="padding:10px 16px;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center" onclick="window.closeQuickView();">
+              <a href="./product-details.html?id=${item.id}" class="btn btn--ghost" style="padding:10px 16px;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center" onclick="window.closeQuickView();">
                 View Full Details
               </a>
               <button class="icon-btn" style="width:48px;height:48px" onclick="window.toggleWishlist('${item.id}')" aria-label="Add to wishlist">
@@ -665,28 +678,19 @@
       });
     }
 
-    // 5. Cart Drawer Toggles
+    // 5. Cart Drawer Toggles — handle both [data-cart-close] attribute and .cart-close class
     const cartOpenBtn = document.querySelector("[data-cart-open]");
-    document.querySelectorAll("[data-cart-close]").forEach((btn) => {
+    document.querySelectorAll("[data-cart-close], .cart-close").forEach((btn) => {
       btn.addEventListener("click", closeAllDrawers);
     });
     if (cartOpenBtn) {
       cartOpenBtn.addEventListener("click", openCart);
     }
 
-    // 6. Checkout Simulation
+    // 6. Checkout Simulation — #checkout-btn uses the centralized checkoutAlert
     const checkoutBtn = document.getElementById("checkout-btn");
     if (checkoutBtn) {
-      checkoutBtn.addEventListener("click", () => {
-        if (cart.length === 0) {
-          window.showToast("Your shopping bag is empty.", "!");
-          return;
-        }
-        window.showToast("Initiating VIP Checkout...", "🔒");
-        setTimeout(() => {
-          window.location.href = "./dashboard.html?role=user&tab=orders";
-        }, 1200);
-      });
+      checkoutBtn.addEventListener("click", window.checkoutAlert);
     }
 
     // 7. Promo code

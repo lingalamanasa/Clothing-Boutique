@@ -16,14 +16,17 @@
 
 
   <script>
-    // Smart GitHub Pages Repository Redirect Helper:
-    // If a user landed on root domain instead of repository path (e.g. /about.html instead of /Clothing-Boutique/about.html)
+    // GitHub Pages 404 Redirect Helper:
+    // On GitHub Pages, any direct URL like /Clothing-Boutique/about.html that GitHub
+    // can't serve triggers this 404.html. We just show the 404 page — all internal
+    // links already use relative ./page.html paths which work correctly.
+    // This script only handles the edge case of landing at the bare repo root.
     (function() {
-      var repoName = '/Clothing-Boutique/';
+      var repoBase = '/Clothing-Boutique/';
       var path = window.location.pathname;
-      if (path && !path.startsWith(repoName) && window.location.hostname.endsWith('github.io')) {
-        var cleanPath = path.replace(/^\//, '');
-        window.location.replace(repoName + cleanPath);
+      // Only redirect if we're at root or at /Clothing-Boutique with no trailing slash
+      if (path === '/' || path === '/Clothing-Boutique') {
+        window.location.replace(repoBase + 'index.html');
       }
     })();
   </script>

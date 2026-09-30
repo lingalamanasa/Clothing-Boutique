@@ -843,9 +843,7 @@
       // Add to Bag Button
       document.getElementById('pdp-add-btn').onclick = () => {
         const qty = parseInt(qtyInput.value) || 1;
-        for (let i = 0; i < qty; i++) {
-          window.addToCart(product.id, selectedSize);
-        }
+        window.addToCart(product.id, qty, selectedSize, null);
       };
 
       // Wishlist Button
