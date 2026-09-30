@@ -68,8 +68,20 @@
       display: flex;
       flex-direction: column;
       gap: 0;
-      animation: fadeUp 0.7s ease forwards 0.15s;
-      opacity: 0;
+      opacity: 1;
+    }
+
+    /* Word Animation Helpers */
+    .word-wrap {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: top;
+      line-height: inherit;
+    }
+    .anim-word {
+      display: inline-block;
+      will-change: transform, opacity;
+      transform-origin: 50% 100%;
     }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -452,27 +464,79 @@
       else                        logo.src = './images/logo-header-yellow.webp';
     })();
 
-    // GSAP Text & Card Entrance Animation
+    // GSAP Word-by-Word Animation Engine for 404 Content
+    function splitWords(el) {
+      if (!el) return [];
+      var text = el.textContent.trim();
+      if (!text) return [];
+      if (!el.getAttribute('aria-label')) {
+        el.setAttribute('aria-label', text);
+      }
+      var words = text.split(/\s+/);
+      el.innerHTML = words.map(function (w) {
+        return '<span class="word-wrap"><span class="anim-word">' + w + '</span></span>';
+      }).join(' ');
+      return el.querySelectorAll('.anim-word');
+    }
+
     if (typeof gsap !== 'undefined') {
-      gsap.fromTo('.big-404', 
-        { scale: 0.82, opacity: 0, y: 24 },
-        { scale: 1, opacity: 1, y: 0, duration: 0.85, ease: 'power3.out', delay: 0.1 }
+      var headingEl = document.querySelector('.error-heading');
+      var descEl = document.querySelector('.error-desc');
+      var headingWords = splitWords(headingEl);
+      var descWords = splitWords(descEl);
+
+      var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      // 1. Logo slide-in
+      tl.fromTo('.logo',
+        { opacity: 0, x: -18 },
+        { opacity: 1, x: 0, duration: 0.6 }
       );
-      gsap.fromTo('.error-heading',
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', delay: 0.25 }
+
+      // 2. Error Badge
+      tl.fromTo('.error-badge',
+        { opacity: 0, scale: 0.85, y: -8 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: 'back.out(1.7)' },
+        '-=0.35'
       );
-      gsap.fromTo('.error-desc',
-        { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.65, ease: 'power2.out', delay: 0.4 }
+
+      // 3. Big 404 Gold Numerals
+      tl.fromTo('.big-404', 
+        { scale: 0.78, opacity: 0, y: 28, filter: 'blur(6px)' },
+        { scale: 1, opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.9, ease: 'power3.out' },
+        '-=0.3'
       );
-      gsap.fromTo('.btn-row a, .btn-row button',
-        { opacity: 0, y: 14 },
-        { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out', delay: 0.5 }
+
+      // 4. "Page Not Found" Heading - Word-by-Word Reveal
+      if (headingWords.length > 0) {
+        tl.fromTo(headingWords,
+          { yPercent: 120, opacity: 0, rotate: 2 },
+          { yPercent: 0, opacity: 1, rotate: 0, duration: 0.7, stagger: 0.08, clearProps: 'transform' },
+          '-=0.55'
+        );
+      }
+
+      // 5. Description Content - Word-by-Word Fluid Wave Reveal
+      if (descWords.length > 0) {
+        tl.fromTo(descWords,
+          { yPercent: 110, opacity: 0 },
+          { yPercent: 0, opacity: 1, duration: 0.5, stagger: 0.025, ease: 'power2.out', clearProps: 'transform' },
+          '-=0.45'
+        );
+      }
+
+      // 6. Action Buttons Spring Entrance
+      tl.fromTo('.btn-row a, .btn-row button',
+        { opacity: 0, y: 16, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.55, stagger: 0.12, ease: 'back.out(1.5)' },
+        '-=0.3'
       );
-      gsap.fromTo('.illustration',
+
+      // 7. Right Parisian Illustration Entrance
+      tl.fromTo('.illustration',
         { scale: 0.9, opacity: 0, y: 20 },
-        { scale: 1, opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: 0.2 }
+        { scale: 1, opacity: 1, y: 0, duration: 1.0, ease: 'power3.out' },
+        0.2
       );
     }
   </script>
