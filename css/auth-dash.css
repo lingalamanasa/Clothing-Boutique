@@ -1762,19 +1762,8 @@ body.dash-body {
 
   .table-responsive {
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow-x: visible;
     display: block;
-    margin-inline: -2px;
-  }
-
-  .dash-table {
-    min-width: 520px;
-  }
-
-  .dash-table th, .dash-table td {
-    padding: 10px 12px;
-    font-size: 0.78rem;
   }
 }
 
@@ -2224,4 +2213,143 @@ body.dash-body .overlay.open {
   background: rgba(0, 0, 0, 0.6) !important;
   backdrop-filter: blur(4px) !important;
   -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* ==========================================================================
+   MOBILE CARD TRANSFORMATION FOR ALL DASHBOARD TABLES (1:1 MATCH TO USER SCREENSHOT)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: visible !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .dash-table {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    border-collapse: separate !important;
+  }
+
+  .dash-table thead {
+    display: none !important;
+  }
+
+  .dash-table tbody {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+
+  .dash-table tr {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 14px !important;
+    padding: 14px 16px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+    box-sizing: border-box !important;
+  }
+
+  .dash-table tr:hover td {
+    background: transparent !important;
+  }
+
+  .dash-table td {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 10px 0 !important;
+    border-bottom: 1px solid #F1F5F9 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    font-size: 0.88rem !important;
+    color: #1E293B !important;
+    text-align: right !important;
+    gap: 12px !important;
+    background: transparent !important;
+    box-sizing: border-box !important;
+  }
+
+  /* First row in each card */
+  .dash-table td:first-child {
+    padding-top: 2px !important;
+    padding-bottom: 11px !important;
+    border-bottom: 1.5px solid #E2E8F0 !important;
+    font-weight: 800 !important;
+    color: #0F172A !important;
+    font-size: 0.94rem !important;
+  }
+
+  .dash-table td:first-child::before {
+    color: #475569 !important;
+    font-size: 0.74rem !important;
+    font-weight: 800 !important;
+  }
+
+  /* Last row in each card */
+  .dash-table td:last-child {
+    border-bottom: none !important;
+    padding-bottom: 2px !important;
+  }
+
+  /* Small uppercase muted label on the left matching user second screenshot */
+  .dash-table td::before {
+    content: attr(data-label);
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    color: #64748B !important;
+    text-align: left !important;
+    flex-shrink: 0 !important;
+  }
+
+  .dash-table td:not([data-label])::before {
+    display: none !important;
+  }
+
+  /* Action buttons inside card */
+  .dash-table td .table-pill-btn {
+    margin: 0 !important;
+    padding: 6px 14px !important;
+    font-size: 0.78rem !important;
+    border-radius: 6px !important;
+    background: #F8FAFC !important;
+    border: 1px solid #CBD5E1 !important;
+    color: #1E293B !important;
+    font-weight: 600 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  .dash-table td .table-pill-btn:hover {
+    background: #8E193C !important;
+    border-color: #8E193C !important;
+    color: #FFFFFF !important;
+  }
+
+  /* Status pills inside card */
+  .dash-table td .journey-status-pill,
+  .dash-table td .status-pill {
+    padding: 4px 12px !important;
+    font-size: 0.75rem !important;
+    border-radius: 999px !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
 }
