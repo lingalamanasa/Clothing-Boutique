@@ -1210,3 +1210,99 @@ body.preloader-locked {
   will-change: contents;
 }
 
+/* ---------- 12. Private Salon Circle Newsletter Form & Validation ---------- */
+.newsletter-form {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+  max-width: 580px;
+  margin: 28px auto 0;
+  width: 100%;
+}
+
+.newsletter-input-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  position: relative;
+  text-align: left;
+}
+
+.newsletter-input {
+  width: 100%;
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  border-radius: 999px;
+  border: 1.5px solid #DCDCE2;
+  background: #FFFFFF;
+  color: #111114;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
+}
+
+.newsletter-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(229, 169, 27, 0.18);
+}
+
+[data-theme="rose"] .newsletter-input:focus {
+  border-color: #D47A88;
+  box-shadow: 0 0 0 3px rgba(212, 122, 136, 0.25);
+}
+
+.newsletter-input.input-invalid {
+  border-color: #E53935 !important;
+  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.2) !important;
+}
+
+.newsletter-error-msg {
+  display: none;
+  font-size: 0.8rem;
+  color: #D32F2F;
+  margin-top: 6px;
+  padding-left: 18px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.btn-newsletter {
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  min-width: 140px;
+  padding: 14px 30px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--btn-gold-bg);
+  color: var(--accent-text);
+  border: 1px solid var(--btn-gold-bg);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.28s var(--ease);
+}
+
+.btn-newsletter:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 560px) {
+  .newsletter-form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .btn-newsletter {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+

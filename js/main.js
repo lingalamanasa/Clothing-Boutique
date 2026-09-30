@@ -859,12 +859,68 @@
       });
     }
 
-    // 8. Newsletter Forms
+    // 8. Newsletter Forms with Robust Email Validation
+    function validateAndSubmitNewsletter(form, e) {
+      if (e) e.preventDefault();
+      const emailInput = form.querySelector("input[type='email']");
+      const errorMsg = form.querySelector(".newsletter-error-msg");
+      if (!emailInput) return false;
+
+      const val = emailInput.value.trim();
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+      if (!val) {
+        if (errorMsg) {
+          errorMsg.textContent = "Please enter your email address.";
+          errorMsg.style.display = "block";
+        }
+        emailInput.classList.add("input-invalid");
+        emailInput.focus();
+        return false;
+      }
+
+      if (!emailPattern.test(val)) {
+        if (errorMsg) {
+          errorMsg.textContent = "Please enter a valid email address (e.g. name@domain.com).";
+          errorMsg.style.display = "block";
+        }
+        emailInput.classList.add("input-invalid");
+        emailInput.focus();
+        return false;
+      }
+
+      if (errorMsg) {
+        errorMsg.style.display = "none";
+        errorMsg.textContent = "";
+      }
+      emailInput.classList.remove("input-invalid");
+
+      // Valid form! Open 404 error page as requested
+      window.location.href = "./404error.html";
+      return false;
+    }
+
+    window.handleNewsletterSubmit = function (e) {
+      const form = e && e.target ? e.target : document.getElementById("newsletter-form");
+      return validateAndSubmitNewsletter(form, e);
+    };
+
     document.querySelectorAll(".newsletter-form").forEach((form) => {
       form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        window.location.href = './404error.html';
+        validateAndSubmitNewsletter(form, e);
       });
+
+      const emailInput = form.querySelector("input[type='email']");
+      const errorMsg = form.querySelector(".newsletter-error-msg");
+      if (emailInput) {
+        emailInput.addEventListener("input", () => {
+          emailInput.classList.remove("input-invalid");
+          if (errorMsg) {
+            errorMsg.style.display = "none";
+            errorMsg.textContent = "";
+          }
+        });
+      }
     });
 
     // 9. Escape key listener

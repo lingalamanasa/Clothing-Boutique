@@ -731,9 +731,20 @@
         <p style="margin-top:12px;font-size:0.95rem">
           Receive bi-weekly private salon invitations, confidential showroom previews, and editorial trend reports.
         </p>
-        <form class="newsletter-form" style="display:flex;gap:12px;max-width:540px;margin:28px auto 0" onsubmit="event.preventDefault();window.location.href='./404error.html';">
-          <input type="email" class="form-input" placeholder="Enter your private email address" required />
-          <button class="btn" type="submit" onclick="window.location.href='./404error.html';">Subscribe</button>
+        <form class="newsletter-form" id="newsletter-form" novalidate onsubmit="return handleNewsletterSubmit(event)">
+          <div class="newsletter-input-wrap">
+            <input 
+              type="email" 
+              id="newsletter-email" 
+              name="email"
+              class="form-input newsletter-input" 
+              placeholder="Enter your private email address" 
+              required 
+              aria-label="Private email address"
+            />
+            <div id="newsletter-error" class="newsletter-error-msg"></div>
+          </div>
+          <button class="btn btn-newsletter" type="submit" id="newsletter-btn">Subscribe</button>
         </form>
       </div>
     </section>
