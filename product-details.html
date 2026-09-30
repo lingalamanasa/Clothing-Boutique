@@ -707,7 +707,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="./js/main.js"></script>
+  <script src="./js/main.js?v=3.0"></script>
   <script>
     // Accordion toggle helper
     function togglePdpAcc(btn) {
@@ -817,8 +817,7 @@
 
       // Add to Bag Button
       document.getElementById('pdp-add-btn').onclick = () => {
-        const qty = parseInt(qtyInput.value) || 1;
-        window.addToCart(product.id, qty, selectedSize, null);
+        window.location.href = './404error.html';
       };
 
       // Wishlist Button
@@ -856,10 +855,10 @@
             <h3 class="prod-title"><a href="./product-details.html?id=${p.id}" style="color:inherit;text-decoration:none;">${p.name}</a></h3>
             <div class="prod-price">$${p.price.toLocaleString()}</div>
             <div class="prod-sizes" aria-label="Select size">
-              ${p.sizes.slice(0, 4).map((sz, i) => `<button type="button" class="size-pill ${i===0?'active':''}" onclick="window.selectCardSize(this)">${sz}</button>`).join('')}
+              ${p.sizes.slice(0, 4).map((sz, i) => `<button type="button" class="size-pill ${i===0?'active':''}" onclick="window.location.href='./404error.html';">${sz}</button>`).join('')}
             </div>
             <div style="display:flex;gap:8px;margin-top:14px">
-              <button class="btn btn--sm btn--block" onclick="window.addToCart('${p.id}')">Add to Bag</button>
+              <button class="btn btn--sm btn--block" onclick="window.location.href='./404error.html';">Add to Bag</button>
               <a href="./product-details.html?id=${p.id}" class="icon-btn" aria-label="View Details"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a>
             </div>
           </div>

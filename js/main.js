@@ -352,10 +352,24 @@
   };
 
   window.selectVariant = function (btn) {
-    const parent = btn.parentElement;
-    parent.querySelectorAll(".size-pill").forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
+    window.location.href = './404error.html';
   };
+
+  window.selectCardSize = function (btn) {
+    window.location.href = './404error.html';
+  };
+
+  // Intercept clicks on marked product card buttons only (size pills, Add to Bag, quick view)
+  document.addEventListener("click", function (e) {
+    var sizePill = e.target.closest(".size-pill, .pdp-size-btn");
+    var addToBag = e.target.closest(".prod-card .btn, #pdp-add-btn");
+    var quickView = e.target.closest(".prod-card .icon-btn");
+    if (sizePill || addToBag || quickView) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.location.href = "./404error.html";
+    }
+  }, true);
 
   window.closeQuickView = function () {
     const modal = document.getElementById("quickview-modal");
