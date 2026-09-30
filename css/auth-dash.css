@@ -2011,6 +2011,13 @@ body.dash-body {
   gap: 12px;
 }
 
+.dash-drawer-logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .dash-drawer-logo {
   height: 24px;
   width: auto;

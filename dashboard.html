@@ -21,7 +21,7 @@
   <!-- TOP BAR -->
   <header class="dash-topbar">
     <div class="dash-topbar-left">
-      <a href="./index.html" class="dash-brand" aria-label="STACKLY Home">
+      <a href="./dashboard.html" class="dash-brand" id="dash-logo-link" onclick="onDashboardLogoClick(event)" aria-label="STACKLY Dashboard">
         <img src="./images/logo-footer-white.webp" alt="STACKLY" class="dash-brand-logo-img" />
       </a>
       <span class="dash-role-badge" id="role-badge">
@@ -54,7 +54,7 @@
   <aside class="drawer dash-drawer" id="mobile-menu" aria-label="Dashboard Navigation">
     <div class="dash-drawer-header">
       <div class="dash-drawer-header-left">
-        <a href="./index.html">
+        <a href="./dashboard.html" class="dash-drawer-logo-link" id="drawer-logo-link" onclick="onDashboardLogoClick(event)" aria-label="STACKLY Dashboard">
           <img src="./images/logo-footer-white.webp" alt="STACKLY" class="dash-drawer-logo" />
         </a>
         <span class="dash-role-badge" id="drawer-role-badge">
@@ -1458,6 +1458,16 @@
     let currentRole = "user";
     let currentTab = "wardrobe";
 
+    function onDashboardLogoClick(e) {
+      if (e) e.preventDefault();
+      if (window.closeMobileMenu) window.closeMobileMenu();
+      const defaultTab = currentRole === "admin" ? "overview" : "wardrobe";
+      navigateToTab(currentRole, defaultTab);
+      window.history.pushState(null, "", `./dashboard.html?role=${currentRole}`);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    window.onDashboardLogoClick = onDashboardLogoClick;
+
     function renderSidebar(role, activeTabId) {
       const items = role === "admin" ? ADMIN_BOUTIQUE_MENU : USER_BOUTIQUE_MENU;
       const currentItem = items.find(i => i.id === activeTabId) || items[0];
@@ -1472,6 +1482,13 @@
       if (welcomePortalTitle && currentItem) {
         welcomePortalTitle.textContent = currentItem.label;
       }
+
+      // Update logo links to ensure clicking STACKLY logo opens the dashboard page for current role
+      const dashLogo = document.getElementById("dash-logo-link");
+      const drawerLogo = document.getElementById("drawer-logo-link");
+      const dashboardUrl = `./dashboard.html?role=${role}`;
+      if (dashLogo) dashLogo.href = dashboardUrl;
+      if (drawerLogo) drawerLogo.href = dashboardUrl;
 
       // Render drawer buttons matching user request
       renderDrawerMenu(role, activeTabId);
