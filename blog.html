@@ -226,7 +226,7 @@
               </div>
             </div>
             <div style="margin-top:28px;">
-              <a href="#article-1" class="btn btn--sm">Read Full Essay <span>→</span></a>
+              <a href="./contact.html" class="btn btn--sm">Read Full Essay <span>→</span></a>
             </div>
           </div>
         </div>
@@ -237,11 +237,11 @@
     <section style="background:var(--paper-2); padding-block:18px; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
       <div class="wrap" style="display:flex; gap:12px; overflow-x:auto; padding-bottom:4px; align-items:center;">
         <span style="font-size:0.8rem; font-weight:700; text-transform:uppercase; color:var(--text-muted); margin-right:8px; white-space:nowrap;">Filter Topics:</span>
-        <button type="button" class="btn btn--sm" style="border-radius:20px; white-space:nowrap; padding:6px 16px;">All Dispatches</button>
-        <button type="button" class="btn btn--sm btn--ghost" style="border-radius:20px; white-space:nowrap; padding:6px 16px;">Runway Analysis</button>
-        <button type="button" class="btn btn--sm btn--ghost" style="border-radius:20px; white-space:nowrap; padding:6px 16px;">Sartorial Anatomy</button>
-        <button type="button" class="btn btn--sm btn--ghost" style="border-radius:20px; white-space:nowrap; padding:6px 16px;">Red Carpet Archive</button>
-        <button type="button" class="btn btn--sm btn--ghost" style="border-radius:20px; white-space:nowrap; padding:6px 16px;">Fabric Preservation</button>
+        <button type="button" class="btn btn--sm" style="border-radius:20px; white-space:nowrap; padding:6px 16px;" onclick="window.showToast && window.showToast('Showing all editorial dispatches', '✦')">All Dispatches</button>
+        <button type="button" class="btn btn--sm btn--ghost" id="blog-filter-runway" style="border-radius:20px; white-space:nowrap; padding:6px 16px;" onclick="setBlogFilter(this,'runway')">Runway Analysis</button>
+        <button type="button" class="btn btn--sm btn--ghost" id="blog-filter-sartorial" style="border-radius:20px; white-space:nowrap; padding:6px 16px;" onclick="setBlogFilter(this,'sartorial')">Sartorial Anatomy</button>
+        <button type="button" class="btn btn--sm btn--ghost" id="blog-filter-redcarpet" style="border-radius:20px; white-space:nowrap; padding:6px 16px;" onclick="setBlogFilter(this,'redcarpet')">Red Carpet Archive</button>
+        <button type="button" class="btn btn--sm btn--ghost" id="blog-filter-fabric" style="border-radius:20px; white-space:nowrap; padding:6px 16px;" onclick="setBlogFilter(this,'fabric')">Fabric Preservation</button>
       </div>
     </section>
 
@@ -264,7 +264,7 @@
               <p style="margin-top:10px; font-size:0.9rem; color:var(--text-muted); flex-grow:1;">An in-depth review of midnight velvet, obsidian duchesse silk, and the cultural return to pure shadow.</p>
               <div style="margin-top:16px; padding-top:12px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
                 <span style="font-size:0.8rem; color:var(--text-muted);">Elena Rostova</span>
-                <a href="#read" class="btn btn--sm btn--ghost">Read <span>→</span></a>
+                <a href="./contact.html" class="btn btn--sm btn--ghost">Read <span>→</span></a>
               </div>
             </div>
           </article>
@@ -278,7 +278,7 @@
               <p style="margin-top:10px; font-size:0.9rem; color:var(--text-muted); flex-grow:1;">Tracing our Grade 6A double-faced silk from organic mulberry groves to the finishing looms of northern Italy.</p>
               <div style="margin-top:16px; padding-top:12px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
                 <span style="font-size:0.8rem; color:var(--text-muted);">Genevieve Vance</span>
-                <a href="#read" class="btn btn--sm btn--ghost">Read <span>→</span></a>
+                <a href="./contact.html" class="btn btn--sm btn--ghost">Read <span>→</span></a>
               </div>
             </div>
           </article>
@@ -292,7 +292,7 @@
               <p style="margin-top:10px; font-size:0.9rem; color:var(--text-muted); flex-grow:1;">Why shoulder construction dictates how an evening tuxedo drapes, breathes, and commands authority.</p>
               <div style="margin-top:16px; padding-top:12px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
                 <span style="font-size:0.8rem; color:var(--text-muted);">Marcello De Luca</span>
-                <a href="#read" class="btn btn--sm btn--ghost">Read <span>→</span></a>
+                <a href="./contact.html" class="btn btn--sm btn--ghost">Read <span>→</span></a>
               </div>
             </div>
           </article>
@@ -306,7 +306,7 @@
               <p style="margin-top:10px; font-size:0.9rem; color:var(--text-muted); flex-grow:1;">Behind closed hotel doors on the Boulevard de la Croisette as three gala gowns are hand-stitched to the wire.</p>
               <div style="margin-top:16px; padding-top:12px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
                 <span style="font-size:0.8rem; color:var(--text-muted);">Sasha Lindqvist</span>
-                <a href="#read" class="btn btn--sm btn--ghost">Read <span>→</span></a>
+                <a href="./contact.html" class="btn btn--sm btn--ghost">Read <span>→</span></a>
               </div>
             </div>
           </article>
@@ -320,7 +320,7 @@
               <p style="margin-top:10px; font-size:0.9rem; color:var(--text-muted); flex-grow:1;">Seven foundational garments that effortlessly navigate black-tie banquets, international summits, and private salons.</p>
               <div style="margin-top:16px; padding-top:12px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
                 <span style="font-size:0.8rem; color:var(--text-muted);">Genevieve Vance</span>
-                <a href="#read" class="btn btn--sm btn--ghost">Read <span>→</span></a>
+                <a href="./contact.html" class="btn btn--sm btn--ghost">Read <span>→</span></a>
               </div>
             </div>
           </article>
@@ -334,7 +334,7 @@
               <p style="margin-top:10px; font-size:0.9rem; color:var(--text-muted); flex-grow:1;">Why commercial dry-cleaning ruins delicate fibers and how cold-steaming and cedar shielding protect couture.</p>
               <div style="margin-top:16px; padding-top:12px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
                 <span style="font-size:0.8rem; color:var(--text-muted);">Elena Rostova</span>
-                <a href="#read" class="btn btn--sm btn--ghost">Read <span>→</span></a>
+                <a href="./contact.html" class="btn btn--sm btn--ghost">Read <span>→</span></a>
               </div>
             </div>
           </article>
@@ -348,7 +348,7 @@
               <p style="margin-top:10px; font-size:0.9rem; color:var(--text-muted); flex-grow:1;">The delicate balance between high jewelry and neckline architecture—how master stylists curate statement diamonds against emerald silk.</p>
               <div style="margin-top:16px; padding-top:12px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
                 <span style="font-size:0.8rem; color:var(--text-muted);">Marcello De Luca</span>
-                <a href="#read" class="btn btn--sm btn--ghost">Read <span>→</span></a>
+                <a href="./contact.html" class="btn btn--sm btn--ghost">Read <span>→</span></a>
               </div>
             </div>
           </article>
@@ -362,7 +362,7 @@
               <p style="margin-top:10px; font-size:0.9rem; color:var(--text-muted); flex-grow:1;">Cutting fabric at a 45-degree angle allows silk satin to cascade like liquid mercury across the human form without rigid seam lines.</p>
               <div style="margin-top:16px; padding-top:12px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
                 <span style="font-size:0.8rem; color:var(--text-muted);">Sasha Lindqvist</span>
-                <a href="#read" class="btn btn--sm btn--ghost">Read <span>→</span></a>
+                <a href="./contact.html" class="btn btn--sm btn--ghost">Read <span>→</span></a>
               </div>
             </div>
           </article>
@@ -617,5 +617,38 @@
   </footer>
 
   <script src="./js/main.js"></script>
+  <script>
+        // Assign data-topic to articles on load (by position, matching editorial content)
+    document.addEventListener('DOMContentLoaded', function() {
+      var topics = ['runway','fabric','sartorial','redcarpet','sartorial','fabric','redcarpet','runway'];
+      document.querySelectorAll('#articles article').forEach(function(art, i) {
+        if (topics[i]) art.setAttribute('data-topic', topics[i]);
+      });
+    });
+    // Blog topic filter — visual toggle with toast feedback
+    function setBlogFilter(btn, topic) {
+      // Update active button state
+      document.querySelectorAll('[id^="blog-filter-"]').forEach(function(b) {
+        b.classList.remove('active');
+        b.classList.add('btn--ghost');
+      });
+      btn.classList.add('active');
+      btn.classList.remove('btn--ghost');
+
+      // Show toast
+      var labels = { all:'All Dispatches', runway:'Runway Analysis', sartorial:'Sartorial Anatomy', redcarpet:'Red Carpet Archive', fabric:'Fabric Preservation' };
+      if (window.showToast) window.showToast('Showing: ' + (labels[topic] || topic), '✦');
+
+      // Filter articles by data-topic attribute (scroll to articles)
+      var articles = document.querySelectorAll('#articles article');
+      articles.forEach(function(art) {
+        if (topic === 'all' || art.getAttribute('data-topic') === topic) {
+          art.style.display = 'flex';
+        } else {
+          art.style.display = 'none';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
