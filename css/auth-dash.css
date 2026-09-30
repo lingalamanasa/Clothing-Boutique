@@ -1978,28 +1978,49 @@ body.dash-body {
 }
 
 /* ==========================================================================
-   DASHBOARD MOBILE DRAWER ENHANCEMENT (ATELIER SUITE BUTTONS & PROFILE)
+   DASHBOARD MOBILE DRAWER (DECREASED WIDTH MATCHING USER MARKING LINE)
    ========================================================================== */
-/* ==========================================================================
-   DASHBOARD MOBILE DRAWER (EXACT 1:1 MATCH TO USER SCREENSHOTS)
-   ========================================================================== */
-.dash-drawer {
+.dash-drawer,
+.dash-drawer#mobile-menu {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: 0 !important;
+  width: 275px !important;
+  max-width: 78vw !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
   background: linear-gradient(180deg, #8E193C 0%, #A32349 45%, #7D1535 100%) !important;
   color: #FFFFFF !important;
   display: flex !important;
   flex-direction: column !important;
-  height: 100dvh !important;
-  max-height: 100dvh !important;
   overflow: hidden !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.18) !important;
   border-left: none !important;
+  box-shadow: 12px 0 35px rgba(0, 0, 0, 0.45) !important;
   z-index: 300 !important;
+  transform: translateX(-105%) !important;
+  opacity: 1 !important;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.32s ease !important;
+}
+
+.dash-drawer.open,
+.dash-drawer#mobile-menu.open {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+}
+
+.dash-drawer.closing,
+.dash-drawer#mobile-menu.closing {
+  transform: translateX(-105%) !important;
 }
 
 .dash-drawer-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding: 14px 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.16);
   background: rgba(0, 0, 0, 0.12);
   flex-shrink: 0;
@@ -2008,7 +2029,7 @@ body.dash-body {
 .dash-drawer-header-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .dash-drawer-logo-link {
@@ -2019,9 +2040,9 @@ body.dash-body {
 }
 
 .dash-drawer-logo {
-  height: 24px;
+  height: 22px;
   width: auto;
-  max-width: 105px;
+  max-width: 95px;
   object-fit: contain;
   display: block;
 }
@@ -2031,26 +2052,26 @@ body.dash-body {
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  padding: 24px 18px 24px;
+  padding: 18px 12px 20px;
   display: flex;
   flex-direction: column;
 }
 
 .dash-drawer-heading {
-  font-size: 0.72rem;
+  font-size: 0.70rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   color: #FFD1DC;
   text-transform: uppercase;
-  margin-bottom: 14px;
-  padding-left: 10px;
+  margin-bottom: 12px;
+  padding-left: 8px;
 }
 
 .dash-drawer-menu {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 24px;
+  gap: 5px;
+  margin-bottom: 20px;
 }
 
 .dash-drawer-item {
@@ -2058,17 +2079,18 @@ body.dash-body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 13px 16px;
-  border-radius: 10px;
+  padding: 11px 13px;
+  border-radius: 9px;
   background: transparent;
   border: 1.5px solid transparent;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.94rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.88rem;
   font-weight: 600;
   cursor: pointer;
   text-align: left;
   transition: all 0.2s ease;
   font-family: inherit;
+  white-space: nowrap;
 }
 
 .dash-drawer-item:hover {
@@ -2087,15 +2109,22 @@ body.dash-body {
 .dash-drawer-item-left {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 11px;
+  overflow: hidden;
 }
 
 .dash-drawer-item-left svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   color: #FFFFFF;
   opacity: 0.95;
   flex-shrink: 0;
+}
+
+.dash-drawer-item-left span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .dash-drawer-active-dot {
@@ -2105,14 +2134,15 @@ body.dash-body {
   background: #FFFFFF;
   box-shadow: 0 0 8px #FFFFFF;
   flex-shrink: 0;
+  margin-left: 8px;
 }
 
 /* Profile Card at Bottom of Drawer (Exact match to User screenshots) */
 .dash-drawer-profile-card {
-  background: rgba(0, 0, 0, 0.22);
+  background: rgba(0, 0, 0, 0.24);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 12px;
-  padding: 14px;
+  padding: 12px;
   margin-top: auto;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
@@ -2120,13 +2150,13 @@ body.dash-body {
 .dash-drawer-profile-top {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .dash-drawer-avatar {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.24);
   display: flex;
@@ -2138,10 +2168,11 @@ body.dash-body {
 
 .dash-drawer-meta {
   overflow: hidden;
+  flex: 1 1 auto;
 }
 
 .dash-drawer-name {
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   font-weight: 700;
   color: #FFFFFF;
   white-space: nowrap;
@@ -2150,12 +2181,12 @@ body.dash-body {
 }
 
 .dash-drawer-email {
-  font-size: 0.72rem;
+  font-size: 0.70rem;
   color: #FFD1DC;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 220px;
+  max-width: 180px;
 }
 
 .dash-drawer-logout-btn {
@@ -2164,12 +2195,12 @@ body.dash-body {
   justify-content: center;
   gap: 8px;
   width: 100%;
-  padding: 9px 12px;
+  padding: 8px 10px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 6px;
   background: transparent;
   color: rgba(255, 255, 255, 0.95);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2182,4 +2213,15 @@ body.dash-body {
   background: rgba(255, 255, 255, 0.22);
   border-color: rgba(255, 255, 255, 0.45);
   color: #FFFFFF;
+}
+
+/* Overlay for dashboard drawer */
+body.dash-body .overlay.active,
+body.dash-body .overlay.open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: 280 !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
 }
