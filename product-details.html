@@ -584,7 +584,7 @@
           <div style="font-size:0.85rem;color:var(--text)">
             <strong>Prefer a Private Fitting?</strong> Reserve our Salem or Paris salon suite.
           </div>
-          <a href="./services.html?service=tailoring#booking" class="btn btn--sm" style="font-size:0.78rem;padding:6px 14px">Book Fitting</a>
+          <a href="./404error.html" class="btn btn--sm" style="font-size:0.78rem;padding:6px 14px">Book Fitting</a>
         </div>
 
         <!-- Assurances -->
@@ -671,9 +671,9 @@
         <h4 class="footer-title">Boutique Capsules</h4>
         <ul class="footer-links">
           <li><a href="./shop.html?category=dresses">Evening &amp; Gala Gowns</a></li>
-          <li><a href="./shop.html?category=outerwear">Architectural Blazers</a></li>
-          <li><a href="./shop.html?category=tops">Corsets &amp; Bustiers</a></li>
-          <li><a href="./shop.html?category=silk">Pure Mulberry Silk</a></li>
+          <li><a href="./404error.html">Architectural Blazers</a></li>
+          <li><a href="./404error.html">Corsets &amp; Bustiers</a></li>
+          <li><a href="./404error.html">Pure Mulberry Silk</a></li>
           <li><a href="./shop.html?category=suiting">Bespoke Suiting</a></li>
           <li><a href="./lookbook.html">Autumn / Winter Lookbook</a></li>
         </ul>
@@ -682,7 +682,7 @@
       <div>
         <h4 class="footer-title">Atelier Services</h4>
         <ul class="footer-links">
-          <li><a href="./services.html#booking">Private Fitting Salons</a></li>
+          <li><a href="./404error.html">Private Fitting Salons</a></li>
           <li><a href="./services.html#protocol">Bespoke Tailoring Protocol</a></li>
           <li><a href="./services.html?service=bridal#booking">Bridal &amp; Gala Suite</a></li>
           <li><a href="./services.html?service=concierge#booking">Traveling Wardrobe Stylist</a></li>
@@ -697,7 +697,7 @@
           <li><a href="./about.html">Our Atelier Story</a></li>
           <li><a href="./blog.html">The Couture Chronicles</a></li>
           <li><a href="./contact.html">Private Client Support</a></li>
-          <li><span style="color:var(--text-muted);font-size:0.85rem">concierge@stackly.com</span></li>
+          <li><a href="./404error.html" style="color:var(--text-muted);font-size:0.85rem;text-decoration:none;cursor:pointer;">concierge@stackly.com</a></li>
         </ul>
       </div>
     </div>
@@ -799,9 +799,7 @@
         btn.className = `pdp-size-btn ${idx === 0 ? 'active' : ''}`;
         btn.textContent = sz;
         btn.onclick = () => {
-          document.querySelectorAll('.pdp-size-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          selectedSize = sz;
+          window.location.href = './404error.html';
         };
         sizesContainer.appendChild(btn);
       });

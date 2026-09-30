@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="meshki">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page Not Found | STACKLY Haute Couture</title>
+  <meta name="description" content="The page you're looking for couldn't be found. Return to STACKLY Haute Couture." />
+  <link rel="icon" type="image/webp" href="./favicon.webp" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- GSAP Animation Framework -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      /* Soft diagonal gradient background */
+      background: linear-gradient(135deg, #f0ece3 0%, #faf8f4 50%, #ede8de 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle background pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 20%, rgba(201,168,76,0.12) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(17,17,20,0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* ── Main Card ── */
+    .card {
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow:
+        0 4px 6px rgba(0,0,0,0.04),
+        0 20px 60px rgba(0,0,0,0.10),
+        0 0 0 1px rgba(201,168,76,0.12);
+      max-width: 960px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      min-height: 460px;
+      overflow: hidden;
+      position: relative;
+      animation: cardIn 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(32px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ── Left Panel ── */
+    .left {
+      padding: 52px 48px 52px 52px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      opacity: 1;
+    }
+
+    /* Word Animation Helpers */
+    .word-wrap {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: top;
+      line-height: inherit;
+    }
+    .anim-word {
+      display: inline-block;
+      will-change: transform, opacity;
+      transform-origin: 50% 100%;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 32px;
+      text-decoration: none;
+    }
+    .logo img { height: 30px; }
+    .logo-text {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #111114;
+      letter-spacing: 0.08em;
+    }
+
+    /* Big 404 */
+    .big-404 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(5rem, 10vw, 7.5rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #C9A84C 0%, #F0D080 45%, #9A7B2E 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    /* Badge */
+    .error-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #9A7B2E;
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+    .badge-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #C9A84C;
+      animation: blink 1.5s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity: 1; } 50% { opacity: 0.3; }
+    }
+
+    /* Heading */
+    .error-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      font-weight: 700;
+      color: #111114;
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+
+    /* Description */
+    .error-desc {
+      font-size: 0.93rem;
+      color: #6B6B75;
+      line-height: 1.72;
+      margin-bottom: 34px;
+      max-width: 340px;
+    }
+
+    /* Buttons */
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 26px;
+      background: linear-gradient(135deg, #111114 0%, #2a2a30 100%);
+      color: #C9A84C;
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.28s ease;
+      box-shadow: 0 4px 18px rgba(17,17,20,0.22);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-home::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.15), transparent);
+      opacity: 0;
+      transition: opacity 0.28s;
+    }
+    .btn-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(17,17,20,0.30);
+    }
+    .btn-home:hover::after { opacity: 1; }
+    .btn-home:active { transform: translateY(0); }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 12px 24px;
+      background: transparent;
+      color: #111114;
+      font-size: 0.86rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      border: 1.5px solid #DCDCE2;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.28s ease;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .btn-back:hover {
+      border-color: #C9A84C;
+      color: #9A7B2E;
+      background: rgba(201,168,76,0.06);
+      transform: translateY(-2px);
+    }
+    .btn-back:active { transform: translateY(0); }
+
+    .btn-icon { width: 15px; height: 15px; flex-shrink: 0; }
+
+    /* ── Divider ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 28px 0;
+      color: #DCDCE2;
+    }
+    .divider-line { flex: 1; height: 1px; background: #ECEAE4; }
+    .divider-text { font-size: 0.72rem; color: #BCBAC5; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+
+    /* Quick links */
+    .quick-links {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .quick-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 12px;
+      background: #F7F5F0;
+      border: 1px solid #ECEAE4;
+      border-radius: 999px;
+      color: #6B6B75;
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.22s ease;
+    }
+    .quick-link:hover {
+      background: rgba(201,168,76,0.1);
+      border-color: rgba(201,168,76,0.4);
+      color: #9A7B2E;
+    }
+
+    /* ── Right Panel ── */
+    .right {
+      background: linear-gradient(145deg, #FAFAF8 0%, #F2EEE4 100%);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.7s ease forwards 0.3s;
+      opacity: 0;
+    }
+
+    /* Right background decoration */
+    .right::before {
+      content: '404';
+      position: absolute;
+      font-family: 'Cinzel', serif;
+      font-size: 14rem;
+      font-weight: 800;
+      color: rgba(201,168,76,0.07);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      letter-spacing: -0.04em;
+      user-select: none;
+    }
+
+    /* Right top label */
+    .right-label {
+      position: absolute;
+      top: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      white-space: nowrap;
+    }
+    .right-label-404 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #C9A84C, #F0D080, #9A7B2E);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .right-label-sub {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #111114;
+      margin-top: 2px;
+    }
+    .right-label-caption {
+      font-size: 0.65rem;
+      color: #9B9B9B;
+      letter-spacing: 0.1em;
+      margin-top: 1px;
+    }
+
+    /* Illustration */
+    .illustration {
+      width: 100%;
+      max-width: 380px;
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
+      animation: floatIllustration 4s ease-in-out infinite;
+      margin-top: 48px;
+      border-radius: 18px;
+      mix-blend-mode: multiply;
+      filter: contrast(1.03);
+    }
+    @keyframes floatIllustration {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 700px) {
+      .card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .left {
+        padding: 40px 32px 28px;
+        order: 2;
+      }
+      .right {
+        padding: 36px 24px 20px;
+        order: 1;
+        min-height: 280px;
+      }
+      .right::before { font-size: 8rem; }
+      .illustration { max-width: 240px; margin-top: 36px; }
+      .right-label-404 { font-size: 2rem; }
+      .error-desc { max-width: 100%; }
+    }
+    @media (max-width: 400px) {
+      .left { padding: 32px 24px 24px; }
+      .btn-row { flex-direction: column; }
+      .btn-home, .btn-back { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" role="main">
+
+    <!-- ── LEFT: Content ── -->
+    <div class="left">
+
+      <!-- Logo -->
+      <a href="./index.html" class="logo" aria-label="STACKLY Home">
+        <img src="./images/logo-header-yellow.webp" alt="STACKLY" id="nav-logo" />
+      </a>
+
+      <!-- Error badge -->
+      <div class="error-badge">
+        <span class="badge-dot"></span>
+        Error · 404
+      </div>
+
+      <!-- Big 404 -->
+      <div class="big-404" aria-label="404">404</div>
+
+      <!-- Heading -->
+      <h1 class="error-heading">Page Not Found</h1>
+
+      <!-- Description -->
+      <p class="error-desc">
+        The page you are looking for doesn't exist, has been archived, or may have moved to a new collection. Let us guide you back to the boutique.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="btn-row">
+        <a href="./index.html" class="btn-home" id="btn-home">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9,22 9,12 15,12 15,22"/>
+          </svg>
+          Back to Home
+        </a>
+        <button type="button" class="btn-back" id="btn-goback"
+          onclick="history.length > 1 ? history.back() : (window.location.href='./index.html')">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <polyline points="15,18 9,12 15,6"/>
+          </svg>
+          Go Back
+        </button>
+      </div>
+    </div>
+
+    <!-- ── RIGHT: Illustration ── -->
+    <div class="right" aria-hidden="true">
+      <div class="right-label">
+        <div class="right-label-404">404</div>
+        <div class="right-label-sub">Page Not Found</div>
+        <div class="right-label-caption">We seem to have lost the way&hellip;</div>
+      </div>
+      <img
+        src="./images/404-illustration.webp"
+        alt="Parisian haute couture fashionista looking at street signpost"
+        class="illustration"
+        loading="eager"
+      />
+    </div>
+
+  </div>
+
+  <script>
+    // GitHub Pages: only redirect if at bare root
+    (function () {
+      var path = window.location.pathname;
+      if (path === '/' || path === '/Clothing-Boutique') {
+        window.location.replace('/Clothing-Boutique/index.html');
+      }
+    })();
+
+    // Apply saved color palette to logo
+    (function () {
+      var saved = localStorage.getItem('stackly_theme_palette') || 'meshki';
+      var logo = document.getElementById('nav-logo');
+      if (!logo) return;
+      if (saved === 'rose')       logo.src = './images/logo-pink.webp';
+      else if (saved === 'royal') logo.src = './images/logo-purple.webp';
+      else                        logo.src = './images/logo-header-yellow.webp';
+    })();
+
+    // GSAP Word-by-Word Animation Engine for 404 Content
+    function splitWords(el) {
+      if (!el) return [];
+      var text = el.textContent.trim();
+      if (!text) return [];
+      if (!el.getAttribute('aria-label')) {
+        el.setAttribute('aria-label', text);
+      }
+      var words = text.split(/\s+/);
+      el.innerHTML = words.map(function (w) {
+        return '<span class="word-wrap"><span class="anim-word">' + w + '</span></span>';
+      }).join(' ');
+      return el.querySelectorAll('.anim-word');
+    }
+
+    if (typeof gsap !== 'undefined') {
+      var headingEl = document.querySelector('.error-heading');
+      var descEl = document.querySelector('.error-desc');
+      var headingWords = splitWords(headingEl);
+      var descWords = splitWords(descEl);
+
+      var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      // 1. Logo slide-in
+      tl.fromTo('.logo',
+        { opacity: 0, x: -18 },
+        { opacity: 1, x: 0, duration: 0.6 }
+      );
+
+      // 2. Error Badge
+      tl.fromTo('.error-badge',
+        { opacity: 0, scale: 0.85, y: -8 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: 'back.out(1.7)' },
+        '-=0.35'
+      );
+
+      // 3. Big 404 Gold Numerals
+      tl.fromTo('.big-404', 
+        { scale: 0.78, opacity: 0, y: 28, filter: 'blur(6px)' },
+        { scale: 1, opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.9, ease: 'power3.out' },
+        '-=0.3'
+      );
+
+      // 4. "Page Not Found" Heading - Word-by-Word Reveal
+      if (headingWords.length > 0) {
+        tl.fromTo(headingWords,
+          { yPercent: 120, opacity: 0, rotate: 2 },
+          { yPercent: 0, opacity: 1, rotate: 0, duration: 0.7, stagger: 0.08, clearProps: 'transform' },
+          '-=0.55'
+        );
+      }
+
+      // 5. Description Content - Word-by-Word Fluid Wave Reveal
+      if (descWords.length > 0) {
+        tl.fromTo(descWords,
+          { yPercent: 110, opacity: 0 },
+          { yPercent: 0, opacity: 1, duration: 0.5, stagger: 0.025, ease: 'power2.out', clearProps: 'transform' },
+          '-=0.45'
+        );
+      }
+
+      // 6. Action Buttons Spring Entrance
+      tl.fromTo('.btn-row a, .btn-row button',
+        { opacity: 0, y: 16, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.55, stagger: 0.12, ease: 'back.out(1.5)' },
+        '-=0.3'
+      );
+
+      // 7. Right Parisian Illustration Entrance
+      tl.fromTo('.illustration',
+        { scale: 0.9, opacity: 0, y: 20 },
+        { scale: 1, opacity: 1, y: 0, duration: 1.0, ease: 'power3.out' },
+        0.2
+      );
+    }
+  </script>
+
+</body>
+</html>

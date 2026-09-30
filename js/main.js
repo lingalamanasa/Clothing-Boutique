@@ -182,14 +182,7 @@
 
   // --- 4. Cart & Wishlist Operations ---
   window.selectCardSize = function (btn) {
-    if (!btn) return;
-    const parent = btn.parentElement;
-    if (parent) {
-      parent.querySelectorAll(".size-pill").forEach((b) => b.classList.remove("active"));
-    }
-    btn.classList.add("active");
-    const sizeName = btn.textContent.trim();
-    window.showToast(`Selected size: ${sizeName}`, "✓");
+    window.location.href = './404error.html';
   };
 
   window.filterShowcase = function (category) {
@@ -222,39 +215,7 @@
   };
 
   window.addToCart = function (id, qty = 1, size = null, color = null) {
-    const item = BOUTIQUE_CATALOG.find((p) => p.id === id);
-    if (!item) return;
-
-    let chosenSize = size;
-    if (!chosenSize) {
-      const card = document.querySelector(`[data-prod-id="${id}"]`) || document.querySelector(`[data-wish-btn="${id}"]`)?.closest(".prod-card");
-      const activePill = card?.querySelector(".size-pill.active");
-      chosenSize = activePill ? activePill.textContent.trim() : (item.sizes ? item.sizes[0] : "Standard");
-    }
-
-    const chosenColor = color || item.colors[0];
-    const existing = cart.find(
-      (c) => c.id === id && c.size === chosenSize && c.color === chosenColor
-    );
-
-    if (existing) {
-      existing.qty += qty;
-    } else {
-      cart.push({
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        image: item.image,
-        size: chosenSize,
-        color: chosenColor,
-        qty: qty
-      });
-    }
-
-    localStorage.setItem("stackly_cart", JSON.stringify(cart));
-    updateCartUI();
-    window.showToast(`Added "${item.name}" (${chosenSize}) to your bag.`, "🛍️");
-    openCart();
+    window.location.href = './404error.html';
   };
 
   window.removeFromCart = function (index) {
@@ -274,7 +235,7 @@
   };
 
   window.toggleWishlist = function (id) {
-    window.location.href = './404.html';
+    window.location.href = './404error.html';
   };
 
   function updateWishlistUI() {
@@ -387,64 +348,7 @@
 
   // --- 5. Quick View Modal Handler ---
   window.openQuickView = function (id) {
-    const item = BOUTIQUE_CATALOG.find((p) => p.id === id);
-    if (!item) return;
-
-    let modal = document.getElementById("quickview-modal");
-    if (!modal) {
-      modal = document.createElement("div");
-      modal.id = "quickview-modal";
-      modal.className = "modal-wrap";
-      document.body.appendChild(modal);
-    }
-
-    modal.innerHTML = `
-      <div class="modal-content">
-        <button class="icon-btn modal-close" onclick="window.closeQuickView()" aria-label="Close dialog">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:32px;padding:36px">
-          <div>
-            <img src="${item.image}" alt="${item.name}" style="width:100%;border-radius:14px;box-shadow:var(--card-shadow)" />
-          </div>
-          <div style="display:flex;flex-direction:column">
-            <span class="eyebrow">${item.categoryName}</span>
-            <h2 style="font-size:2rem;margin-top:8px">${item.name}</h2>
-            <div style="font-size:1.6rem;color:var(--text);font-weight:700;margin-top:8px">$${item.price.toLocaleString()}</div>
-            <p style="margin-top:14px;line-height:1.7">${item.desc}</p>
-            
-            <div style="margin-top:20px;padding:12px 16px;background:var(--paper-2);border-left:3px solid var(--accent);border-radius:6px">
-              <span style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);font-weight:700">Fabric & Origin</span>
-              <p style="font-size:0.85rem;color:var(--text);margin-top:2px">${item.fabric}</p>
-            </div>
-
-            <div style="margin-top:24px">
-              <label style="display:block;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:8px">Select Size</label>
-              <div style="display:flex;gap:8px;flex-wrap:wrap">
-                ${item.sizes.map((s, i) => `
-                  <button type="button" class="size-pill ${i === 0 ? "active" : ""}" onclick="selectVariant(this)">${s}</button>
-                `).join("")}
-              </div>
-            </div>
-
-            <div style="display:flex;gap:12px;margin-top:32px;flex-wrap:wrap">
-              <button class="btn btn--block" style="flex:1" onclick="window.addToCart('${item.id}');window.closeQuickView();">
-                <span>Add to Shopping Bag</span>
-              </button>
-              <a href="./product-details.html?id=${item.id}" class="btn btn--ghost" style="padding:10px 16px;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center" onclick="window.closeQuickView();">
-                View Full Details
-              </a>
-              <button class="icon-btn" style="width:48px;height:48px" onclick="window.toggleWishlist('${item.id}')" aria-label="Add to wishlist">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    modal.classList.add("open");
-    document.body.classList.add("no-scroll");
+    window.location.href = './404error.html';
   };
 
   window.selectVariant = function (btn) {
