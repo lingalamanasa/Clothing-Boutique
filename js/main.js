@@ -274,18 +274,7 @@
   };
 
   window.toggleWishlist = function (id) {
-    const idx = wishlist.indexOf(id);
-    const prod = BOUTIQUE_CATALOG.find((p) => p.id === id);
-    const name = prod ? prod.name : "Item";
-    if (idx > -1) {
-      wishlist.splice(idx, 1);
-      window.showToast(`Removed "${name}" from Wishlist`, "♡");
-    } else {
-      wishlist.push(id);
-      window.showToast(`Added "${name}" to Wishlist`, "♥");
-    }
-    localStorage.setItem("stackly_wishlist", JSON.stringify(wishlist));
-    updateWishlistUI();
+    window.location.href = './404.html';
   };
 
   function updateWishlistUI() {
