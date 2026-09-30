@@ -1145,3 +1145,32 @@ body.preloader-locked {
   border-radius: 2px;
   box-shadow: 0 0 10px var(--accent);
 }
+
+/* ---------- 11. Luxury GSAP Typography & Text Animation Helpers ---------- */
+.gsap-text-masked {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+  line-height: inherit;
+}
+
+.gsap-word {
+  display: inline-block;
+  will-change: transform, opacity;
+  transform-origin: 50% 100%;
+}
+
+.gsap-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.eyebrow {
+  will-change: letter-spacing, opacity, transform;
+}
+
+.stat-counter-val {
+  font-variant-numeric: tabular-nums;
+  will-change: contents;
+}
+

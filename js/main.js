@@ -459,10 +459,29 @@
     document.body.classList.remove("no-scroll");
   };
 
-  // --- 6. GSAP Animations Engine (Safe & Non-blocking) ---
+  // --- 6. GSAP Typography & Text Animations Engine ---
+  function splitElementIntoWords(el) {
+    if (!el || el.dataset.gsapSplit === "true") return el ? el.querySelectorAll(".gsap-word") : [];
+    const text = el.textContent.trim();
+    if (!text) return [];
+    
+    // Set accessibility aria-label to preserve original reading
+    if (!el.getAttribute("aria-label")) {
+      el.setAttribute("aria-label", text);
+    }
+    
+    const words = text.split(/\s+/);
+    el.innerHTML = words.map(function(word) {
+      return '<span class="gsap-text-masked"><span class="gsap-word">' + word + '</span></span>';
+    }).join(" ");
+    
+    el.dataset.gsapSplit = "true";
+    return el.querySelectorAll(".gsap-word");
+  }
+
   function initGSAPAnimations() {
-    // Ensure all critical elements are visible immediately as baseline
-    document.querySelectorAll(".cat-card, .prod-card, .hero-content > *, .section-head").forEach((el) => {
+    // 1. Baseline visibility safety guarantee
+    document.querySelectorAll(".cat-card, .prod-card, .hero-content > *, .section-head, h1, h2, .eyebrow, .lead").forEach(function(el) {
       el.style.opacity = "1";
       el.style.visibility = "visible";
     });
@@ -474,43 +493,209 @@
         gsap.registerPlugin(ScrollTrigger);
       }
 
-      // Gentle hero reveal
-      const heroContent = document.querySelector(".hero-content");
-      if (heroContent) {
+      // --- A. Cinematic Hero Typography Reveal ---
+      var heroTitle = document.querySelector(".hero-title, .hero h1, main > section:first-of-type h1");
+      if (heroTitle) {
+        var words = splitElementIntoWords(heroTitle);
+        var heroPill = document.querySelector(".hero-pill-tag");
+        var heroLead = document.querySelector(".hero-content p.lead, .hero p");
+        var heroCtas = document.querySelectorAll(".hero-content .btn, .hero-content .btn--ghost");
+
+        var heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+        if (heroPill) {
+          heroTl.fromTo(
+            heroPill,
+            { opacity: 0, y: -16, scale: 0.9 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.6)" }
+          );
+        }
+
+        if (words.length > 0) {
+          heroTl.fromTo(
+            words,
+            { yPercent: 120, opacity: 0, rotate: 2 },
+            { yPercent: 0, opacity: 1, rotate: 0, duration: 0.85, stagger: 0.05, clearProps: "transform" },
+            "-=0.3"
+          );
+        }
+
+        if (heroLead) {
+          heroTl.fromTo(
+            heroLead,
+            { opacity: 0, y: 22 },
+            { opacity: 1, y: 0, duration: 0.7 },
+            "-=0.4"
+          );
+        }
+
+        if (heroCtas.length > 0) {
+          heroTl.fromTo(
+            heroCtas,
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 },
+            "-=0.4"
+          );
+        }
+      }
+
+      // --- B. Eyebrows Dynamic Stretched Letter-Spacing Reveal ---
+      var eyebrows = document.querySelectorAll(".eyebrow");
+      eyebrows.forEach(function(eyebrow) {
+        if (typeof ScrollTrigger !== "undefined") {
+          gsap.fromTo(
+            eyebrow,
+            { opacity: 0, letterSpacing: "0.04em", y: 14 },
+            {
+              opacity: 1,
+              letterSpacing: "0.2em",
+              y: 0,
+              duration: 0.85,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: eyebrow,
+                start: "top 92%",
+                toggleActions: "play none none none"
+              }
+            }
+          );
+        }
+      });
+
+      // --- C. Section Headings (H2) Staggered Word Reveal ---
+      var sectionHeadings = document.querySelectorAll(".section-head h2, .section h2, .wrap h2");
+      sectionHeadings.forEach(function(h2) {
+        if (h2.closest(".hero") || h2.closest("#luxury-preloader")) return;
+        var words = splitElementIntoWords(h2);
+        var subP = h2.nextElementSibling && (h2.nextElementSibling.tagName === "P" || h2.nextElementSibling.classList.contains("lead")) ? h2.nextElementSibling : null;
+
+        if (typeof ScrollTrigger !== "undefined") {
+          var tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: h2,
+              start: "top 88%",
+              toggleActions: "play none none none"
+            }
+          });
+
+          if (words.length > 0) {
+            tl.fromTo(
+              words,
+              { yPercent: 110, opacity: 0 },
+              { yPercent: 0, opacity: 1, duration: 0.75, stagger: 0.04, ease: "power3.out", clearProps: "transform" }
+            );
+          } else {
+            tl.fromTo(h2, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" });
+          }
+
+          if (subP) {
+            tl.fromTo(
+              subP,
+              { opacity: 0, y: 16 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+              "-=0.3"
+            );
+          }
+        }
+      });
+
+      // --- D. Milestone / Statistics Counter Number Animations ---
+      var statContainers = document.querySelectorAll(".section [style*='grid-template-columns'] > div");
+      statContainers.forEach(function(card) {
+        var numEl = Array.from(card.children).find(function(el) {
+          var txt = el.textContent.trim();
+          return /^[0-9]+[%Kk\+]?$/.test(txt) && parseInt(txt, 10) > 0;
+        });
+        if (!numEl) return;
+
+        var rawText = numEl.textContent.trim();
+        var match = rawText.match(/^([0-9]+)(.*)$/);
+        if (match) {
+          var targetNum = parseInt(match[1], 10);
+          var suffix = match[2] || "";
+          numEl.classList.add("stat-counter-val");
+
+          if (typeof ScrollTrigger !== "undefined") {
+            var counterObj = { val: 0 };
+            gsap.to(counterObj, {
+              val: targetNum,
+              duration: 1.8,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 88%",
+                toggleActions: "play none none none"
+              },
+              onUpdate: function () {
+                numEl.textContent = Math.floor(counterObj.val) + suffix;
+              }
+            });
+          }
+        }
+      });
+
+      // --- E. Category Grid & Product Grid Card Reveals ---
+      document.querySelectorAll(".category-grid").forEach(function(grid) {
+        var cards = grid.querySelectorAll(".cat-card");
+        if (cards.length > 0 && typeof ScrollTrigger !== "undefined") {
+          gsap.fromTo(
+            cards,
+            { opacity: 0, y: 35, scale: 0.97 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.75,
+              stagger: 0.1,
+              ease: "power2.out",
+              clearProps: "all",
+              scrollTrigger: {
+                trigger: grid,
+                start: "top 85%",
+                toggleActions: "play none none none"
+              }
+            }
+          );
+        }
+      });
+
+      document.querySelectorAll(".product-grid").forEach(function(grid) {
+        var cards = grid.querySelectorAll(".prod-card");
+        if (cards.length > 0 && typeof ScrollTrigger !== "undefined") {
+          gsap.fromTo(
+            cards,
+            { opacity: 0, y: 30 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              stagger: 0.08,
+              ease: "power2.out",
+              clearProps: "all",
+              scrollTrigger: {
+                trigger: grid,
+                start: "top 85%",
+                toggleActions: "play none none none"
+              }
+            }
+          );
+        }
+      });
+
+      // --- F. Announcement Marquee Continuous Smooth Flow ---
+      var marquee = document.querySelector(".announcement-bar .marquee-content, .topbar .topbar-inner");
+      if (marquee) {
         gsap.fromTo(
-          heroContent.children,
-          { opacity: 0.2, y: 20 },
-          { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: "power2.out", clearProps: "all" }
+          marquee,
+          { opacity: 0, y: -8 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
         );
       }
 
-      // Animate category cards safely
-      document.querySelectorAll(".category-grid").forEach((grid) => {
-        const cards = grid.querySelectorAll(".cat-card");
-        if (cards.length > 0) {
-          gsap.fromTo(
-            cards,
-            { opacity: 0.3, y: 25 },
-            { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: "power2.out", clearProps: "all" }
-          );
-        }
-      });
-
-      // Animate product cards safely
-      document.querySelectorAll(".product-grid").forEach((grid) => {
-        const cards = grid.querySelectorAll(".prod-card");
-        if (cards.length > 0) {
-          gsap.fromTo(
-            cards,
-            { opacity: 0.3, y: 25 },
-            { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: "power2.out", clearProps: "all" }
-          );
-        }
-      });
     } catch (err) {
       console.warn("GSAP animation init non-critical notice:", err);
       // Guarantee fallback visibility
-      document.querySelectorAll(".cat-card, .prod-card, .hero-content > *, .section-head").forEach((el) => {
+      document.querySelectorAll(".cat-card, .prod-card, .hero-content > *, .section-head, h1, h2, .eyebrow, .lead").forEach(function(el) {
         el.style.opacity = "1";
         el.style.visibility = "visible";
       });
