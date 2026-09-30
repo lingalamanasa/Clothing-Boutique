@@ -791,7 +791,7 @@
     initPreloader();
 
     // 1. Restore Color Palette
-    const savedPalette = localStorage.getItem("stackly_theme_palette") || "meshki";
+    const savedPalette = localStorage.getItem("stackly_theme_palette") || "rose";
     window.switchPalette(savedPalette);
 
     // 2. Setup Cart & Wishlist
