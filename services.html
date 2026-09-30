@@ -420,7 +420,7 @@
               <li style="display:flex; gap:10px;"><span>✦</span> 60-minute 1-on-1 video call with our senior styling directors</li>
             </ul>
             <div style="margin-top:28px;">
-              <a href="#booking" class="btn">Order Bespoke Swatch Box</a>
+              <a href="./404error.html" class="btn">Order Bespoke Swatch Box</a>
             </div>
           </div>
           <div style="border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow);">
@@ -485,7 +485,7 @@
           </div>
 
           <div style="margin-top:28px; text-align:center;">
-            <button type="submit" class="btn btn--block" style="padding-block:16px;">Confirm Private Reservation Request</button>
+            <button type="button" onclick="window.location.href='./404error.html';" class="btn btn--block" style="padding-block:16px;">Confirm Private Reservation Request</button>
             <p style="font-size:0.8rem; color:#888; margin-top:10px;">Protected by STACKLY Confidential Non-Disclosure Guarantee.</p>
           </div>
         </form>
@@ -640,10 +640,7 @@
   <script src="./js/main.js?v=3.1"></script>
   <script>
     window.handleBookingSubmit = function(form) {
-      const tierEl = document.getElementById("booking-service-tier");
-      const tier = tierEl ? tierEl.value : "Bespoke Fitting";
-      window.showToast(`Private Reservation Confirmed for ${tier}! Our concierge will contact you within 4 hours.`, "✦");
-      form.reset();
+      window.location.href = './404error.html';
     };
 
     document.addEventListener("DOMContentLoaded", () => {
