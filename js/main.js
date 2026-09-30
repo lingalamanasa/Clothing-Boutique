@@ -863,11 +863,7 @@
     document.querySelectorAll(".newsletter-form").forEach((form) => {
       form.addEventListener("submit", (e) => {
         e.preventDefault();
-        const inp = form.querySelector("input[type='email']");
-        if (inp && inp.value) {
-          window.showToast("Welcome to STACKLY VIP Circle!", "✦");
-          inp.value = "";
-        }
+        window.location.href = './404error.html';
       });
     });
 
