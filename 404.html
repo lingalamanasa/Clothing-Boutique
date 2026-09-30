@@ -414,20 +414,6 @@
           Go Back
         </button>
       </div>
-
-      <!-- Divider + Quick links -->
-      <div class="divider">
-        <span class="divider-line"></span>
-        <span class="divider-text">Explore</span>
-        <span class="divider-line"></span>
-      </div>
-      <nav class="quick-links" aria-label="Quick navigation">
-        <a href="./about.html"    class="quick-link">About</a>
-        <a href="./services.html" class="quick-link">Services</a>
-        <a href="./blog.html"     class="quick-link">Blog</a>
-        <a href="./contact.html"  class="quick-link">Contact</a>
-      </nav>
-
     </div>
 
     <!-- ── RIGHT: Illustration ── -->
@@ -483,10 +469,6 @@
       gsap.fromTo('.btn-row a, .btn-row button',
         { opacity: 0, y: 14 },
         { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out', delay: 0.5 }
-      );
-      gsap.fromTo('.quick-link',
-        { opacity: 0, scale: 0.9 },
-        { opacity: 1, scale: 1, duration: 0.4, stagger: 0.05, ease: 'back.out(1.5)', delay: 0.6 }
       );
       gsap.fromTo('.illustration',
         { scale: 0.9, opacity: 0, y: 20 },
