@@ -1962,3 +1962,266 @@ body.dash-body {
   color: #8C9993;
   margin-left: 4px;
 }
+
+/* ==========================================================================
+   DASHBOARD MOBILE DRAWER ENHANCEMENT (ATELIER SUITE BUTTONS & PROFILE)
+   ========================================================================== */
+.dash-drawer {
+  background: linear-gradient(180deg, #180911 0%, #1A0A12 50%, #0F040A 100%) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  overflow: hidden !important;
+}
+
+.drawer-scroll-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 18px 20px 24px;
+}
+
+.drawer-section {
+  margin-bottom: 22px;
+}
+
+.drawer-section-title {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #FFB3C1;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding-left: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.drawer-suite-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drawer-suite-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.22s ease;
+  font-family: inherit;
+}
+
+.drawer-suite-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateX(2px);
+}
+
+.drawer-suite-btn.active {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.14) 100%);
+  border: 1.5px solid #FFFFFF;
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+.drawer-suite-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.drawer-suite-left svg {
+  width: 20px;
+  height: 20px;
+  color: #FFD1DC;
+  flex-shrink: 0;
+}
+
+.drawer-suite-btn.active .drawer-suite-left svg {
+  color: #FFFFFF;
+}
+
+.drawer-active-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 10px #FFFFFF;
+  flex-shrink: 0;
+}
+
+.drawer-arrow {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1rem;
+  transition: transform 0.2s;
+}
+
+.drawer-suite-btn:hover .drawer-arrow {
+  transform: translateX(3px);
+  color: #FFFFFF;
+}
+
+/* Role Switcher in Drawer */
+.drawer-role-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.drawer-role-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.drawer-role-btn.active {
+  background: linear-gradient(135deg, #8E193C 0%, #B82E55 100%);
+  border-color: #FF8DA6;
+  color: #FFFFFF;
+  box-shadow: 0 3px 12px rgba(142, 25, 60, 0.4);
+}
+
+.role-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FFD1DC;
+}
+
+.drawer-role-btn.active .role-pill-dot {
+  background: #FFFFFF;
+  box-shadow: 0 0 6px #FFFFFF;
+}
+
+/* Links in Drawer */
+.dash-drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dash-drawer-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 14px;
+  color: rgba(255, 255, 255, 0.88) !important;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.dash-drawer-links a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF !important;
+  padding-left: 18px;
+}
+
+.dash-drawer-links a span {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Bottom Profile Card in Drawer (Exact Match to User Screenshot) */
+.drawer-profile-card {
+  background: rgba(18, 6, 12, 0.96);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 16px 20px 22px;
+  flex-shrink: 0;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.drawer-profile-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.drawer-profile-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.drawer-profile-meta {
+  overflow: hidden;
+}
+
+.drawer-profile-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.drawer-profile-email {
+  font-size: 0.74rem;
+  color: #FFD1DC;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+}
+
+.drawer-logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px;
+  border: 1.5px solid rgba(255, 107, 139, 0.35);
+  border-radius: 8px;
+  background: rgba(216, 27, 96, 0.14);
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.drawer-logout-btn:hover {
+  background: #D81B60;
+  border-color: #D81B60;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(216, 27, 96, 0.4);
+}
