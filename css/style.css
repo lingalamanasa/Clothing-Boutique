@@ -123,6 +123,21 @@ body.no-scroll {
   overflow: hidden;
 }
 
+/* GSAP Slide-In From Sides Utility & Performance Optimization */
+.gsap-split-sides {
+  overflow-x: clip;
+}
+.slide-from-left,
+.slide-from-right {
+  will-change: transform, opacity;
+}
+@media (max-width: 768px) {
+  .slide-from-left,
+  .slide-from-right {
+    max-width: 100%;
+  }
+}
+
 img {
   display: block;
   max-width: 100%;

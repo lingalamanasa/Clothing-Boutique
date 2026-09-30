@@ -596,10 +596,71 @@
         );
       }
 
+      // --- G. Slide In From Sides (Dual-Column Split Animation) ---
+      var splitSideSections = document.querySelectorAll(
+        ".gsap-split-sides, #fabric-standard"
+      );
+
+      splitSideSections.forEach(function (sec) {
+        var leftCol = sec.querySelector(".slide-from-left");
+        var rightCol = sec.querySelector(".slide-from-right");
+
+        if (!leftCol || !rightCol) {
+          var grid = sec.querySelector("[style*='grid-template-columns']");
+          if (grid && grid.children.length === 2) {
+            leftCol = grid.children[0];
+            rightCol = grid.children[1];
+          }
+        }
+
+        if (!leftCol || !rightCol) return;
+
+        var rect = sec.getBoundingClientRect();
+        var isAboveFold = rect.top < (window.innerHeight || 800) * 0.75;
+
+        if (typeof ScrollTrigger !== "undefined" && !isAboveFold) {
+          var tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: sec,
+              start: "top 82%",
+              toggleActions: "play none none none"
+            }
+          });
+
+          tl.fromTo(
+            leftCol,
+            { x: -80, opacity: 0 },
+            { x: 0, opacity: 1, duration: 1.05, ease: "power3.out", clearProps: "transform" }
+          );
+
+          tl.fromTo(
+            rightCol,
+            { x: 80, opacity: 0 },
+            { x: 0, opacity: 1, duration: 1.05, ease: "power3.out", clearProps: "transform" },
+            "-=0.8"
+          );
+        } else {
+          var tl = gsap.timeline({ delay: 0.2 });
+
+          tl.fromTo(
+            leftCol,
+            { x: -80, opacity: 0 },
+            { x: 0, opacity: 1, duration: 1.05, ease: "power3.out", clearProps: "transform" }
+          );
+
+          tl.fromTo(
+            rightCol,
+            { x: 80, opacity: 0 },
+            { x: 0, opacity: 1, duration: 1.05, ease: "power3.out", clearProps: "transform" },
+            "-=0.8"
+          );
+        }
+      });
+
     } catch (err) {
       console.warn("GSAP animation init non-critical notice:", err);
       // Guarantee fallback visibility
-      document.querySelectorAll(".cat-card, .prod-card, .hero-content > *, .section-head, h1, h2, .eyebrow, .lead").forEach(function(el) {
+      document.querySelectorAll(".cat-card, .prod-card, .hero-content > *, .section-head, h1, h2, .eyebrow, .lead, .slide-from-left, .slide-from-right").forEach(function(el) {
         el.style.opacity = "1";
         el.style.visibility = "visible";
       });
