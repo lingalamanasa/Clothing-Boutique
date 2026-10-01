@@ -715,14 +715,72 @@
         }
       }
 
+      // --- I. Slider Cards Staggered Slide-In Animations ---
+      var sliderTracks = document.querySelectorAll(".slider-cards-track");
+      if (sliderTracks.length > 0) {
+        sliderTracks.forEach(function(track) {
+          var cards = track.querySelectorAll(".slider-card-item");
+          if (cards.length > 0) {
+            if (typeof ScrollTrigger !== "undefined") {
+              gsap.fromTo(
+                cards,
+                { opacity: 0, x: 45 },
+                {
+                  opacity: 1,
+                  x: 0,
+                  duration: 0.85,
+                  stagger: 0.12,
+                  ease: "power3.out",
+                  clearProps: "transform",
+                  scrollTrigger: {
+                    trigger: track,
+                    start: "top 85%",
+                    toggleActions: "play none none none",
+                    onEnter: function() {
+                      cards.forEach(function(c) { c.classList.add("is-slid-in"); });
+                    }
+                  }
+                }
+              );
+            } else {
+              cards.forEach(function(c) { c.classList.add("is-slid-in"); });
+            }
+          }
+        });
+
+        // IntersectionObserver fallback for guaranteed slide-in
+        if ("IntersectionObserver" in window) {
+          var sliderObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                var cards = entry.target.querySelectorAll(".slider-card-item");
+                cards.forEach(function(c, i) {
+                  setTimeout(function() {
+                    c.classList.add("is-slid-in");
+                  }, i * 90);
+                });
+                sliderObserver.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.12 });
+
+          sliderTracks.forEach(function(track) {
+            sliderObserver.observe(track);
+          });
+        }
+      }
+
     } catch (err) {
       console.warn("GSAP animation init non-critical notice:", err);
       // Guarantee fallback visibility
-      document.querySelectorAll(".cat-card, .prod-card, .hero-content > *, .section-head, h1, h2, .eyebrow, .lead, .slide-from-left, .slide-from-right, .clip-reveal-img").forEach(function(el) {
+      document.querySelectorAll(".cat-card, .prod-card, .hero-content > *, .section-head, h1, h2, .eyebrow, .lead, .slide-from-left, .slide-from-right, .clip-reveal-img, .slider-card-item").forEach(function(el) {
         el.style.opacity = "1";
         el.style.visibility = "visible";
         if (el.classList.contains("clip-reveal-img")) {
           el.classList.add("is-revealed");
+        }
+        if (el.classList.contains("slider-card-item")) {
+          el.classList.add("is-slid-in");
         }
       });
     }
