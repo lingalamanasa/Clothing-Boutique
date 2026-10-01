@@ -378,6 +378,29 @@
   };
 
   // --- 6. GSAP Typography & Text Animations Engine ---
+  function splitElementIntoLetters(el) {
+    if (!el || el.dataset.gsapLettersSplit === "true") return el ? el.querySelectorAll(".stagger-letter") : [];
+    const rawText = el.textContent.trim();
+    if (!rawText) return [];
+    
+    // Set accessibility aria-label to preserve original reading
+    if (!el.getAttribute("aria-label")) {
+      el.setAttribute("aria-label", rawText);
+    }
+    
+    const words = rawText.split(/\s+/);
+    el.innerHTML = words.map(function(word) {
+      const lettersHtml = Array.from(word).map(function(ch) {
+        var safeCh = ch === '&' ? '&amp;' : (ch === '<' ? '&lt;' : (ch === '>' ? '&gt;' : ch));
+        return '<span class="stagger-letter">' + safeCh + '</span>';
+      }).join('');
+      return '<span class="stagger-word-wrap">' + lettersHtml + '</span>';
+    }).join(' ');
+    
+    el.dataset.gsapLettersSplit = "true";
+    return el.querySelectorAll(".stagger-letter");
+  }
+
   function splitElementIntoWords(el) {
     if (!el || el.dataset.gsapSplit === "true") return el ? el.querySelectorAll(".gsap-word") : [];
     const text = el.textContent.trim();
@@ -399,7 +422,7 @@
 
   function initGSAPAnimations() {
     // 1. Baseline visibility safety guarantee
-    document.querySelectorAll(".cat-card, .prod-card, .hero-content > *, .section-head, h1, h2, .eyebrow, .lead").forEach(function(el) {
+    document.querySelectorAll(".cat-card, .prod-card, .hero-content > *, .section-head, h1, h2, .eyebrow, .lead, .stagger-letter, .stagger-word-wrap").forEach(function(el) {
       el.style.opacity = "1";
       el.style.visibility = "visible";
     });
@@ -411,30 +434,48 @@
         gsap.registerPlugin(ScrollTrigger);
       }
 
-      // --- A. Cinematic Hero Typography Reveal ---
-      var heroTitle = document.querySelector(".hero-title, .hero h1, main > section:first-of-type h1");
-      if (heroTitle) {
-        var words = splitElementIntoWords(heroTitle);
-        var heroPill = document.querySelector(".hero-pill-tag");
-        var heroLead = document.querySelector(".hero-content p.lead, .hero p");
-        var heroCtas = document.querySelectorAll(".hero-content .btn, .hero-content .btn--ghost");
+      // --- A. Cinematic Hero Staggered Letters Typography Reveal ---
+      var heroTitles = document.querySelectorAll(
+        ".stagger-letters-hero, .hero-title, .hero h1, main > section:first-of-type h1, main > section:first-child h1"
+      );
 
-        var heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      heroTitles.forEach(function (titleEl) {
+        var letters = splitElementIntoLetters(titleEl);
+        var heroContainer = titleEl.closest("section") || titleEl.closest(".hero") || titleEl.parentElement;
+        var heroPill = heroContainer ? heroContainer.querySelector(".hero-pill-tag, .eyebrow") : null;
+        var heroLead = heroContainer ? heroContainer.querySelector("p.lead, .hero-content p") : null;
+        var heroCtas = heroContainer ? heroContainer.querySelectorAll(".hero-content .btn, .hero-content .btn--ghost, .hero .btn") : [];
+
+        var heroTl = gsap.timeline({ defaults: { ease: "power3.out" }, delay: 0.1 });
 
         if (heroPill) {
           heroTl.fromTo(
             heroPill,
             { opacity: 0, y: -16, scale: 0.9 },
-            { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.6)" }
+            { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "back.out(1.6)" }
           );
         }
 
-        if (words.length > 0) {
+        if (letters && letters.length > 0) {
           heroTl.fromTo(
-            words,
-            { yPercent: 120, opacity: 0, rotate: 2 },
-            { yPercent: 0, opacity: 1, rotate: 0, duration: 0.85, stagger: 0.05, clearProps: "transform" },
-            "-=0.3"
+            letters,
+            {
+              yPercent: 125,
+              opacity: 0,
+              rotateX: -45,
+              scale: 0.92
+            },
+            {
+              yPercent: 0,
+              opacity: 1,
+              rotateX: 0,
+              scale: 1,
+              duration: 0.75,
+              stagger: 0.022,
+              ease: "back.out(1.2)",
+              clearProps: "transform,opacity"
+            },
+            heroPill ? "-=0.25" : "+=0.05"
           );
         }
 
@@ -442,20 +483,20 @@
           heroTl.fromTo(
             heroLead,
             { opacity: 0, y: 22 },
-            { opacity: 1, y: 0, duration: 0.7 },
+            { opacity: 1, y: 0, duration: 0.65 },
             "-=0.4"
           );
         }
 
-        if (heroCtas.length > 0) {
+        if (heroCtas && heroCtas.length > 0) {
           heroTl.fromTo(
             heroCtas,
-            { opacity: 0, y: 18 },
-            { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 },
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: 0.55, stagger: 0.1 },
             "-=0.4"
           );
         }
-      }
+      });
 
       // --- B. Eyebrows Dynamic Stretched Letter-Spacing Reveal ---
       var eyebrows = document.querySelectorAll(".eyebrow");
@@ -773,7 +814,7 @@
     } catch (err) {
       console.warn("GSAP animation init non-critical notice:", err);
       // Guarantee fallback visibility
-      document.querySelectorAll(".cat-card, .prod-card, .hero-content > *, .section-head, h1, h2, .eyebrow, .lead, .slide-from-left, .slide-from-right, .clip-reveal-img, .slider-card-item").forEach(function(el) {
+      document.querySelectorAll(".cat-card, .prod-card, .hero-content > *, .section-head, h1, h2, .eyebrow, .lead, .slide-from-left, .slide-from-right, .clip-reveal-img, .slider-card-item, .stagger-letter, .stagger-word-wrap").forEach(function(el) {
         el.style.opacity = "1";
         el.style.visibility = "visible";
         if (el.classList.contains("clip-reveal-img")) {

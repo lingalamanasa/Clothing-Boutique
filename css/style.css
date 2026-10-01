@@ -1196,9 +1196,25 @@ body.preloader-locked {
   transform-origin: 50% 100%;
 }
 
-.gsap-char {
+.gsap-char,
+.stagger-letter {
   display: inline-block;
   will-change: transform, opacity;
+  transform-origin: 50% 100%;
+  backface-visibility: hidden;
+}
+
+.stagger-word-wrap {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  margin-right: 0.28em;
+  padding-bottom: 0.05em;
+}
+
+.stagger-letters-hero {
+  perspective: 1000px;
 }
 
 .eyebrow {
