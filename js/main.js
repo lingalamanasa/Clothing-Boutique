@@ -671,12 +671,59 @@
         }
       });
 
+      // --- H. Haute Couture Clip-Path Image Reveal Animations ---
+      var clipElements = document.querySelectorAll(".clip-reveal-img");
+      if (clipElements.length > 0) {
+        clipElements.forEach(function(el) {
+          if (typeof ScrollTrigger !== "undefined") {
+            gsap.fromTo(
+              el,
+              { clipPath: "inset(100% 0% 0% 0%)" },
+              {
+                clipPath: "inset(0% 0% 0% 0%)",
+                duration: 1.15,
+                ease: "power3.inOut",
+                scrollTrigger: {
+                  trigger: el,
+                  start: "top 88%",
+                  toggleActions: "play none none none",
+                  onEnter: function() {
+                    el.classList.add("is-revealed");
+                  }
+                }
+              }
+            );
+          } else {
+            el.classList.add("is-revealed");
+          }
+        });
+
+        // IntersectionObserver fallback for guaranteed reveal on scroll
+        if ("IntersectionObserver" in window) {
+          var clipObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-revealed");
+                clipObserver.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.12 });
+
+          clipElements.forEach(function(el) {
+            clipObserver.observe(el);
+          });
+        }
+      }
+
     } catch (err) {
       console.warn("GSAP animation init non-critical notice:", err);
       // Guarantee fallback visibility
-      document.querySelectorAll(".cat-card, .prod-card, .hero-content > *, .section-head, h1, h2, .eyebrow, .lead, .slide-from-left, .slide-from-right").forEach(function(el) {
+      document.querySelectorAll(".cat-card, .prod-card, .hero-content > *, .section-head, h1, h2, .eyebrow, .lead, .slide-from-left, .slide-from-right, .clip-reveal-img").forEach(function(el) {
         el.style.opacity = "1";
         el.style.visibility = "visible";
+        if (el.classList.contains("clip-reveal-img")) {
+          el.classList.add("is-revealed");
+        }
       });
     }
   }
