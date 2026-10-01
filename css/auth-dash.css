@@ -2406,3 +2406,114 @@ body.dash-body .overlay.open {
     justify-content: center !important;
   }
 }
+
+/* ==========================================================================
+   DASHBOARD TEXT & COUNTER ANIMATIONS (Haute Couture Luxury)
+   ========================================================================== */
+.dash-eyebrow.animating-text {
+  animation: dashEyebrowTrack 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes dashEyebrowTrack {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+    letter-spacing: 0.04em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.14em;
+  }
+}
+
+.dash-title.animating-text {
+  animation: dashTitleReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes dashTitleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dash-subtitle.animating-text {
+  animation: dashSubtitleReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+@keyframes dashSubtitleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 0.85;
+    transform: translateY(0);
+  }
+}
+
+.panel-title.animating-text {
+  animation: dashPanelTitleReveal 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes dashPanelTitleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.metric-number.animating-counter {
+  animation: metricCountPulse 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+@keyframes metricCountPulse {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.dash-welcome-portal.animating-text {
+  animation: welcomePortalReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes welcomePortalReveal {
+  0% {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dash-eyebrow.animating-text,
+  .dash-title.animating-text,
+  .dash-subtitle.animating-text,
+  .panel-title.animating-text,
+  .metric-number.animating-counter,
+  .dash-welcome-portal.animating-text {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+

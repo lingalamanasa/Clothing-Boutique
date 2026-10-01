@@ -1590,6 +1590,93 @@
       navigateToTab(role, tabId);
     }
 
+    function animateNumberElement(el) {
+      if (!el) return;
+      if (!el.dataset.originalValue) {
+        el.dataset.originalValue = el.textContent.trim();
+      }
+      const raw = el.dataset.originalValue;
+
+      // Extract prefix, number, and suffix (e.g. "$184.5k", "4,850", "99.8%", "14 Days", "440h", "7")
+      const match = raw.match(/^([^0-9.]*)([0-9,.]+)(.*)$/);
+      if (!match) return;
+
+      const prefix = match[1];
+      const numStr = match[2];
+      const suffix = match[3];
+
+      // Ignore text titles that happen to contain a number (e.g. "Digitized 3D")
+      if (prefix.length > 2 && !/^[+-$€£\s]*$/.test(prefix)) return;
+
+      const cleanNumStr = numStr.replace(/,/g, "");
+      const targetVal = parseFloat(cleanNumStr);
+      if (isNaN(targetVal)) return;
+
+      const hasCommas = numStr.includes(",");
+      const decimals = cleanNumStr.includes(".") ? cleanNumStr.split(".")[1].length : 0;
+
+      const duration = 1000;
+      const startTime = performance.now();
+
+      function easeOutExpo(t) {
+        return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+      }
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutExpo(progress);
+
+        const currentVal = targetVal * easedProgress;
+
+        let formattedNumber = currentVal.toFixed(decimals);
+        if (hasCommas) {
+          const parts = formattedNumber.split(".");
+          parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          formattedNumber = parts.join(".");
+        }
+
+        el.textContent = prefix + formattedNumber + suffix;
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = raw;
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    function animateDashboardCounters(container) {
+      if (!container) return;
+      const metricNumbers = container.querySelectorAll(".metric-number");
+      metricNumbers.forEach(function(el) {
+        el.classList.remove("animating-counter");
+        void el.offsetWidth;
+        el.classList.add("animating-counter");
+        animateNumberElement(el);
+      });
+    }
+
+    function animateDashboardTexts(container) {
+      if (!container) return;
+
+      const textElements = container.querySelectorAll(".dash-eyebrow, .dash-title, .dash-subtitle, .panel-title");
+      textElements.forEach(function(el) {
+        el.classList.remove("animating-text");
+        void el.offsetWidth;
+        el.classList.add("animating-text");
+      });
+
+      const portalTitle = document.getElementById("dash-welcome-portal-title");
+      if (portalTitle) {
+        portalTitle.classList.remove("animating-text");
+        void portalTitle.offsetWidth;
+        portalTitle.classList.add("animating-text");
+      }
+    }
+
     function navigateToTab(role, tabId) {
       currentRole = role;
       currentTab = tabId;
@@ -1608,6 +1695,10 @@
       if (activePage) {
         activePage.style.display = "block";
         activePage.classList.add("active");
+
+        // Trigger dynamic counter and text animations for both dashboards
+        animateDashboardCounters(activePage);
+        animateDashboardTexts(activePage);
       }
 
       // Re-render sidebar to highlight active item
