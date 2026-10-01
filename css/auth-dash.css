@@ -855,7 +855,7 @@ body.dash-body {
 .dash-welcome-bar {
   background: linear-gradient(135deg, #7A1433 0%, #9E1E44 50%, #8E193C 100%);
   color: #FFFFFF;
-  padding: 12px 28px;
+  padding: 12px 40px 12px calc(270px + 40px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 4px 16px rgba(122, 20, 51, 0.22);
   position: sticky;
@@ -863,13 +863,22 @@ body.dash-body {
   z-index: 95;
 }
 
+.dash-welcome-bar::before {
+  content: "";
+  position: absolute;
+  left: 270px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
 .dash-welcome-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .dash-welcome-left {
@@ -1573,6 +1582,14 @@ body.dash-body {
   .dash-topbar {
     padding: 12px 18px;
     gap: 12px;
+  }
+
+  .dash-welcome-bar {
+    padding: 10px 18px;
+  }
+
+  .dash-welcome-bar::before {
+    display: none;
   }
 
   .dash-nav-burger {
