@@ -756,7 +756,7 @@ body.dash-body {
 }
 
 .dash-nav-burger {
-  display: inline-flex !important;
+  display: none !important;
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.16);
@@ -924,14 +924,40 @@ body.dash-body {
 /* Dashboard Shell Layout */
 .dash-shell {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex: 1;
   width: 100%;
+  min-height: calc(100vh - 106px);
 }
 
-/* Sidebar hidden - buttons moved to hamburger drawer as requested */
+/* Sidebar on Desktop (Left side menubar buttons) */
 .dash-sidebar {
-  display: none !important;
+  width: 270px;
+  min-width: 270px;
+  max-width: 270px;
+  background: linear-gradient(180deg, #7A1433 0%, #8E193C 45%, #9E2246 100%);
+  color: #FFFFFF;
+  padding: 24px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 4px 0 20px rgba(122, 20, 51, 0.15);
+  position: sticky;
+  top: 106px;
+  height: calc(100vh - 106px);
+  overflow-y: auto;
+  flex-shrink: 0;
+  z-index: 90;
+}
+
+.dash-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dash-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
 }
 
 .sidebar-section-title {
@@ -947,13 +973,19 @@ body.dash-body {
 .sidebar-menu {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .sidebar-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
   padding: 11px 14px;
   border-radius: 8px;
   color: rgba(255, 255, 255, 0.85);
@@ -1545,6 +1577,10 @@ body.dash-body {
 
   .dash-nav-burger {
     display: inline-flex !important;
+  }
+
+  .dash-sidebar {
+    display: none !important;
   }
 
   .dash-shell {

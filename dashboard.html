@@ -24,7 +24,7 @@
       <a href="./dashboard.html" class="dash-brand" id="dash-logo-link" onclick="onDashboardLogoClick(event)" aria-label="STACKLY Dashboard">
         <img src="./images/logo-footer-white.webp" alt="STACKLY" class="dash-brand-logo-img" />
       </a>
-      <span class="dash-role-badge" id="role-badge">
+      <span class="dash-role-badge" id="role-badge" onclick="switchDashboardRole(currentRole === 'admin' ? 'user' : 'admin')" title="Switch to other dashboard" style="cursor: pointer;">
         <span class="badge-dot"></span>
         <span id="role-badge-text">VIP CLIENT</span>
       </span>
@@ -57,7 +57,7 @@
         <a href="./dashboard.html" class="dash-drawer-logo-link" id="drawer-logo-link" onclick="onDashboardLogoClick(event)" aria-label="STACKLY Dashboard">
           <img src="./images/logo-footer-white.webp" alt="STACKLY" class="dash-drawer-logo" />
         </a>
-        <span class="dash-role-badge" id="drawer-role-badge">
+        <span class="dash-role-badge" id="drawer-role-badge" onclick="switchDashboardRole(currentRole === 'admin' ? 'user' : 'admin')" title="Switch to other dashboard" style="cursor: pointer;">
           <span class="badge-dot"></span>
           <span id="drawer-role-badge-text">VIP CLIENT</span>
         </span>
@@ -112,6 +112,39 @@
   </section>
 
   <div class="dash-shell">
+    <!-- LEFT SIDE MENUBAR / SIDEBAR (Desktop) -->
+    <aside class="dash-sidebar" id="dash-sidebar" aria-label="Dashboard Navigation">
+      <div>
+        <div class="sidebar-section-title" id="sidebar-section-heading">YOUR ATELIER SUITE</div>
+        <nav class="sidebar-menu" id="sidebar-menu-list">
+          <!-- Populated dynamically based on role -->
+        </nav>
+      </div>
+
+      <!-- User Profile at bottom -->
+      <div class="sidebar-profile-card">
+        <div class="profile-card-top">
+          <div class="profile-avatar-circle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </div>
+          <div class="profile-card-meta">
+            <div class="profile-card-name" id="sidebar-profile-name">Lingalamanasa123</div>
+            <div class="profile-card-email" id="sidebar-profile-email">lingalamanasa123@gmail.com</div>
+          </div>
+        </div>
+        <a href="./login.html" class="sidebar-logout-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>LOGOUT</span>
+        </a>
+      </div>
+    </aside>
+
     <!-- MAIN CONTENT VIEW -->
     <main class="dash-content">
       <!-- ====================================================================
@@ -1490,6 +1523,29 @@
       if (dashLogo) dashLogo.href = dashboardUrl;
       if (drawerLogo) drawerLogo.href = dashboardUrl;
 
+      // Populate left sidebar buttons for desktop
+      const headingEl = document.getElementById("sidebar-section-heading");
+      const listEl = document.getElementById("sidebar-menu-list");
+      
+      if (headingEl) {
+        headingEl.textContent = role === "admin" ? "BOUTIQUE OPERATIONS" : "YOUR ATELIER SUITE";
+      }
+
+      if (listEl) {
+        listEl.innerHTML = items.map(item => {
+          const isActive = item.id === activeTabId;
+          return `
+            <button type="button" class="sidebar-item ${isActive ? "active" : ""}" data-tab="${item.id}" onclick="onSidebarItemClick('${role}', '${item.id}', event)">
+              <div class="sidebar-item-left">
+                ${item.icon}
+                <span>${item.label}</span>
+              </div>
+              ${isActive ? '<span class="sidebar-active-dot"></span>' : ''}
+            </button>
+          `;
+        }).join("");
+      }
+
       // Render drawer buttons matching user request
       renderDrawerMenu(role, activeTabId);
     }
@@ -1639,6 +1695,11 @@
         const dName = document.getElementById("drawer-profile-name");
         if (dEmail) dEmail.textContent = cleanEmail;
         if (dName) dName.textContent = nameToUse;
+
+        const sEmail = document.getElementById("sidebar-profile-email");
+        const sName = document.getElementById("sidebar-profile-name");
+        if (sEmail) sEmail.textContent = cleanEmail;
+        if (sName) sName.textContent = nameToUse;
       } catch(e) {
         const welcomeUserEl = document.getElementById("dash-welcome-user-name");
         if (welcomeUserEl) welcomeUserEl.textContent = "Lingalamanasa123";
